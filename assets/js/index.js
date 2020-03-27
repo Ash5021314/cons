@@ -259,56 +259,20 @@ $(".toogle-text1").hide();
 
 $(document).ready(function() {
 	$(".toggle-button1").click(function() {
-		$(".toogle-text1").toggle();
+		$(this)
+			.prev()
+			.toggleClass("toogle-show");
 	});
 });
 $("#toogle-text2").hide();
 
-$(document).ready(function() {
-	$("#toggle-button2").click(function() {
-		$("#toogle-text2").toggle();
-	});
-});
-$("#toogle-text3").hide();
-
-$(document).ready(function() {
-	$("#toggle-button3").click(function() {
-		$("#toogle-text3").toggle();
-	});
-});
-$("#toogle-text4").hide();
-
-$(document).ready(function() {
-	$("#toggle-button4").click(function() {
-		$("#toogle-text4").toggle();
-	});
-});
-$("#toogle-text5").hide();
-
-$(document).ready(function() {
-	$("#toggle-button5").click(function() {
-		$("#toogle-text5").toggle();
-	});
-});
-$("#toogle-text6").hide();
-
-$(document).ready(function() {
-	$("#toggle-button6").click(function() {
-		$("#toogle-text6").toggle();
-	});
-});
-$("#toogle-text7").hide();
-
-$(document).ready(function() {
-	$("#toggle-button7").click(function() {
-		$("#toogle-text7").toggle();
-	});
-});
-$("#toogle-text8").hide();
-
-$(document).ready(function() {
-	$("#toggle-button8").click(function() {
-		$("#toogle-text8").toggle();
-	});
-});
 //====================================Hide/Show text End ==============================
+
+$(document).ready(function() {
+	$(".regular").slick({
+		dots: false,
+		infinite: true,
+		slidesToShow: 4,
+		slidesToScroll: 1
+	});
+});

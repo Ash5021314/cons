@@ -157,7 +157,12 @@ div.col-md-12 {
 .pt-15 {
 	padding-top: 15px !important;
 }
-
+button:focus {
+	outline: none !important;
+}
+.mb-50 {
+	margin-bottom: 50px;
+}
 /* General Home
    ========================================================================== */
 
@@ -3776,4 +3781,51 @@ html {
 }
 .owl-carousel .owl-nav.disabled {
 	display: block;
+}
+
+.slider {
+	width: 100%;
+	margin: 0 auto;
+}
+.regular {
+	padding: 0 !important;
+}
+.slick-slide {
+	margin: 0px 20px;
+	width: 259px !important;
+}
+
+.slick-slide img {
+	width: 70%;
+	margin: auto;
+}
+
+.slick-prev:before,
+.slick-next:before {
+	color: black;
+}
+
+.slick-slide {
+	transition: all ease-in-out 0.3s;
+}
+
+.slick-current {
+	opacity: 1;
+}
+.toogle-hidden {
+	height: 132px;
+	overflow: hidden;
+}
+.toogle-show {
+	height: auto;
+	overflow: hidden;
+}
+
+.carousel-prev-icon_1,
+.carousel-next-icon_1 {
+	position: absolute;
+	top: 50%;
+}
+.carousel-next-icon_1 {
+	right: 0;
 }

@@ -5,6 +5,9 @@ $suovenir = mysqli_query($connDB, "SELECT * FROM `new_souvenire`");
 $coll = mysqli_query($connDB, "SELECT * FROM `all_collection`");
 $coll_desc = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `id` DESC");
 $coll_description = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `id` DESC");
+$coll_second_image =  mysqli_query($connDB, "SELECT seccond_image FROM `coll_desc` ORDER BY `id` DESC");
+$packaging = mysqli_query($connDB, "SELECT  `image` FROM `packiging_slide`");
+$packagingTitle = mysqli_query($connDB, "SELECT `title` FROM `packiging_slide`  WHERE title IS NOT NULL");
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,10 +33,41 @@ $coll_description = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `i
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
         id="bootstrap-css">
+    <link href="assets/css/slick.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css" />
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <style>
+    .owl-carousel .nav-btn {
+        height: 100px;
+        position: absolute;
+        width: 26px;
+        cursor: pointer;
+        top: 100px !important;
+    }
+
+    .owl-carousel .owl-prev.disabled,
+    .owl-carousel .owl-next.disabled {
+        pointer-events: none;
+        opacity: 0.2;
+    }
+
+    .owl-carousel .prev-slide {
+        position: absolute;
+        background: url("/assets/images/arrow-r.png") no-repeat;
+        right: -33px;
+    }
+
+    .owl-carousel .next-slide {
+        position: absolute;
+        background: url("/assets/images/arrow-l.png") no-repeat;
+        left: -33px;
+    }
+    </style>
 </head>
 
 <body class="sovenir">
@@ -68,15 +102,15 @@ $coll_description = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `i
                 <div class="timer"></div>
                 <div class="slideshow">
                     <?php
-          if (mysqli_num_rows($gift) > 0) {
-            while ($bestGift =  mysqli_fetch_assoc($gift)) {
-          ?>
+                    if (mysqli_num_rows($gift) > 0) {
+                        while ($bestGift =  mysqli_fetch_assoc($gift)) {
+                    ?>
                     <div class="slide"><img src="assets/images/<?php echo $bestGift['picture'] ?>" /></div>
 
                     <?php
-            }
-          }
-          ?>
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -93,158 +127,123 @@ $coll_description = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `i
         <section>
             <div class="main-container-sovenir">
                 <?php
-        if (mysqli_num_rows($suovenir) > 0) {
-          while ($suovenirs =  mysqli_fetch_assoc($suovenir)) {
-        ?>
+                if (mysqli_num_rows($suovenir) > 0) {
+                    while ($suovenirs =  mysqli_fetch_assoc($suovenir)) {
+                ?>
                 <p class="section-title"><?php echo $suovenirs['new_souvenirs'] ?></p>
                 <?php
-          }
-        }
-        ?>
-                <div class="container">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
-                        <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                            <?php
-              if (mysqli_num_rows($coll_description) > 0) {
-                while ($collection_descriptions =  mysqli_fetch_assoc($coll_description)) {
-              ?>
-                            <div class="carousel-item col-md-3  ">
-                                <div class="panel panel-default">
-                                    <div class="panel-thumbnail">
-                                        <a href="#" title="image 1" class="thumb">
-                                            <img class="img-fluid mx-auto d-block"
-                                                src="assets/images/<?php echo $collection_descriptions['seccond_image'] ?>"
-                                                alt="slide 1">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <?php
+                    }
                 }
-              }
-              ?>
-                        </div>
-                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="carousel-prev-icon" aria-hidden="true"><img
-                                    src="assets/images/arrow-l.png"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next text-faded" href="#myCarousel" role="button" data-slide="next">
-                            <span class="carousel-next-icon" aria-hidden="true"><img
-                                    src="assets/images/arrow-r.png"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
+                ?>
 
             </div>
+
         </section>
-        <section>
-            <div class="collection-section">
-                <?php
-        if (mysqli_num_rows($coll) > 0) {
-          while ($collection =  mysqli_fetch_assoc($coll)) {
+    </div>
+    <section class="regular slider">
+        <?php
+        if (mysqli_num_rows($coll_second_image) > 0) {
+            while ($coll_description_image =  mysqli_fetch_assoc($coll_second_image)) {
+
         ?>
-                <p class="section-title"><?php echo $collection['all_col'] ?></p>
-                <?php
-          }
+        <div>
+            <img src="assets/images/<?php echo $coll_description_image['seccond_image']; ?>">
+        </div>
+        <?php
+            }
         }
         ?>
-                <?php
-        if (mysqli_num_rows($coll_desc) > 0) {
-          while ($collection_desc =  mysqli_fetch_assoc($coll_desc)) {
-        ?>
-                <div class="col-md-12 row">
-                    <div class="col-md-6 pb-30">
-                        <div class="collection-picture">
-                            <img src="assets/images/<?php echo $collection_desc['first_image'] ?>">
-                        </div>
-                        <div class="collection-coin">
-                            <img src="assets/images/<?php echo $collection_desc['seccond_image'] ?>">
-                        </div>
+    </section>
+    <section>
+        <div class="collection-section">
+            <?php
+            if (mysqli_num_rows($coll) > 0) {
+                while ($collection =  mysqli_fetch_assoc($coll)) {
+            ?>
+            <p class="section-title"><?php echo $collection['all_col'] ?></p>
+            <?php
+                }
+            }
+            ?>
+            <?php
+            if (mysqli_num_rows($coll_desc) > 0) {
+                while ($collection_desc =  mysqli_fetch_assoc($coll_desc)) {
+            ?>
+            <div class="col-md-12 row">
+                <div class="col-md-6 pb-30">
+                    <div class="collection-picture">
+                        <a href="garn.php"> <img src="assets/images/<?php echo $collection_desc['first_image'] ?>"></a>
                     </div>
-                    <div class="col-md-5 pb-30">
-                        <div class="sov-text">
-                            <h1><?php echo $collection_desc['title'] ?></h1>
-                            <p><?php echo $collection_desc['text'] ?></p>
-                            <p class="toogle-text1"><?php echo $collection_desc['hid_text'] ?></p>
-                            <button class="toggle-button1" class="show-button"><img
-                                    src="assets/images/toogle.png"></button>
-                        </div>
+                    <div class="collection-coin">
+                        <img src="assets/images/<?php echo $collection_desc['seccond_image'] ?>">
                     </div>
                 </div>
-                <?php
-          }
-        }
-        ?>
-            </div>
-        </section>
-        <section>
-            <div class="find-product">
-                <p class="section-title">SOUVENIR'S PACKAGING</p>
-                <div class="container">
-                    <div id="myCarousel_1" class="carousel slide" data-ride="carousel" data-interval="4000">
-                        <div class="carousel-inner_1 row w-100 mx-auto" role="listbox">
-                            <div class="carousel-item_1 col-md-4  active">
-                                <div class="panel panel-default">
-                                    <div class="panel-thumbnail">
-                                        <a href="shops.php" title="image 8" class="thumb">
-                                            <img class="img-fluid mx-auto d-block" src="assets/images/1.png"
-                                                alt="slide 9">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item_1 col-md-4 ">
-                                <div class="panel panel-default">
-                                    <div class="panel-thumbnail">
-                                        <a href="shops.php" title="image 9" class="thumb">
-                                            <img class="img-fluid mx-auto d-block" src="assets/images/2.png"
-                                                alt="slide 9">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item_1 col-md-4 ">
-                                <div class="panel panel-default">
-                                    <div class="panel-thumbnail">
-                                        <a href="shops.php" title="image 10" class="thumb">
-                                            <img class="img-fluid mx-auto d-block" src="assets/images/3.png"
-                                                alt="slide 10">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <a class="carousel-control-prev_1" href="#myCarousel_1" role="button" data-slide="prev">
-              <span class="carousel-prev-icon_1" aria-hidden="true"><img src="assets/images/arrow-l.png"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next_1 text-faded" href="#myCarousel_1" role="button" data-slide="next">
-              <span class="carousel-next-icon_1" aria-hidden="true"><img src="assets/images/arrow-r.png"></span>
-              <span class="sr-only">Next</span>
-            </a> -->
+                <div class="col-md-5 pb-30">
+                    <div class="sov-text">
+                        <h1><?php echo $collection_desc['title'] ?></h1>
+                        <p class="toogle-hidden"><?php echo  nl2br($collection_desc['text']) ?></p>
+                        <button class="toggle-button1 show-button"><img src="assets/images/toogle.png"></button>
                     </div>
                 </div>
             </div>
-        </section>
-        <section>
-            <div class="idea-section row">
-                <div class="left-block">
-                    <p class="contact">Contact Us</p>
-                    <p>Email: info@honey.com</p>
-                    <p>Phone: (408) 106-9898 </p>
-                    <p>(408) 106-9696</p>
-                </div>
-                <div class="right-block">
-                    <p class="follow">Follow Us</p>
-                    <a href="#"><img src="assets/images/fb.png" style="width: 35px"></a>
-                    <a href="#"><img src="assets/images/twiter.png" style="width: 35px"></a>
-                    <a href="#"><img src="assets/images/instagram.png" style="width: 35px"></a>
+            <?php
+                }
+            }
+            ?>
+        </div>
+    </section>
+    <section>
+        <div class="find-product">
+            <?php
+            while ($title =  mysqli_fetch_assoc($packagingTitle)) {
+            ?>
+
+            <p class="section-title"><?php echo $title['title'] ?></p>
+            <?php
+            }
+            ?>
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="owlContainer">
+                        <div class="owl-carousel">
+                            <?php
+                            if (mysqli_num_rows($packaging) > 0) {
+                                while ($packagingImg =  mysqli_fetch_assoc($packaging)) {
+                            ?>
+
+                            <a href="shops.php" title="image 9" class="thumb">
+                                <div class="item">
+                                    <img class="img-fluid mx-auto d-block"
+                                        src="assets/images/<?php echo $packagingImg['image'] ?>" alt="slide 10">
+                                </div>
+                            </a>
+
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+    <section>
+        <div class="idea-section row">
+            <div class="left-block">
+                <p class="contact">Contact Us</p>
+                <p>Email: info@honey.com</p>
+                <p>Phone: (408) 106-9898 </p>
+                <p>(408) 106-9696</p>
+            </div>
+            <div class="right-block">
+                <p class="follow">Follow Us</p>
+                <a href="#"><img src="assets/images/fb.png" style="width: 35px"></a>
+                <a href="#"><img src="assets/images/twiter.png" style="width: 35px"></a>
+                <a href="#"><img src="assets/images/instagram.png" style="width: 35px"></a>
+            </div>
+        </div>
+    </section>
     </div>
     <footer>
         <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
@@ -253,6 +252,34 @@ $coll_description = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `i
         id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/slick.js" type="text/javascript"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/owl.navigation.js"></script>
+    <script>
+    $(document).ready(function() {
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            autoplay: true,
+            margin: 10,
+            nav: true,
+            navText: ["<div class='nav-btn prev-slide'></div>",
+                "<div class='nav-btn next-slide'></div>"
+            ],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
+
+    });
+    </script>
 </body>
 
 </html>
