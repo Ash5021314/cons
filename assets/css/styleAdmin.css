@@ -1,0 +1,195 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+
+/*============== Admin Index.php (Login page) ==========*/
+.adminLogin {
+	width: 100%;
+	height: 100vh;
+	background: radial-gradient(at top, rgb(41, 43, 43), rgb(238, 243, 243));
+}
+.adminLoginCont {
+	margin: 0 auto;
+	padding-top: 40px;
+	width: 400px;
+}
+.adminLoginErrMes > p {
+	margin: 0;
+	color: rgb(218, 77, 96);
+	padding-bottom: 20px;
+}
+input[type="file"] {
+	width: 100%;
+}
+@media screen and (max-width: 630px) {
+	.adminLoginCont {
+		width: 90%;
+	}
+}
+/*====================================================*/
+
+/*==================== Admin Head(Login page) ==========*/
+.adminPageName {
+	text-align: right;
+	color: rgb(253, 253, 253);
+	font: bold 22px/22px arial;
+}
+
+.adminHead {
+	height: 50px;
+	background-color: #343a40;
+	color: white;
+}
+.adminHead > li {
+	float: right;
+	margin: 0 3% 0 0;
+}
+.adminHead > li > a {
+	color: rgb(212, 205, 205);
+	text-decoration: none;
+	font: bold 18px/50px arial;
+	transform: all 0.3s ease;
+}
+.adminHead > li > a:hover {
+	color: rgb(255, 255, 255);
+	font-size: 19px;
+	text-shadow: 1px 1px 1px rgb(255, 0, 0);
+}
+.adminHead > li:first-child {
+	float: left;
+	margin: 0 0 0 5%;
+}
+.adminHead > li > p {
+	margin: 0;
+	font: bold 26px/50px arial;
+	text-shadow: 1px 1px 1px rgb(4, 50, 255);
+}
+/*===============================================*/
+
+/*========== Admin Menu (admin.php) ==============*/
+
+.adminPage > li {
+	text-align: center;
+	text-decoration: none;
+	width: 400px;
+	margin: 0 auto;
+	border-bottom: 1px solid rgb(156, 156, 156);
+	border-left: 1px solid rgb(156, 156, 156);
+	border-right: 1px solid rgb(156, 156, 156);
+	background-color: rgb(94, 90, 90);
+	transition: all 0.3s ease;
+}
+.adminPage > li:first-child {
+	color: white;
+	padding: 15px;
+	background: rgb(62, 62, 85);
+	font: bold 27px arial;
+}
+.adminPage > li > a:hover {
+	background-color: rgb(58, 56, 56);
+}
+.adminPage > li:first-child {
+	border-top: 1px solid rgb(156, 156, 156);
+}
+.adminPage > li > a {
+	text-decoration: none;
+	color: rgb(207, 203, 203);
+	padding: 10px 0;
+	transition: all 0.2s ease-in;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	font: bold 24px verdana;
+}
+.adminPage > li > a:hover {
+	color: rgb(255, 255, 255);
+	font-size: 25px;
+	text-shadow: 1px 1px 1px rgb(117, 117, 190);
+}
+
+/*=================================================*/
+
+/*============ Content header (Admin) ==============*/
+
+.instalHead {
+	background-color: rgb(32, 32, 238);
+	color: white;
+	border-bottom: 1px solid rgb(141, 140, 140);
+	text-align: center;
+	font: bold 22px arial;
+	padding: 10px 0;
+	margin-bottom: 0px;
+}
+.table_1 {
+	text-align: center;
+	border: 1px solid rgba(170, 170, 170, 0.795);
+	border-radius: 5px;
+	width: 90%;
+	margin: 0px auto 20px auto;
+	overflow: hidden;
+}
+.tableHead_1 {
+	color: white;
+	background-color: rgb(77, 148, 240);
+	font: 18px verdana;
+}
+.tableBody_1 {
+	background-color: rgb(125, 125, 247);
+}
+.tableBody_1 input,
+.tableBody_1 textarea {
+	border-radius: 3px;
+	background-color: rgba(245, 213, 255, 0.699);
+	padding: 2px 4px;
+	color: rgb(39, 37, 37);
+	border: 1px solid rgb(65, 62, 62);
+	display: inline-block;
+	margin-bottom: 10px;
+}
+.tableBody_1 button {
+	border: 1px solid rgb(2, 82, 2);
+	color: rgb(223, 219, 219);
+	font: bold 17px verdana;
+}
+
+/*==================================================*/
+
+/*=================== Coment body (Admin) ===========*/
+.adminContent {
+	margin: 10px auto;
+	width: 90%;
+	padding: 0 10px 10px 10px;
+	border: 1px solid rgb(48, 46, 46);
+	border-radius: 5px;
+}
+
+.adminContent > div {
+	border: 1px solid rgb(88, 84, 84);
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 10px;
+}
+td > img {
+	height: 180px;
+	max-width: 400px;
+	margin-bottom: 10px;
+}
+td > button {
+	margin: 20px 0 0 0;
+}
+@media screen and (max-width: 630px) {
+	.adminContent {
+		width: 100%;
+	}
+	td > img {
+		margin-bottom: 5px;
+	}
+	td > button {
+		margin: 10px 0 0 0;
+	}
+}
+
+/*====================================================*/

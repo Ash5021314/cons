@@ -66,7 +66,7 @@ $partners = mysqli_query($connDB, "SELECT * FROM `partners`");
         while ($history =  mysqli_fetch_assoc($historyInfo)) {
     ?>
             <div class="header-content">
-                <img src="assets/images/<?php echo $history['historyImage'] ?>">
+                <img src="assets/images/history/<?php echo $history['historyImage'] ?>">
             </div>
             <div class="main">
                 <section>

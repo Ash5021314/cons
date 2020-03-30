@@ -62,39 +62,39 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
         </div>
         <div class="header-content">
             <?php
-      if (mysqli_num_rows($terminal) > 0) {
-        while ($terminals =  mysqli_fetch_assoc($terminal)) {
-          $id =  $terminals['id'];
-          if ($id % 2 !== 0) {
-      ?>
+            if (mysqli_num_rows($terminal) > 0) {
+                while ($terminals =  mysqli_fetch_assoc($terminal)) {
+                    $id =  $terminals['id'];
+                    if ($id % 2 !== 0) {
+            ?>
             <div class=" row mb-50">
                 <div class="col-md-6 text-container">
                     <h1><?php echo $terminals['title'] ?></h1>
                     <p><?php echo $terminals['description'] ?></p>
                 </div>
                 <div class="col-md-6 " style="display: flex; justify-content:center">
-                    <img src="assets/images/<?php echo $terminals['image'] ?>" style="width: 150px;">
+                    <img src="assets/images/terminal/<?php echo $terminals['image'] ?>" style="width: 150px;">
 
                 </div>
             </div>
             <?php
-          } else {
-          ?>
+                    } else {
+                    ?>
             <div class=" row mb-50" style="flex-direction: row-reverse">
                 <div class="col-md-6 text-container">
                     <h1><?php echo $terminals['title'] ?></h1>
                     <p><?php echo $terminals['description'] ?></p>
                 </div>
                 <div class="col-md-6 " style="display: flex; justify-content:center">
-                    <img src="assets/images/<?php echo $terminals['image'] ?>" style="width: 150px;">
+                    <img src="assets/images/terminal/<?php echo $terminals['image'] ?>" style="width: 150px;">
 
                 </div>
             </div>
             <?php
-          }
-        }
-      }
-      ?>
+                    }
+                }
+            }
+            ?>
         </div>
     </header>
     <div class="main">
@@ -116,14 +116,14 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                     <span id="slider-image-3"></span>
                     <div class="image-holder">
                         <?php
-            if (mysqli_num_rows($map) > 0) {
-              while ($mapImage =  mysqli_fetch_assoc($map)) {
-            ?>
+                        if (mysqli_num_rows($map) > 0) {
+                            while ($mapImage =  mysqli_fetch_assoc($map)) {
+                        ?>
                         <img src="assets/images/<?php echo $mapImage['image'] ?>" class="slider-image" />
                         <?php
-              }
-            }
-            ?>
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
                 <a href="#">

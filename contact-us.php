@@ -1,3 +1,9 @@
+<?php
+require "connect.php";
+$contact = mysqli_query($connDB, "SELECT * FROM `contact`");
+$follow = mysqli_query($connDB, "SELECT * FROM `follow`");
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -25,7 +31,10 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css">
 </head>
 
 <body class="home">
@@ -58,24 +67,120 @@
         <div class="main">
             <section>
                 <div class="idea-section">
+                    <p class="section-title">Contact Us</p>
                     <div class="col-md-12 row">
-                        <p class="section-title">Contact Us</p>
                         <div class="col-md-9">
+                            <form class="contact100-form validate-form">
 
+                                <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+                                    <span class="label-input100">FULL NAME *</span>
+                                    <input class="input100" type="text" name="name" placeholder="Enter Your Name">
+                                </div>
+
+                                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100"
+                                    data-validate="Enter Your Email (e@a.x)">
+                                    <span class="label-input100">Email *</span>
+                                    <input class="input100" type="text" name="email" placeholder="Enter Your Email ">
+                                </div>
+
+                                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                                    <span class="label-input100">Phone</span>
+                                    <input class="input100" type="text" name="phone" placeholder="Enter Number Phone">
+                                </div>
+
+                                <div class="w-full dis-none js-show-service">
+                                    <div class="wrap-contact100-form-radio">
+                                        <span class="label-input100">What type of products do you sell?</span>
+
+                                        <div class="contact100-form-radio m-t-15">
+                                            <input class="input-radio100" id="radio1" type="radio" name="type-product"
+                                                value="physical" checked="checked">
+                                            <label class="label-radio100" for="radio1">
+                                                Phycical Products
+                                            </label>
+                                        </div>
+
+                                        <div class="contact100-form-radio">
+                                            <input class="input-radio100" id="radio2" type="radio" name="type-product"
+                                                value="digital">
+                                            <label class="label-radio100" for="radio2">
+                                                Digital Products
+                                            </label>
+                                        </div>
+
+                                        <div class="contact100-form-radio">
+                                            <input class="input-radio100" id="radio3" type="radio" name="type-product"
+                                                value="service">
+                                            <label class="label-radio100" for="radio3">
+                                                Services Consulting
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="wrap-contact100-form-range">
+                                        <span class="label-input100">Budget *</span>
+
+                                        <div class="contact100-form-range-value">
+                                            $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
+                                            <input type="text" name="from-value">
+                                            <input type="text" name="to-value">
+                                        </div>
+
+                                        <div class="contact100-form-range-bar">
+                                            <div id="filter-bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="wrap-input100 validate-input bg0 rs1-alert-validate"
+                                    data-validate="Please Type Your Message">
+                                    <span class="label-input100">Message</span>
+                                    <textarea class="input100" name="message"
+                                        placeholder="Your message here..."></textarea>
+                                </div>
+
+                                <div class="container-contact100-form-btn">
+                                    <button class="contact100-form-btn">
+                                        <span>
+                                            Submit
+                                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-md-3">
-                            <div class="left-block">
-                                <p class="contact">Contact Us</p>
-                                <p>Email: info@honey.com</p>
-                                <p>Phone: (408) 106-9898 </p>
-                                <p>(408) 106-9696</p>
+                        <div class="col-md-3 ">
+                            <div class="flex-center">
+                                <div class="left-block">
+                                    <?php
+                                    if (mysqli_num_rows($contact) > 0) {
+                                        while ($contactUs =  mysqli_fetch_assoc($contact)) {
+                                    ?>
+                                    <p class="contact">Contact Us</p>
+                                    <p>Email: <?php echo $contactUs['email'] ?></p>
+                                    <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                                    <p><?php echo $contactUs['phone_2'] ?></p>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                                <div class="right-block">
+                                    <p class="follow">Follow Us</p>
+                                    <?php
+                                    if (mysqli_num_rows($follow) > 0) {
+                                        while ($followUs =  mysqli_fetch_assoc($follow)) {
+                                    ?>
+                                    <a href="<?php echo $followUs['icon_link'] ?>"><img
+                                            src="assets/images/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
+
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
                             </div>
-                            <div class="right-block">
-                                <p class="follow">Follow Us</p>
-                                <a href="#"><img src="assets/images/fb.png" style="width: 35px"></a>
-                                <a href="#"><img src="assets/images/twiter.png" style="width: 35px"></a>
-                                <a href="#"><img src="assets/images/instagram.png" style="width: 35px"></a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -86,6 +191,17 @@
         <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
     </footer>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+    </script>
 </body>
 
 </html>
