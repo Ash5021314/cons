@@ -31,10 +31,14 @@ if (!isset($_SESSION['userName'])) {
         </ul>
         <ul class="adminPage">
             <li>ADMIN PAGES</li>
+            <li><a href="product.php">Product</a></li>
+            <li><a href="travel.php">Travel</a></li>
+            <li><a href="visit.php">Visit Places</a></li>
+            <li><a href="map.php">Map</a></li>
+            <li><a href="idea.php">Idea</a></li>
             <li><a href="terminals.php">Terminals</a></li>
             <li><a href="souvenirs.php">Souvenirs</a></li>
             <li><a href="history.php">History</a></li>
-            <li><a href="news.php">News</a></li>
             <li><a href="shop.php">Shop</a></li>
             <li><a href="packagingSlide.php">Packaging Slides</a></li>
         </ul>

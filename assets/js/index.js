@@ -55,8 +55,8 @@ $(function() {
 		($s = 1000), // slide transition speed (for sliding carousel)
 		($d = 5000); // duration per slide
 
-	$n = $(".slide").length; //number of slides
-	$w = $(".slide").width(); // slide width
+	$n = $(".slide, .slide1").length; //number of slides
+	$w = $(".slide, .slide1").width(); // slide width
 	$c = $(".container").width(); // container width
 	$ss = $n * $w; // slideshow width
 	$y = $(".change-name").text();
@@ -93,16 +93,16 @@ $(function() {
 			left: "0"
 		};
 
-		$(".slide").css(setCSS);
+		$(".slide, .slide1").css(setCSS);
 
 		//show first item
-		$(".slide")
+		$(".slide, .slide1")
 			.eq($i)
 			.show();
 
 		setInterval(function() {
 			timer();
-			$(".slide")
+			$(".slide, .slide1")
 				.eq($i)
 				.fadeOut($f);
 			if ($i == $n - 1) {
@@ -110,7 +110,7 @@ $(function() {
 			} else {
 				$i++;
 			}
-			$(".slide")
+			$(".slide, .slide1")
 				.eq($i)
 				.fadeIn($f, function() {
 					$(".timer").css({
@@ -131,8 +131,10 @@ $(function() {
 			width: $ss // set width of slideshow container
 		};
 		$(".slide").css(setSlideCSS);
-		$(".slideshow").css(setSlideShowCSS);
+		$(".slide1").css(setSlideCSS);
 
+		$(".slideshow").css(setSlideShowCSS);
+		$(".slideshow1").css(setSlideShowCSS);
 		setInterval(function() {
 			timer();
 			$(".slideshow").animate(
@@ -145,6 +147,18 @@ $(function() {
 					$(".slideshow")
 						.css("left", 0)
 						.append($(".slide:first"));
+				}
+			);
+			$(".slideshow1").animate(
+				{
+					left: -$w
+				},
+				$s,
+				function() {
+					// to create infinite loop
+					$(".slideshow1")
+						.css("left", 0)
+						.append($(".slide1:first"));
 				}
 			);
 		}, $d);

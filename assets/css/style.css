@@ -224,6 +224,7 @@ body * {
 	font-size: 29px;
 	text-align: center;
 	font-family: "Avant Garde Bk BT";
+	word-wrap: break-word;
 }
 
 .header-content .header-exople {
@@ -3701,7 +3702,6 @@ html {
 .slider-holder {
 	width: 500px;
 	height: 350px;
-	background-color: yellow;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 0px;
@@ -3714,7 +3714,6 @@ html {
 
 .image-holder {
 	width: 2400px;
-	background-color: red;
 	height: 400px;
 	clear: both;
 	position: relative;
@@ -3833,5 +3832,22 @@ html {
 	top: 50%;
 }
 .carousel-next-icon_1 {
+	right: 0;
+}
+
+.slider1 {
+	padding: 0;
+	height: 90px !important;
+}
+.header-content .slide1 {
+	width: 350px !important;
+	background-color: transparent !important;
+	font-size: 20px !important;
+	line-height: 1;
+	text-align: start !important;
+	margin-top: 15px;
+}
+.header-content .container1 {
+	height: 100% !important;
 	right: 0;
 }

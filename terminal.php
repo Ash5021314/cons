@@ -119,7 +119,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         if (mysqli_num_rows($map) > 0) {
                             while ($mapImage =  mysqli_fetch_assoc($map)) {
                         ?>
-                        <img src="assets/images/<?php echo $mapImage['image'] ?>" class="slider-image" />
+                        <img src="assets/images/map/<?php echo $mapImage['image'] ?>" class="slider-image" />
                         <?php
                             }
                         }

@@ -1,12 +1,14 @@
 <?php
 require "connect.php";
 $slide = mysqli_query($connDB, "SELECT * FROM `product_slide`");
+$sliders = mysqli_query($connDB, "SELECT * FROM `product_desc`");
 $travel = mysqli_query($connDB, "SELECT * FROM `travel`");
-$visit = mysqli_query($connDB, "SELECT * FROM `visit`");
 $visitDesc = mysqli_query($connDB, "SELECT * FROM `visit_desc` ORDER BY `id` DESC");
+$visit = mysqli_query($connDB, "SELECT `title` FROM `visit_desc` WHERE title IS NOT NULL ");
 $idea = mysqli_query($connDB, "SELECT * FROM `idea`");
 $contact = mysqli_query($connDB, "SELECT * FROM `contact`");
 $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
+$mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea` WHERE title IS NOT NULL ");
 $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
 ?>
 
@@ -41,6 +43,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
 </head>
 
 <body class="home">
+
     <header>
         <div class="header-container">
             <nav class="navbar navbar-expand-lg">
@@ -75,7 +78,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         while ($slider =  mysqli_fetch_assoc($slide)) {
                     ?>
                     <div class="slide">
-                        <img src="assets/images/<?php echo $slider['slide_image'] ?>" style="width: 850px" />
+                        <img src="assets/images/product/<?php echo $slider['slide_image'] ?>" style="width: 850px" />
                     </div>
                     <?php
                         }
@@ -85,7 +88,26 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
             </div>
         </div>
         <div class="new-product">
-            <p class="">NEW PRODUCT FROM MATENADARAN</p>
+            <div class="slider slider1">
+                <div class="container container1">
+                    <div class="slideshow1">
+
+
+                        <?
+                        while ($row = mysqli_fetch_assoc($sliders)) {
+                        ?>
+                        <div class="slide1">
+                            <p class=""><?php echo $row['text'] ?></p>
+                        </div>
+                        <?
+
+                        }
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
         <a href="#">
             <div class="header-exople">
@@ -107,10 +129,10 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                     </div>
                     <div class="col-md-4">
                         <div class="first-pic">
-                            <img src="assets/images/<?php echo $travelDesc['first_image'] ?>" />
+                            <img src="assets/images/travel/<?php echo $travelDesc['first_image'] ?>" />
                         </div>
                         <div class="sec-pic">
-                            <img src="assets/images/<?php echo $travelDesc['seccond_image'] ?>" />
+                            <img src="assets/images/travel/<?php echo $travelDesc['seccond_image'] ?>" />
                         </div>
                     </div>
                     <?php
@@ -138,7 +160,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                             while ($visitDescription =  mysqli_fetch_assoc($visitDesc)) {
                         ?>
                         <figure>
-                            <img src="assets/images/<?php echo $visitDescription['image'] ?>" alt="" />
+                            <img src="assets/images/visit/<?php echo $visitDescription['image'] ?>" alt="" />
                             <h3 class="text-center my-3"><?php echo $visitDescription['description'] ?>
                             </h3>
                         </figure>
@@ -151,8 +173,13 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
             </div>
         </section>
         <section>
-            <div class="find-product">
-                <p class="section-title">FIND OUR PRODUCT</p>
+            <div class="find-product"> <?php
+                                        while ($mapImage =  mysqli_fetch_assoc($mapTitle)) {
+                                        ?>
+                <p class="section-title"><?php echo $mapImage['title'] ?></p>
+                <?php
+                                        }
+                ?>
                 <div class="map">
                     <img src="assets/images/map1.png" style="width: 850px; position:relative; " class="map" />
                     <a href="#slider-image-1"><img src="assets/images/pasiv.png"
@@ -173,7 +200,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         if (mysqli_num_rows($map) > 0) {
                             while ($mapImage =  mysqli_fetch_assoc($map)) {
                         ?>
-                        <img src="assets/images/<?php echo $mapImage['image'] ?>" class="slider-image" />
+                        <img src="assets/images/map/<?php echo $mapImage['image'] ?>" class="slider-image" />
                         <?php
                             }
                         }

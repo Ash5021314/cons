@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/coins.iml" filepath="$PROJECT_DIR$/.idea/coins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../wptask/.idea/wptask.iml" filepath="$PROJECT_DIR$/../wptask/.idea/wptask.iml" />
     </modules>
   </component>
 </project>
