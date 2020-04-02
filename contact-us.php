@@ -172,7 +172,8 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                                         while ($followUs =  mysqli_fetch_assoc($follow)) {
                                     ?>
                                     <a href="<?php echo $followUs['icon_link'] ?>"><img
-                                            src="assets/images/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
+                                            src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>"
+                                            style="width: 35px"></a>
 
                                     <?php
                                         }

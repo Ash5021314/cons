@@ -8,6 +8,8 @@ $coll_description = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `i
 $coll_second_image =  mysqli_query($connDB, "SELECT seccond_image FROM `coll_desc` ORDER BY `id` DESC");
 $packaging = mysqli_query($connDB, "SELECT  `image` FROM `packiging_slide`");
 $packagingTitle = mysqli_query($connDB, "SELECT `title` FROM `packiging_slide`  WHERE title IS NOT NULL");
+$contact = mysqli_query($connDB, "SELECT * FROM `contact`");
+$follow = mysqli_query($connDB, "SELECT * FROM `follow`");
 ?>
 <!doctype html>
 <html lang="en">
@@ -170,7 +172,11 @@ $packagingTitle = mysqli_query($connDB, "SELECT `title` FROM `packiging_slide`  
                     <div class="col-md-12 row">
                         <div class="col-md-6 pb-30">
                             <div class="collection-picture">
-                                <a href="garn.php"> <img src="assets/images/collection/<?php echo $collection_desc['first_image'] ?>"></a>
+                                <?
+                                $Text = json_encode($collection_desc);
+                                $RequestText = urlencode($Text);
+                                ?>
+                                <a href="garn.php?cluster=<?php echo $RequestText; ?>"> <img src="assets/images/collection/<?php echo $collection_desc['first_image'] ?>"></a>
                             </div>
                             <div class="collection-coin">
                                 <img src="assets/images/collection/<?php echo $collection_desc['seccond_image'] ?>">
@@ -228,16 +234,31 @@ $packagingTitle = mysqli_query($connDB, "SELECT `title` FROM `packiging_slide`  
     <section>
         <div class="idea-section row">
             <div class="left-block">
-                <p class="contact">Contact Us</p>
-                <p>Email: info@honey.com</p>
-                <p>Phone: (408) 106-9898 </p>
-                <p>(408) 106-9696</p>
+                <?php
+                if (mysqli_num_rows($contact) > 0) {
+                    while ($contactUs =  mysqli_fetch_assoc($contact)) {
+                ?>
+                        <p class="contact">Contact Us</p>
+                        <p>Email: <?php echo $contactUs['email'] ?></p>
+                        <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                        <p><?php echo $contactUs['phone_2'] ?></p>
+                <?php
+                    }
+                }
+                ?>
             </div>
             <div class="right-block">
                 <p class="follow">Follow Us</p>
-                <a href="#"><img src="assets/images/fb.png" style="width: 35px"></a>
-                <a href="#"><img src="assets/images/twiter.png" style="width: 35px"></a>
-                <a href="#"><img src="assets/images/instagram.png" style="width: 35px"></a>
+                <?php
+                if (mysqli_num_rows($follow) > 0) {
+                    while ($followUs =  mysqli_fetch_assoc($follow)) {
+                ?>
+                        <a href="<?php echo $followUs['icon_link'] ?>"><img src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
+
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </section>

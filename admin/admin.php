@@ -36,9 +36,11 @@ if (!isset($_SESSION['userName'])) {
             <li><a href="visit.php">Visit Places</a></li>
             <li><a href="map.php">Map</a></li>
             <li><a href="idea.php">Idea</a></li>
+            <li><a href="contact.php">Contact</a></li>
             <li><a href="terminals.php">Terminals</a></li>
             <li><a href="souvenirs.php">Souvenirs</a></li>
             <li><a href="history.php">History</a></li>
+            <li><a href="partners.php">Partners</a></li>
             <li><a href="shop.php">Shop</a></li>
             <li><a href="packagingSlide.php">Packaging Slides</a></li>
         </ul>
