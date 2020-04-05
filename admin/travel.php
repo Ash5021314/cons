@@ -20,7 +20,8 @@ $allColl = mysqli_query($connDB, "SELECT * FROM travel  ORDER BY id DESC");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styleAdmin.css">
     <title>Login</title>
 </head>
@@ -56,28 +57,28 @@ $allColl = mysqli_query($connDB, "SELECT * FROM travel  ORDER BY id DESC");
             if (mysqli_num_rows($allColl) > 0) {
                 while ($allCollDiv = mysqli_fetch_assoc($allColl)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z4">
-                        <td>
-                            <img src="../assets/images/travel/<?php echo $allCollDiv['first_image']; ?>">
-                            <input type="file" class="file">
-                        </td>
-                        <td>
-                            <img src="../assets/images/travel/<?php echo $allCollDiv['seccond_image']; ?>">
-                            <input type="file" class="file">
-                        </td>
-                        <td>
-                            <input type="text" class="textArm" value="<?php echo $allCollDiv['title'] ?>">
-                            <input type="text" class="textArm" value="<?php echo $allCollDiv['title_eng'] ?>">
-                        </td>
-                        <td>
-                            <textarea cols="30" rows="4" class="textarea"><?php echo $allCollDiv['text']; ?></textarea>
-                            <textarea cols="30" rows="4" class="textarea_2"><?php echo $allCollDiv['text_eng']; ?></textarea>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
+            <tr class="newDiv tableBody_1" data-base="z2" data-Id="<?php echo $allCollDiv['id']; ?>">
+                <td>
+                    <img src="../assets/images/travel/<?php echo $allCollDiv['first_image']; ?>">
+                    <input type="file" class="file">
+                </td>
+                <td>
+                    <img src="../assets/images/travel/<?php echo $allCollDiv['seccond_image']; ?>">
+                    <input type="file" class="file1">
+                </td>
+                <td>
+                    <input type="text" class="title" value="<?php echo $allCollDiv['title'] ?>">
+                    <input type="text" class="title_2" value="<?php echo $allCollDiv['title_eng'] ?>">
+                </td>
+                <td>
+                    <textarea cols="30" rows="4" class="textarea"><?php echo $allCollDiv['text']; ?></textarea>
+                    <textarea cols="30" rows="4" class="textarea_2"><?php echo $allCollDiv['text_eng']; ?></textarea>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
 
-                        </td>
-                    </tr>
+                </td>
+            </tr>
             <?php
                 }
             }
@@ -85,7 +86,6 @@ $allColl = mysqli_query($connDB, "SELECT * FROM travel  ORDER BY id DESC");
         </tbody>
     </table>
     <!-- ============================================================================================ -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../assets/js/scriptAdmin.js"></script>
 </body>

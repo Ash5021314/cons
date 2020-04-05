@@ -51,9 +51,12 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
         </thead>
         <tbody>
             <tr class="tableBody_1" data-b="z4">
-                <td><input type="file" class="file" style="width:none;"></td>
-
-                <td><button type="button" class="btn btn-success" id="buttInsert">INSERT</button></td>
+                <td>
+                    <input type="file" class="file" style="width:none;">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" id="buttInsert">INSERT</button>
+                </td>
             </tr>
         </tbody>
     </table>

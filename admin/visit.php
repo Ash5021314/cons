@@ -3,10 +3,10 @@ session_start();
 require "../connect.php";
 
 if (!isset($_SESSION['userName'])) {
-    header('location: index.php');
+  header('location: index.php');
 }
 
-$allCollHead = mysqli_query($connDB, "SELECT `title`, `title_eng` FROM visit_desc  WHERE `title` IS NOT NULL AND  `title_eng` IS NOT NULL ");
+$allCollHead = mysqli_query($connDB, "SELECT `id`, `title`, `title_eng` FROM visit_desc  WHERE `title` IS NOT NULL AND  `title_eng` IS NOT NULL ");
 $allColl = mysqli_query($connDB, "SELECT * FROM visit_desc  ORDER BY id DESC");
 
 
@@ -52,26 +52,27 @@ $allColl = mysqli_query($connDB, "SELECT * FROM visit_desc  ORDER BY id DESC");
                 <th>Submit</th>
             </tr>
         </thead>
-        <tbody class="adminContent">
+        <tbody class="adminContentTitle">
             <?php
-            if (mysqli_num_rows($allCollHead) > 0) {
-                while ($allCollHeadDiv = mysqli_fetch_assoc($allCollHead)) {
-            ?>
-            <tr class="newDiv tableBody_1" data-base="z4">
+      if (mysqli_num_rows($allCollHead) > 0) {
+        while ($allCollHeadDiv = mysqli_fetch_assoc($allCollHead)) {
+      ?>
+            <tr class="newDiv tableBody_1" data-base="z3" data-Id="<?php echo $allCollHeadDiv['id']; ?>">
 
                 <td>
-                    <textarea name="" id="" cols="30" rows="10"><?php echo $allCollHeadDiv['title'] ?></textarea>
-                    <textarea name="" id="" cols="30" rows="10"><?php echo $allCollHeadDiv['title_eng'] ?></textarea>
+                    <textarea class="textarea" cols="30" rows="10"><?php echo $allCollHeadDiv['title'] ?></textarea>
+                    <textarea class="textarea_1" cols="30"
+                        rows="10"><?php echo $allCollHeadDiv['title_eng'] ?></textarea>
                 </td>
 
                 <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
                 </td>
             </tr>
             <?php
-                }
-            }
-            ?>
+        }
+      }
+      ?>
         </tbody>
     </table>
 
@@ -88,7 +89,7 @@ $allColl = mysqli_query($connDB, "SELECT * FROM visit_desc  ORDER BY id DESC");
             </tr>
         </thead>
         <tbody class="adminContent">
-            <tr class="newDiv tableBody_1" data-base="z4">
+            <tr class="newDiv tableBody_1" data-b="z4">
                 <td>
                     <input type="file" class="file">
                 </td>
@@ -97,14 +98,14 @@ $allColl = mysqli_query($connDB, "SELECT * FROM visit_desc  ORDER BY id DESC");
                     <textarea cols="30" rows="4" class="textarea_2" placeholder="text Eng"></textarea>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-success" id="UpdtaButt">INSERT</button>
+                    <button type="button" class="btn btn-success" id="buttInsert">INSERT</button>
                 </td>
             </tr>
             <?php
-            if (mysqli_num_rows($allColl) > 0) {
-                while ($allCollDiv = mysqli_fetch_assoc($allColl)) {
-            ?>
-            <tr class="newDiv tableBody_1" data-base="z4">
+      if (mysqli_num_rows($allColl) > 0) {
+        while ($allCollDiv = mysqli_fetch_assoc($allColl)) {
+      ?>
+            <tr class="newDiv tableBody_1" data-base="z4_1" data-Id="<?php echo $allCollDiv['id']; ?>">
                 <td>
                     <img src="../assets/images/visit/<?php echo $allCollDiv['image']; ?>">
                     <input type="file" class="file">
@@ -112,22 +113,21 @@ $allColl = mysqli_query($connDB, "SELECT * FROM visit_desc  ORDER BY id DESC");
                 <td>
                     <textarea cols="30" rows="4" class="textarea"><?php echo $allCollDiv['description']; ?></textarea>
                     <textarea cols="30" rows="4"
-                        class="textarea_2"><?php echo $allCollDiv['description_eng']; ?></textarea>
+                        class="textarea_1"><?php echo $allCollDiv['description_eng']; ?></textarea>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                    <button type="button" class="btn btn-danger" id="DeleteButt">DELETE</button>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                    <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
 
                 </td>
             </tr>
             <?php
-                }
-            }
-            ?>
+        }
+      }
+      ?>
         </tbody>
     </table>
     <!-- ============================================================================================ -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../assets/js/scriptAdmin.js"></script>
 </body>
