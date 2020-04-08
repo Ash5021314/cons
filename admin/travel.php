@@ -6,7 +6,7 @@ if (!isset($_SESSION['userName'])) {
     header('location: index.php');
 }
 
-$allColl = mysqli_query($connDB, "SELECT * FROM travel  ORDER BY id DESC");
+$allColl = mysqli_query($connDB, "SELECT * FROM travel ORDER BY id DESC");
 
 
 //ini_set('display_errors','Off');
@@ -60,15 +60,15 @@ $allColl = mysqli_query($connDB, "SELECT * FROM travel  ORDER BY id DESC");
             <tr class="newDiv tableBody_1" data-base="z2" data-Id="<?php echo $allCollDiv['id']; ?>">
                 <td>
                     <img src="../assets/images/travel/<?php echo $allCollDiv['first_image']; ?>">
-                    <input type="file" class="file">
+                    <input type="file" class="file" />
                 </td>
                 <td>
-                    <img src="../assets/images/travel/<?php echo $allCollDiv['seccond_image']; ?>">
-                    <input type="file" class="file1">
+                    <img src="../assets/images/travel/<?php echo $allCollDiv['seccond_image']; ?>" />
+                    <input type="file" class="file1" />
                 </td>
                 <td>
-                    <input type="text" class="title" value="<?php echo $allCollDiv['title'] ?>">
-                    <input type="text" class="title_2" value="<?php echo $allCollDiv['title_eng'] ?>">
+                    <input type="text" class="title" value="<?php echo $allCollDiv['title'] ?>" />
+                    <input type="text" class="title_2" value="<?php echo $allCollDiv['title_eng'] ?>" />
                 </td>
                 <td>
                     <textarea cols="30" rows="4" class="textarea"><?php echo $allCollDiv['text']; ?></textarea>

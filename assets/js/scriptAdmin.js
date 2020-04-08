@@ -51,18 +51,24 @@ $(document).on("click", "#buttInsert", function () {
 	var ArrayDat = new FormData();
 	ArrayDat.append("database_ins", data_b);
 	ArrayDat.append("file_ins", fileIns);
-	// if (data_b == "z3") {
-	// 	var titleIns = thisParChil.children(".title").val().trim();
-	// 	var titleIns_2 = thisParChil.children(".title_2").val().trim();
-	// 	ArrayDat.append("title_ins", titleIns);
-	// 	ArrayDat.append("title_ins_2", titleIns_2);
-	// }
 
 	if (data_b == "z4") {
 		var textIns = thisParChil.children(".textarea").val();
 		var textIns_2 = thisParChil.children(".textarea_2").val();
 		ArrayDat.append("textar_ins", textIns);
 		ArrayDat.append("textar_ins_2", textIns_2);
+	} else if (data_b == "z7") {
+		var title_Up = thisParChil.children(".title").val().trim();
+		ArrayDat.append("title_Up", title_Up);
+	} else if (data_b == "z8") {
+		var titleIns = thisParChil.children(".title").val().trim();
+		var titleIns_2 = thisParChil.children(".title_2").val().trim();
+		var textIns = thisParChil.children(".textarea").val();
+		var textIns_2 = thisParChil.children(".textarea_2").val();
+		ArrayDat.append("textar_ins", textIns);
+		ArrayDat.append("textar_ins_2", textIns_2);
+		ArrayDat.append("title_ins", titleIns);
+		ArrayDat.append("title_ins_2", titleIns_2);
 	}
 
 	$.post({
@@ -111,12 +117,71 @@ $(document).on("click", "#buttInsert", function () {
                     <td><img src="../assets/images/visit/' +
 							res["image"] +
 							'"><input type="file" class="file"></td>\
-                    <td><input type="text" class="textarea" placeholder="page 1" value = "' +
+                    <td><input type="text" value = "' +
 							textIns +
-							'"><input type="text" class="textarea_2" placeholder="page 2" value="' +
+							'"><input type="text" value="' +
 							textIns_2 +
 							'"></td>\
                     <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					);
+				} else if (data_b == "z7") {
+					$(".adminContent").prepend(
+						'<tr class="newDiv tableBody_1" data-base="z7" data-Id="' +
+							res["id"] +
+							'"> \
+                    <td><img src="../assets/images/socialIcon/' +
+							res["icon"] +
+							'"><input type="file" class="file"></td>\
+                    <td><input type="text" value = "' +
+							title_Up +
+							'"></td>\
+                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					);
+				} else if (data_b == "z8") {
+					$(".adminContent").prepend(
+						'<tr class="newDiv tableBody_1" data-base="z8" data-Id="' +
+							res["id"] +
+							'"> \
+                    <td><img src="../assets/images/terminal/' +
+							res["image"] +
+							'"><input type="file" class="file"></td>\
+                    <td><input type="text" value = "' +
+							titleIns +
+							'"></td>\
+                    <td><input type="text" value = "' +
+							titleIns_2 +
+							'"></td>\
+							<td><textarea class="textarea" cols="30" rows="10"">' +
+							textIns +
+							'</textarea></td>\
+							<td><textarea class="textarea_1" cols="30" rows="10">' +
+							textIns_2 +
+							'</textarea></td> \
+                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					);
+				} else if (data_b == "z12") {
+					$(".adminContent").prepend(
+						'<tr class="newDiv tableBody_1" data-base="z12" data-Id="' +
+							res["id"] +
+							'"> \
+                        <td><img src="../assets/images/partners/' +
+							res["slide_image"] +
+							'"><input type="file" class="file"></td> \
+                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					);
+				} else if (data_b == "z14") {
+					$(".adminContent").prepend(
+						'<tr class="newDiv tableBody_1" data-base="z12" data-Id="' +
+							res["id"] +
+							'"> \
+                        <td><img src="../assets/images/package/' +
+							res["image"] +
+							'"><input type="file" class="file"></td> \
+                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
                     </tr>'
 					);
 				}
@@ -240,26 +305,35 @@ $(document).on("click", ".DeleteButt", function () {
 $(".updtaButt").click(function () {
 	var thisContent = $(this).parent().parent();
 	var thisParChil = $(this).parent().parent().children("td");
+	var thisParChil1 = $(this).parent().parent().children("td").next("td");
 
 	var base_Up = thisContent.attr("data-base");
 	var id_Up = thisContent.attr("data-Id");
 	var oldImgUrl = thisParChil.children("img").attr("src");
+	var oldImgUrl1 = thisParChil1.children("img").attr("src");
 	// var oldImgUrl = thisParChil.children("td").each(function () {
 	// 	return $(this).children("img").attr("src");
 	// 	// if ($(item).children("img").hasAttr("src")) {
 	// 	// }
 	// });
-	// if ($(".file").get(0).files.length !== 0) {
-	var file_Up = thisParChil.children(".file").prop("files")[0];
-	// }
+	var file = $(thisParChil).children(".file").prop("files");
+	var file1 = $(thisParChil1).children(".file1").prop("files");
+	if (typeof file !== "undefined") {
+		var file_Up = thisParChil.children(".file").prop("files")[0];
+	}
+	//
+	if (typeof file1 !== "undefined" && file1.length > 0) {
+		var file_Up1 = thisParChil1.children(".file1").prop("files")[0];
+	}
 	var ArrayDat = new FormData();
 	ArrayDat.append("base_Up", base_Up);
 	ArrayDat.append("id_Up", id_Up);
 	ArrayDat.append("oldImgUrl", oldImgUrl);
-	console.log(file_Up);
+	ArrayDat.append("oldImgUrl1", oldImgUrl1);
 	ArrayDat.append("file_Up", file_Up);
+	ArrayDat.append("file_Up1", file_Up1);
 
-	if (base_Up == "z2") {
+	if (base_Up == "z6" || base_Up == "z8" || base_Up == "z2") {
 		var title_Up = thisParChil.children(".title").val().trim();
 		var title_Up_2 = thisParChil.children(".title_2").val().trim();
 		var textIns = thisParChil.children(".textarea").val();
@@ -270,17 +344,40 @@ $(".updtaButt").click(function () {
 		ArrayDat.append("title_Up_2", title_Up_2);
 	}
 
-	if (base_Up == "z1_1" || base_Up == "z4_1") {
+	if (base_Up == "z1_1" || base_Up == "z4_1" || base_Up == "z3") {
 		var text_Up = thisParChil.children(".textarea").val();
 		var text_Up_2 = thisParChil.children(".textarea_1").val();
 		ArrayDat.append("text_Up", text_Up);
 		ArrayDat.append("text_Up_2", text_Up_2);
 	}
-	if (base_Up == "z3") {
-		var text_Up = thisParChil.children(".textarea").val();
-		var text_Up_2 = thisParChil.children(".textarea_1").val();
-		ArrayDat.append("text_Up", text_Up);
-		ArrayDat.append("text_Up_2", text_Up_2);
+	if (base_Up == "z7") {
+		var title_Up = thisParChil.children(".title").val().trim();
+		ArrayDat.append("title_Up", title_Up);
+	}
+	if (base_Up == "z7_1") {
+		var title_Up = thisParChil.children(".title").val().trim();
+		var title_Up_2 = thisParChil.children(".title_2").val().trim();
+		var title_Up_3 = thisParChil.children(".title_3").val().trim();
+		ArrayDat.append("title_Up", title_Up);
+		ArrayDat.append("title_Up_2", title_Up_2);
+		ArrayDat.append("title_Up_3", title_Up_3);
+	}
+
+	if (base_Up == "z11") {
+		var title_Up = thisParChil.children(".title").val().trim();
+		var title_Up_2 = thisParChil.children(".title_2").val().trim();
+		var textIns = thisParChil.children(".textarea").val();
+		var textIns_2 = thisParChil.children(".textarea_2").val();
+		ArrayDat.append("text_Up", textIns);
+		ArrayDat.append("text_Up_2", textIns_2);
+		ArrayDat.append("title_Up", title_Up);
+		ArrayDat.append("title_Up_2", title_Up_2);
+	}
+	if (base_Up == "z15") {
+		var title_Up = thisParChil.children(".title").val().trim();
+		var title_Up_2 = thisParChil.children(".title_2").val().trim();
+		ArrayDat.append("title_Up", title_Up);
+		ArrayDat.append("title_Up_2", title_Up_2);
 	}
 
 	$.post({
@@ -362,6 +459,110 @@ $(".updtaButt").click(function () {
 							text_Up_2 +
 							'"></td> \
                     <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATA</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					).replaceAll(thisContent);
+				} else if (base_Up == "z6") {
+					$(
+						'<tr class="newDiv tableBody_1" data-base="z6" data-Id="' +
+							id_Up +
+							'"> \
+							<td><input type="text" value ="' +
+							title_Up +
+							'"><input type="text" value = "' +
+							title_Up_2 +
+							'"></td>\
+                        <td><textarea class="textarea" cols="30" rows="10"">' +
+							text_Up +
+							'</textarea></td><td><textarea class="textarea_1" cols="30" rows="10">' +
+							text_Up_2 +
+							'</textarea></td> \
+                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td> \
+                    </tr>'
+					).replaceAll(thisContent);
+				} else if (base_Up == "z7") {
+					$(
+						'<tr class="newDiv tableBody_1" data-base="z7" data-Id="' +
+							id_Up +
+							'"> \
+							<td><img src="../assets/images/socialIcon/' +
+							res["icon"] +
+							'"><input type="file" class="file"></td>\
+                    <td><input type="text" value ="' +
+							title_Up +
+							'"></td>\
+                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					).replaceAll(thisContent);
+				} else if (base_Up == "z7_1") {
+					$(
+						'<tr class="newDiv tableBody_1" data-base="z7_1" data-Id="' +
+							id_Up +
+							'"> \
+                    <td><input type="text" value ="' +
+							title_Up +
+							'"></td>\
+                    <td><input type="text" value ="' +
+							title_Up_2 +
+							'"></td>\
+                    <td><input type="text" value ="' +
+							title_Up_3 +
+							'"></td>\
+                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td> \
+                    </tr>'
+					).replaceAll(thisContent);
+				} else if (base_Up == "z8") {
+					$(
+						'<tr class="newDiv tableBody_1" data-base="z8" data-Id="' +
+							id_Up +
+							'"> \
+							<td><img src="../assets/images/terminal/' +
+							res["image"] +
+							'"><input type="file" class="file"></td>\
+							<td><input type="text" value ="' +
+							title_Up +
+							'"><input type="text" value = "' +
+							title_Up_2 +
+							'"></td>\
+                        <td><textarea class="textarea" cols="30" rows="10"">' +
+							textIns +
+							'</textarea></td><td><textarea class="textarea_1" cols="30" rows="10">' +
+							textIns_2 +
+							'</textarea></td> \
+                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					).replaceAll(thisContent);
+				} else if (base_Up == "z11") {
+					$(
+						'<tr class="newDiv tableBody_1" data-base="z11" data-Id="' +
+							id_Up +
+							'"> \
+							<td><img src="../assets/images/history/' +
+							res["historyImage"] +
+							'"><input type="file" class="file"></td>\
+							<td><input type="text" value ="' +
+							title_Up +
+							'"><input type="text" value = "' +
+							title_Up_2 +
+							'"></td>\
+                        <td><textarea class="textarea" cols="30" rows="4"">' +
+							textIns +
+							'</textarea></td><td><textarea class="textarea_1" cols="30" rows="4">' +
+							textIns_2 +
+							'</textarea></td> \
+                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					).replaceAll(thisContent);
+				} else if (base_Up == "z15") {
+					$(
+						'<tr class="newDiv tableBody_1" data-base="z14_1" data-Id="' +
+							id_Up +
+							'"> \
+							<td><input type="text" value ="' +
+							title_Up +
+							'"><input type="text" value = "' +
+							title_Up_2 +
+							'"></td>\
+                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td> \
                     </tr>'
 					).replaceAll(thisContent);
 				}

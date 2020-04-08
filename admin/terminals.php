@@ -19,8 +19,7 @@ $galleryQuery = mysqli_query($connDB, "SELECT * FROM terminal ORDER BY id DESC")
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styleAdmin.css">
     <title>Login</title>
 </head>
@@ -53,15 +52,15 @@ $galleryQuery = mysqli_query($connDB, "SELECT * FROM terminal ORDER BY id DESC")
             </tr>
         </thead>
         <tbody>
-            <tr class="tableBody_1" data-b="z3">
+            <tr class="tableBody_1" data-b="z8">
                 <td><input type="file" class="file"></td>
                 <td> <input type="text" class="title" placeholder="page Arm"></td>
                 <td><input type="text" class="title_2" placeholder="page Eng"> </td>
                 <td>
-                    <textarea name="insArm" id="" cols="25" rows="6" placeholder="text Arm"></textarea>
+                    <textarea class="textarea" cols="25" rows="6" placeholder="text Arm"></textarea>
                 </td>
                 <td>
-                    <textarea name="insEng" id="" cols="25" rows="6" placeholder="text Eng"></textarea>
+                    <textarea class="textarea_2" cols="25" rows="6" placeholder="text Eng"></textarea>
                 </td>
                 <td><button type="button" class="btn btn-success" id="buttInsert">INSERT</button></td>
             </tr>
@@ -90,29 +89,25 @@ $galleryQuery = mysqli_query($connDB, "SELECT * FROM terminal ORDER BY id DESC")
             if (mysqli_num_rows($galleryQuery) > 0) {
                 while ($galleryDiv = mysqli_fetch_assoc($galleryQuery)) {
             ?>
-            <tr class="newDiv tableBody_1" data-base="z3" data-Id="<?php echo $galleryDiv['id']; ?>">
-                <td>
-                    <img src="../assets/images/terminal/<?php echo $galleryDiv['image']; ?>">
-                    <input type="file" class="file">
-                </td>
-                <td><input type="text" class="title" value="<?php echo $galleryDiv['title']; ?>" placeholder="page 1">
-                </td>
-                <td><input type="text" class="title_2" value="<?php echo $galleryDiv['title_eng']; ?>"
-                        placeholder="page 2"> </td>
-                <td>
-                    <textarea class="textarea" cols="25" rows="6"
-                        placeholder="page 1"><?php echo $galleryDiv['description']; ?></textarea>
-                </td>
-                <td>
-                    <textarea class="textarea_2" cols="25" rows="6"
-                        placeholder="page 2"><?php echo $galleryDiv['description_eng']; ?></textarea>
-                </td>
+                    <tr class="newDiv tableBody_1" data-base="z8" data-Id="<?php echo $galleryDiv['id']; ?>">
+                        <td>
+                            <img src="../assets/images/terminal/<?php echo $galleryDiv['image']; ?>">
+                            <input type="file" class="file">
+                        </td>
+                        <td><input type="text" class="title" value="<?php echo $galleryDiv['title']; ?>"> </td>
+                        <td><input type="text" class="title_2" value="<?php echo $galleryDiv['title_eng']; ?>"> </td>
+                        <td>
+                            <textarea class="textarea" cols="25" rows="6"><?php echo $galleryDiv['description']; ?></textarea>
+                        </td>
+                        <td>
+                            <textarea class="textarea_2" cols="25" rows="6"><?php echo $galleryDiv['description_eng']; ?></textarea>
+                        </td>
 
-                <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATA</button>
-                    <button type="button" class="btn btn-danger" id="DeleteButt">DELETE</button>
-                </td>
-            </tr>
+                        <td>
+                            <button type="button" class="btn btn-info updtaButt">UPDATA</button>
+                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
+                        </td>
+                    </tr>
             <?php
                 }
             }
@@ -120,8 +115,8 @@ $galleryQuery = mysqli_query($connDB, "SELECT * FROM terminal ORDER BY id DESC")
         </tbody>
     </table>
     <!-- ======================================================================================= -->
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/scriptAdmin.js"></script>
+    <script src="../assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../assets/js/scriptAdmin.js"></script>
 </body>
 
 </html>

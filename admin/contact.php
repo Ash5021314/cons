@@ -7,7 +7,7 @@ if (!isset($_SESSION['userName'])) {
 }
 
 $hedQuery = mysqli_query($connDB, "SELECT * FROM contact");
-$hedQueryHead = mysqli_query($connDB, "SELECT * FROM follow ");
+$hedQueryHead = mysqli_query($connDB, "SELECT * FROM follow ORDER BY id DESC");
 
 
 
@@ -23,8 +23,7 @@ $hedQueryHead = mysqli_query($connDB, "SELECT * FROM follow ");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styleAdmin.css">
     <title>Login</title>
 </head>
@@ -55,9 +54,9 @@ $hedQueryHead = mysqli_query($connDB, "SELECT * FROM follow ");
             </tr>
         </thead>
         <tbody>
-            <tr class="tableBody_1" data-b="z1">
+            <tr class="tableBody_1" data-b="z7">
                 <td><input type="file" class="file"></td>
-                <td><input type="text" class="link" placeholder="Link of social"></td>
+                <td><input type="text" class="title" placeholder="Link of social"></td>
                 <td><button type="button" class="btn btn-success" id="buttInsert">INSERT</button></td>
             </tr>
         </tbody>
@@ -81,20 +80,19 @@ $hedQueryHead = mysqli_query($connDB, "SELECT * FROM follow ");
             if (mysqli_num_rows($hedQueryHead) > 0) {
                 while ($headDiv = mysqli_fetch_assoc($hedQueryHead)) {
             ?>
-            <tr class="newDiv tableBody_1" data-base="z1" data-Id="<?php echo $headDiv['id']; ?>">
-                <td>
-                    <img src="../assets/images/socialIcon/<?php echo $headDiv['icon']; ?>">
-                    <input type="file" class="file">
-                </td>
-                <td>
-                    <input type="text" class="icon" value="<?php echo $headDiv['Icon_link']; ?>">
-                </td>
-
-                <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                    <button type="button" class="btn btn-danger" id="DeleteButt">DELETE</button>
-                </td>
-            </tr>
+                    <tr class="newDiv tableBody_1" data-base="z7" data-Id="<?php echo $headDiv['id']; ?>">
+                        <td>
+                            <img src="../assets/images/socialIcon/<?php echo $headDiv['icon']; ?>">
+                            <input type="file" class="file">
+                        </td>
+                        <td>
+                            <input type="text" class="title" value="<?php echo $headDiv['Icon_link']; ?>">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
+                        </td>
+                    </tr>
             <?php
                 }
             }
@@ -118,22 +116,22 @@ $hedQueryHead = mysqli_query($connDB, "SELECT * FROM follow ");
             if (mysqli_num_rows($hedQuery) > 0) {
                 while ($hedQueryHeadDiv = mysqli_fetch_assoc($hedQuery)) {
             ?>
-            <tr class="newDiv tableBody_1" data-base="z1" data-Id="<?php echo $hedQueryHeadDiv['id']; ?>">
+                    <tr class="newDiv tableBody_1" data-base="z7_1" data-Id="<?php echo $hedQueryHeadDiv['id']; ?>">
 
-                <td>
-                    <input type="text" class="title" value="<?php echo $hedQueryHeadDiv['email']; ?>">
-                </td>
-                <td>
-                    <input type="text" class="title_2" value="<?php echo $hedQueryHeadDiv['phone_1']; ?>">
-                </td>
-                <td>
-                    <input type="text" class="title_3" value="<?php echo $hedQueryHeadDiv['phone_2']; ?>">
-                </td>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                </td>
-            </tr>
+                        <td>
+                            <input type="text" class="title" value="<?php echo $hedQueryHeadDiv['email']; ?>">
+                        </td>
+                        <td>
+                            <input type="text" class="title_2" value="<?php echo $hedQueryHeadDiv['phone_1']; ?>">
+                        </td>
+                        <td>
+                            <input type="text" class="title_3" value="<?php echo $hedQueryHeadDiv['phone_2']; ?>">
+                        </td>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                        </td>
+                    </tr>
             <?php
                 }
             }

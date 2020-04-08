@@ -22,8 +22,7 @@ $hedQuery = mysqli_query($connDB, "SELECT * FROM partners ORDER BY id DESC");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styleAdmin.css">
     <title>Login</title>
 </head>
@@ -53,7 +52,7 @@ $hedQuery = mysqli_query($connDB, "SELECT * FROM partners ORDER BY id DESC");
             </tr>
         </thead>
         <tbody>
-            <tr class="tableBody_1" data-b="z1">
+            <tr class="tableBody_1" data-b="z12">
                 <td><input type="file" class="file"></td>
                 <td><button type="button" class="btn btn-success" id="buttInsert">INSERT</button></td>
             </tr>
@@ -76,17 +75,17 @@ $hedQuery = mysqli_query($connDB, "SELECT * FROM partners ORDER BY id DESC");
             if (mysqli_num_rows($hedQuery) > 0) {
                 while ($headDiv = mysqli_fetch_assoc($hedQuery)) {
             ?>
-            <tr class="newDiv tableBody_1" data-base="z1" data-Id="<?php echo $headDiv['id']; ?>">
-                <td>
-                    <img src="../assets/images/partners/<?php echo $headDiv['slide_image']; ?>">
-                    <input type="file" class="file">
-                </td>
+                    <tr class="newDiv tableBody_1" data-base="z12" data-Id="<?php echo $headDiv['id']; ?>">
+                        <td>
+                            <img src="../assets/images/partners/<?php echo $headDiv['slide_image']; ?>">
+                            <input type="file" class="file">
+                        </td>
 
-                <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                    <button type="button" class="btn btn-danger" id="DeleteButt">DELETE</button>
-                </td>
-            </tr>
+                        <td>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
+                        </td>
+                    </tr>
             <?php
                 }
             }

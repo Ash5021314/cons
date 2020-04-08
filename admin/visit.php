@@ -3,7 +3,7 @@ session_start();
 require "../connect.php";
 
 if (!isset($_SESSION['userName'])) {
-  header('location: index.php');
+    header('location: index.php');
 }
 
 $allCollHead = mysqli_query($connDB, "SELECT `id`, `title`, `title_eng` FROM visit_desc  WHERE `title` IS NOT NULL AND  `title_eng` IS NOT NULL ");
@@ -21,8 +21,7 @@ $allColl = mysqli_query($connDB, "SELECT * FROM visit_desc  ORDER BY id DESC");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styleAdmin.css">
     <title>Login</title>
 </head>
@@ -54,25 +53,24 @@ $allColl = mysqli_query($connDB, "SELECT * FROM visit_desc  ORDER BY id DESC");
         </thead>
         <tbody class="adminContentTitle">
             <?php
-      if (mysqli_num_rows($allCollHead) > 0) {
-        while ($allCollHeadDiv = mysqli_fetch_assoc($allCollHead)) {
-      ?>
-            <tr class="newDiv tableBody_1" data-base="z3" data-Id="<?php echo $allCollHeadDiv['id']; ?>">
+            if (mysqli_num_rows($allCollHead) > 0) {
+                while ($allCollHeadDiv = mysqli_fetch_assoc($allCollHead)) {
+            ?>
+                    <tr class="newDiv tableBody_1" data-base="z3" data-Id="<?php echo $allCollHeadDiv['id']; ?>">
 
-                <td>
-                    <textarea class="textarea" cols="30" rows="10"><?php echo $allCollHeadDiv['title'] ?></textarea>
-                    <textarea class="textarea_1" cols="30"
-                        rows="10"><?php echo $allCollHeadDiv['title_eng'] ?></textarea>
-                </td>
+                        <td>
+                            <textarea class="textarea" cols="30" rows="10"><?php echo $allCollHeadDiv['title'] ?></textarea>
+                            <textarea class="textarea_1" cols="30" rows="10"><?php echo $allCollHeadDiv['title_eng'] ?></textarea>
+                        </td>
 
-                <td>
-                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
-                </td>
-            </tr>
+                        <td>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                        </td>
+                    </tr>
             <?php
-        }
-      }
-      ?>
+                }
+            }
+            ?>
         </tbody>
     </table>
 
@@ -102,29 +100,28 @@ $allColl = mysqli_query($connDB, "SELECT * FROM visit_desc  ORDER BY id DESC");
                 </td>
             </tr>
             <?php
-      if (mysqli_num_rows($allColl) > 0) {
-        while ($allCollDiv = mysqli_fetch_assoc($allColl)) {
-      ?>
-            <tr class="newDiv tableBody_1" data-base="z4_1" data-Id="<?php echo $allCollDiv['id']; ?>">
-                <td>
-                    <img src="../assets/images/visit/<?php echo $allCollDiv['image']; ?>">
-                    <input type="file" class="file">
-                </td>
-                <td>
-                    <textarea cols="30" rows="4" class="textarea"><?php echo $allCollDiv['description']; ?></textarea>
-                    <textarea cols="30" rows="4"
-                        class="textarea_1"><?php echo $allCollDiv['description_eng']; ?></textarea>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
-                    <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
+            if (mysqli_num_rows($allColl) > 0) {
+                while ($allCollDiv = mysqli_fetch_assoc($allColl)) {
+            ?>
+                    <tr class="newDiv tableBody_1" data-base="z4_1" data-Id="<?php echo $allCollDiv['id']; ?>">
+                        <td>
+                            <img src="../assets/images/visit/<?php echo $allCollDiv['image']; ?>">
+                            <input type="file" class="file">
+                        </td>
+                        <td>
+                            <textarea cols="30" rows="4" class="textarea"><?php echo $allCollDiv['description']; ?></textarea>
+                            <textarea cols="30" rows="4" class="textarea_1"><?php echo $allCollDiv['description_eng']; ?></textarea>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
 
-                </td>
-            </tr>
+                        </td>
+                    </tr>
             <?php
-        }
-      }
-      ?>
+                }
+            }
+            ?>
         </tbody>
     </table>
     <!-- ============================================================================================ -->

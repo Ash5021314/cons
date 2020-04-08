@@ -7,7 +7,7 @@ if (!isset($_SESSION['userName'])) {
 }
 
 $hedQuery = mysqli_query($connDB, "SELECT * FROM packiging_slide ORDER BY id DESC");
-$hedQueryHead = mysqli_query($connDB, "SELECT `title`, `title_eng` FROM packiging_slide WHERE `title` IS NOT NULL AND `title_eng` IS NOT NULL");
+$hedQueryHead = mysqli_query($connDB, "SELECT * FROM souvenir");
 $count = mysqli_num_rows($hedQuery);
 
 
@@ -55,7 +55,7 @@ $count = mysqli_num_rows($hedQuery);
             </tr>
         </thead>
         <tbody>
-            <tr class="tableBody_1" data-b="z1">
+            <tr class="tableBody_1" data-b="z14">
                 <td><input type="file" class="file"></td>
                 <td><button type="button" class="btn btn-success" id="buttInsert">INSERT</button></td>
             </tr>
@@ -76,8 +76,7 @@ $count = mysqli_num_rows($hedQuery);
             if (mysqli_num_rows($hedQueryHead) > 0) {
                 while ($hedQueryHeadDiv = mysqli_fetch_assoc($hedQueryHead)) {
             ?>
-            <tr class="newDiv tableBody_1" data-base="z1" data-Id="<?php echo $headDiv['id']; ?>">
-
+            <tr class="newDiv tableBody_1" data-base="z15" data-Id="<?php echo $hedQueryHeadDiv['id']; ?>">
                 <td>
                     <input type="text" class="title" value="<?php echo $hedQueryHeadDiv['title']; ?>"
                         placeholder="page 1">
@@ -85,7 +84,7 @@ $count = mysqli_num_rows($hedQuery);
                         placeholder="page 2">
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
                 </td>
             </tr>
             <?php
@@ -110,15 +109,15 @@ $count = mysqli_num_rows($hedQuery);
             if (mysqli_num_rows($hedQuery) > 0) {
                 while ($headDiv = mysqli_fetch_assoc($hedQuery)) {
             ?>
-            <tr class="newDiv tableBody_1" data-base="z1" data-Id="<?php echo $headDiv['id']; ?>">
+            <tr class="newDiv tableBody_1" data-base="z14" data-Id="<?php echo $headDiv['id']; ?>">
                 <td>
                     <img src="../assets/images/package/<?php echo $headDiv['image']; ?>">
                     <input type="file" class="file">
                 </td>
 
                 <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                    <button type="button" class="btn btn-danger" id="DeleteButt">DELETE</button>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                    <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
                 </td>
             </tr>
             <?php

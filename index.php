@@ -21,6 +21,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="Armenian Coins">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#039def">
     <meta name="apple-mobile-web-app-title" content="Armenian Coins">
