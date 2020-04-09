@@ -7,8 +7,8 @@ if (!isset($_SESSION['userName'])) {
 }
 
 $newsQuery = mysqli_query($connDB, "SELECT * FROM gift ORDER BY id DESC");
-$newSouveniresQuery = mysqli_query($connDB, "SELECT * FROM new_souvenire ");
-$allCollHead = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng` FROM coll_desc  WHERE `head_title` IS NOT NULL AND  `head_title_eng` IS NOT NULL ");
+$newSouveniresQuery = mysqli_query($connDB, "SELECT * FROM new_souvenire");
+$allCollHead = mysqli_query($connDB, "SELECT `id`, `head_title`, `head_title_eng` FROM coll_desc  WHERE `head_title` IS NOT NULL AND  `head_title_eng` IS NOT NULL ");
 $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
 
 
@@ -41,7 +41,7 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
     <!-- =============================================================================== -->
     <!-- ============================== Insert Section =================================== -->
 
-    <p class="instalHead">Insert pictures for souvenirs slide</p>
+    <!-- <p class="instalHead">Insert pictures for souvenirs slide</p>
     <table class="table table-bordered table_1">
         <thead>
             <tr class="tableHead_1">
@@ -50,7 +50,7 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
             </tr>
         </thead>
         <tbody>
-            <tr class="tableBody_1" data-b="z4">
+            <tr class="tableBody_1" data-b="z9">
                 <td>
                     <input type="file" class="file" style="width:none;">
                 </td>
@@ -59,7 +59,7 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
     <!-- ============================================================================================ -->
     <!-- ============================== Create Section ================================================ -->
 
@@ -72,21 +72,21 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
             </tr>
         </thead>
         <tbody class="adminContent">
-            <tr class="newDiv tableBody_1" data-base="z4">
+            <tr class="newDiv tableBody_1" data-b="z9">
 
                 <td>
                     <input type="file" class="file">
                 </td>
 
                 <td>
-                    <button type="button" class="btn btn-success" id="UpdtaButt">INSERT</button>
+                    <button type="button" class="btn btn-success" id="buttInsert">INSERT</button>
                 </td>
             </tr>
             <?php
             if (mysqli_num_rows($newsQuery) > 0) {
                 while ($newsQueryDiv = mysqli_fetch_assoc($newsQuery)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z4">
+                    <tr class="newDiv tableBody_1" data-base="z9" data-Id="<?php echo $newsQueryDiv['id']; ?>">
 
                         <td>
                             <img src="../assets/images/gift/<?php echo $newsQueryDiv['picture']; ?>">
@@ -94,8 +94,8 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                            <button type="button" class="btn btn-danger" id="DelButt">DELETE</button>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
                         </td>
                     </tr>
             <?php
@@ -122,15 +122,15 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
             if (mysqli_num_rows($newSouveniresQuery) > 0) {
                 while ($newSouveniresQueryDiv = mysqli_fetch_assoc($newSouveniresQuery)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z4">
+                    <tr class="newDiv tableBody_1" data-base="z9_1" data-Id="<?php echo $newSouveniresQueryDiv['id']; ?>">
 
                         <td>
-                            <input type="text" class="textArm" value="<?php echo $newSouveniresQueryDiv['new_souvenirs'] ?>">
-                            <input type="text" class="textArm" value="<?php echo $newSouveniresQueryDiv['new_souvenirs_eng'] ?>">
+                            <input type=" text" class="title" value="<?php echo $newSouveniresQueryDiv['new_souvenirs'] ?>">
+                            <input type="text" class="title_2" value="<?php echo $newSouveniresQueryDiv['new_souvenirs_eng'] ?>">
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
                         </td>
                     </tr>
             <?php
@@ -156,15 +156,13 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
             if (mysqli_num_rows($allCollHead) > 0) {
                 while ($allCollHeadDiv = mysqli_fetch_assoc($allCollHead)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z4">
-
+                    <tr class="newDiv tableBody_1" data-base="z9_2" data-Id="<?php echo $allCollHeadDiv['id']; ?>">
                         <td>
-                            <input type="text" class="textArm" value="<?php echo $allCollHeadDiv['head_title'] ?>">
-                            <input type="text" class="textArm" value="<?php echo $allCollHeadDiv['head_title_eng'] ?>">
+                            <input type="text" class="title" value="<?php echo $allCollHeadDiv['head_title'] ?>">
+                            <input type="text" class="title_2" value="<?php echo $allCollHeadDiv['head_title_eng'] ?>">
                         </td>
-
                         <td>
-                            <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
                         </td>
                     </tr>
             <?php
@@ -183,55 +181,63 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
             <tr class="tableHead_1">
                 <th>Images Place</th>
                 <th>Images Coin</th>
+                <th>Images seccond Coin</th>
                 <th>Tilte </th>
                 <th>Description </th>
                 <th>Submit</th>
             </tr>
         </thead>
-        <tbody class="adminContent">
-            <tr class="newDiv tableBody_1" data-base="z4">
+        <tbody class="adminContent9">
+            <tr class="newDiv tableBody_1" data-b="z9_3">
                 <td>
                     <input type="file" class="file">
                 </td>
                 <td>
-                    <input type="file" class="file">
+                    <input type="file" class="file1">
                 </td>
                 <td>
-                    <input type="text" class="textArm" placeholder="title Arm">
-                    <input type="text" class="textArm" placeholder="title Eng">
+                    <input type="file" class="file2">
                 </td>
                 <td>
-                    <textarea cols="30" rows="4" class="textarea" placeholder="text Arm"></textarea>
-                    <textarea cols="30" rows="4" class="textarea_2" placeholder="text Eng"></textarea>
+                    <input type="text" class="title" placeholder="title Arm">
+                    <input type="text" class="title_2" placeholder="title Eng">
                 </td>
                 <td>
-                    <button type="button" class="btn btn-success" id="UpdtaButt">INSERT</button>
+                    <textarea cols="30" rows="6" class="textarea" placeholder="text Arm"></textarea>
+                    <textarea cols="30" rows="6" class="textarea_2" placeholder="text Eng"></textarea>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" id="buttInsert">INSERT</button>
                 </td>
             </tr>
             <?php
             if (mysqli_num_rows($allColl) > 0) {
                 while ($allCollDiv = mysqli_fetch_assoc($allColl)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z4">
+                    <tr class="newDiv tableBody_1" data-base="z9_3" data-Id="<?php echo $allCollDiv['id']; ?>">
                         <td>
                             <img src="../assets/images/collection/<?php echo $allCollDiv['first_image']; ?>">
                             <input type="file" class="file">
                         </td>
                         <td>
                             <img src="../assets/images/collection/<?php echo $allCollDiv['seccond_image']; ?>">
-                            <input type="file" class="file">
+                            <input type="file" class="file1">
                         </td>
                         <td>
-                            <input type="text" class="textArm" value="<?php echo $allCollDiv['title'] ?>">
-                            <input type="text" class="textArm" value="<?php echo $allCollDiv['title_eng'] ?>">
+                            <img src="../assets/images/collection/<?php echo $allCollDiv['third_image']; ?>">
+                            <input type="file" class="file2">
+                        </td>
+                        <td>
+                            <input type="text" class="title" value="<?php echo $allCollDiv['title'] ?>">
+                            <input type="text" class="title_2" value="<?php echo $allCollDiv['title_eng'] ?>">
                         </td>
                         <td>
                             <textarea cols="30" rows="4" class="textarea"><?php echo $allCollDiv['text']; ?></textarea>
                             <textarea cols="30" rows="4" class="textarea_2"><?php echo $allCollDiv['text_eng']; ?></textarea>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                            <button type="button" class="btn btn-danger" id="DeleteButt">DELETE</button>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
 
                         </td>
                     </tr>
@@ -242,7 +248,6 @@ $allColl = mysqli_query($connDB, "SELECT * FROM coll_desc  ORDER BY id DESC");
         </tbody>
     </table>
     <!-- ============================================================================================ -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../assets/js/scriptAdmin.js"></script>
 </body>

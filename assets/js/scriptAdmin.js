@@ -45,13 +45,27 @@ var divCount = 0;
 $(document).on("click", "#buttInsert", function () {
 	var data_b = $(this).parent().parent().attr("data-b");
 	var thisParChil = $(this).parent().parent().children("td");
+	// var thisParChil1 = $(this).parent().parent().children("td").prew("td");
 
-	var fileIns = thisParChil.children(".file").prop("files")[0];
+	var file = $(thisParChil).children(".file").prop("files");
+	var file1 = $(thisParChil).children(".file1").prop("files");
+	var file2 = $(thisParChil).children(".file2").prop("files");
 
 	var ArrayDat = new FormData();
 	ArrayDat.append("database_ins", data_b);
-	ArrayDat.append("file_ins", fileIns);
+	if (typeof file !== "undefined" && file.length > 0) {
+		var fileIns = thisParChil.children(".file").prop("files")[0];
+		ArrayDat.append("file_ins", fileIns);
+	}
 
+	if (typeof file1 !== "undefined" && file1.length > 0) {
+		var fileIns1 = thisParChil.children(".file1").prop("files")[0];
+		ArrayDat.append("file_ins1", fileIns1);
+	}
+	if (typeof file2 !== "undefined" && file2.length > 0) {
+		var fileIns2 = thisParChil.children(".file2").prop("files")[0];
+		ArrayDat.append("file_ins2", fileIns2);
+	}
 	if (data_b == "z4") {
 		var textIns = thisParChil.children(".textarea").val();
 		var textIns_2 = thisParChil.children(".textarea_2").val();
@@ -61,6 +75,15 @@ $(document).on("click", "#buttInsert", function () {
 		var title_Up = thisParChil.children(".title").val().trim();
 		ArrayDat.append("title_Up", title_Up);
 	} else if (data_b == "z8") {
+		var titleIns = thisParChil.children(".title").val().trim();
+		var titleIns_2 = thisParChil.children(".title_2").val().trim();
+		var textIns = thisParChil.children(".textarea").val();
+		var textIns_2 = thisParChil.children(".textarea_2").val();
+		ArrayDat.append("textar_ins", textIns);
+		ArrayDat.append("textar_ins_2", textIns_2);
+		ArrayDat.append("title_ins", titleIns);
+		ArrayDat.append("title_ins_2", titleIns_2);
+	} else if (data_b == "z13" || data_b == "z9_3") {
 		var titleIns = thisParChil.children(".title").val().trim();
 		var titleIns_2 = thisParChil.children(".title_2").val().trim();
 		var textIns = thisParChil.children(".textarea").val();
@@ -162,6 +185,35 @@ $(document).on("click", "#buttInsert", function () {
                     <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
                     </tr>'
 					);
+				} else if (data_b == "z9_3") {
+					$(".adminContent9").prepend(
+						'<tr class="newDiv tableBody_1" data-base="z9_3" data-Id="' +
+							res["id"] +
+							'"> \
+                    <td><img src="../assets/images/collection/' +
+							res["first_image"] +
+							'"><input type="file" class="file"></td>\
+                    <td><img src="../assets/images/collection/' +
+							res["seccond_image"] +
+							'"><input type="file" class="file"></td>\
+                    <td><img src="../assets/images/collection/' +
+							res["third_image"] +
+							'"><input type="file" class="file"></td>\
+                    <td><input type="text" value = "' +
+							titleIns +
+							'"></td>\
+                    <td><input type="text" value = "' +
+							titleIns_2 +
+							'"></td>\
+					<td><textarea class="textarea" cols="30" rows="10"">' +
+							textIns +
+							'</textarea></td>\
+					<td><textarea class="textarea_1" cols="30" rows="10">' +
+							textIns_2 +
+							'</textarea></td> \
+                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					);
 				} else if (data_b == "z12") {
 					$(".adminContent").prepend(
 						'<tr class="newDiv tableBody_1" data-base="z12" data-Id="' +
@@ -171,6 +223,29 @@ $(document).on("click", "#buttInsert", function () {
 							res["slide_image"] +
 							'"><input type="file" class="file"></td> \
                         <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					);
+				} else if (data_b == "z13") {
+					$(".adminContent").prepend(
+						'<tr class="newDiv tableBody_1" data-base="z13" data-Id="' +
+							res["id"] +
+							'"> \
+                    <td><img src="../assets/images/shop/' +
+							res["image"] +
+							'"><input type="file" class="file"></td>\
+                    <td><input type="text" value = "' +
+							titleIns +
+							'"></td>\
+                    <td><input type="text" value = "' +
+							titleIns_2 +
+							'"></td>\
+							<td><textarea class="textarea" cols="30" rows="10"">' +
+							textIns +
+							'</textarea></td>\
+							<td><textarea class="textarea_1" cols="30" rows="10">' +
+							textIns_2 +
+							'</textarea></td> \
+                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
                     </tr>'
 					);
 				} else if (data_b == "z14") {
@@ -291,7 +366,8 @@ $(document).on("click", ".DeleteButt", function () {
 		url: "ajax.php",
 		data: { ingURL, BaseN, DeleteId },
 		success: function (res) {
-			window.location.reload();
+			// window.location.reload();
+			console.log(res);
 			if (res == 1) {
 				thisDiv.remove();
 			}
@@ -306,34 +382,50 @@ $(".updtaButt").click(function () {
 	var thisContent = $(this).parent().parent();
 	var thisParChil = $(this).parent().parent().children("td");
 	var thisParChil1 = $(this).parent().parent().children("td").next("td");
+	var thisParChil2 = $(this)
+		.parent()
+		.parent()
+		.children("td")
+		.next("td")
+		.next("td");
 
 	var base_Up = thisContent.attr("data-base");
 	var id_Up = thisContent.attr("data-Id");
 	var oldImgUrl = thisParChil.children("img").attr("src");
 	var oldImgUrl1 = thisParChil1.children("img").attr("src");
-	// var oldImgUrl = thisParChil.children("td").each(function () {
-	// 	return $(this).children("img").attr("src");
-	// 	// if ($(item).children("img").hasAttr("src")) {
-	// 	// }
-	// });
+	var oldImgUrl2 = thisParChil2.children("img").attr("src");
+
 	var file = $(thisParChil).children(".file").prop("files");
 	var file1 = $(thisParChil1).children(".file1").prop("files");
+	var file2 = $(thisParChil2).children(".file2").prop("files");
+
 	if (typeof file !== "undefined") {
 		var file_Up = thisParChil.children(".file").prop("files")[0];
 	}
-	//
+
 	if (typeof file1 !== "undefined" && file1.length > 0) {
 		var file_Up1 = thisParChil1.children(".file1").prop("files")[0];
+	}
+
+	if (typeof file2 !== "undefined" && file2.length > 0) {
+		var file_Up2 = thisParChil2.children(".file2").prop("files")[0];
 	}
 	var ArrayDat = new FormData();
 	ArrayDat.append("base_Up", base_Up);
 	ArrayDat.append("id_Up", id_Up);
 	ArrayDat.append("oldImgUrl", oldImgUrl);
 	ArrayDat.append("oldImgUrl1", oldImgUrl1);
+	ArrayDat.append("oldImgUrl2", oldImgUrl2);
 	ArrayDat.append("file_Up", file_Up);
 	ArrayDat.append("file_Up1", file_Up1);
+	ArrayDat.append("file_Up2", file_Up2);
 
-	if (base_Up == "z6" || base_Up == "z8" || base_Up == "z2") {
+	if (
+		base_Up == "z6" ||
+		base_Up == "z8" ||
+		base_Up == "z2" ||
+		base_Up == "z13_2"
+	) {
 		var title_Up = thisParChil.children(".title").val().trim();
 		var title_Up_2 = thisParChil.children(".title_2").val().trim();
 		var textIns = thisParChil.children(".textarea").val();
@@ -363,7 +455,7 @@ $(".updtaButt").click(function () {
 		ArrayDat.append("title_Up_3", title_Up_3);
 	}
 
-	if (base_Up == "z11") {
+	if (base_Up == "z11" || base_Up == "z9_3") {
 		var title_Up = thisParChil.children(".title").val().trim();
 		var title_Up_2 = thisParChil.children(".title_2").val().trim();
 		var textIns = thisParChil.children(".textarea").val();
@@ -373,7 +465,12 @@ $(".updtaButt").click(function () {
 		ArrayDat.append("title_Up", title_Up);
 		ArrayDat.append("title_Up_2", title_Up_2);
 	}
-	if (base_Up == "z15") {
+	if (
+		base_Up == "z15" ||
+		base_Up == "z13_1" ||
+		base_Up == "z9_1" ||
+		base_Up == "z9_2"
+	) {
 		var title_Up = thisParChil.children(".title").val().trim();
 		var title_Up_2 = thisParChil.children(".title_2").val().trim();
 		ArrayDat.append("title_Up", title_Up);
@@ -550,6 +647,44 @@ $(".updtaButt").click(function () {
 							textIns_2 +
 							'</textarea></td> \
                         <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
+                    </tr>'
+					).replaceAll(thisContent);
+				} else if (base_Up == "z13_1") {
+					$(
+						'<tr class="newDiv tableBody_1" data-base="z13_1" data-Id="' +
+							res["id"] +
+							'"> \
+                    <td><img src="../assets/images/shop/' +
+							res["head_image"] +
+							'"><input type="file" class="file"></td>\
+                    <td><input type="text" value = "' +
+							title_Up +
+							'"></td>\
+                    <td><input type="text" value = "' +
+							title_Up_2 +
+							'"></td>\
+                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button></td> \
+                    </tr>'
+					);
+				} else if (base_Up == "z13_2") {
+					$(
+						'<tr class="newDiv tableBody_1" data-base="z11" data-Id="' +
+							id_Up +
+							'"> \
+							<td><img src="../assets/images/history/' +
+							res["image"] +
+							'"><input type="file" class="file"></td>\
+							<td><input type="text" value ="' +
+							title_Up +
+							'"><input type="text" value = "' +
+							title_Up_2 +
+							'"></td>\
+                        <td><textarea class="textarea" cols="30" rows="6"">' +
+							textIns +
+							'</textarea><textarea class="textarea_1" cols="30" rows="6">' +
+							textIns_2 +
+							'</textarea></td> \
+                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td><td><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
                     </tr>'
 					).replaceAll(thisContent);
 				} else if (base_Up == "z15") {

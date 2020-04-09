@@ -7,7 +7,7 @@ if (!isset($_SESSION['userName'])) {
 }
 
 $newsQuery = mysqli_query($connDB, "SELECT * FROM packaging ORDER BY id DESC");
-$newsQueryHead = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng`, `head_image` FROM packaging  WHERE `head_title` IS NOT NULL AND  `head_title_eng` IS NOT NULL AND `head_image` IS NOT NULL");
+$newsQueryHead = mysqli_query($connDB, "SELECT  `id`, `head_title`, `head_title_eng`, `head_image` FROM packaging  WHERE `head_title` IS NOT NULL AND  `head_title_eng` IS NOT NULL AND `head_image` IS NOT NULL");
 
 //ini_set('display_errors','Off');
 ?>
@@ -38,7 +38,7 @@ $newsQueryHead = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng`, `
     <!-- =============================================================================== -->
     <!-- ============================== Insert Section =================================== -->
 
-    <p class="instalHead">Instal New Division</p>
+    <p class="instalHead">Insert Souvenir Shop</p>
     <table class="table table-bordered table_1">
         <thead>
             <tr class="tableHead_1">
@@ -49,9 +49,12 @@ $newsQueryHead = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng`, `
             </tr>
         </thead>
         <tbody>
-            <tr class="tableBody_1" data-b="z4">
+            <tr class="tableBody_1" data-b="z13">
                 <td><input type="file" class="file" style="width:none;"></td>
-                <td><input type="text" class="headertext" placeholder="Header Title"></td>
+                <td>
+                    <input type="text" class="title" placeholder="Title in Armenian">
+                    <input type="text" class="title_2" placeholder="Title in English">
+                </td>
                 <td>
                     <textarea cols="30" rows="4" class="textarea" placeholder="page 1"></textarea>
                     <textarea cols="30" rows="4" class="textarea_2" placeholder="page 2"></textarea>
@@ -68,12 +71,11 @@ $newsQueryHead = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng`, `
     <table class="table table_1">
         <thead>
             <tr class="tableHead_1">
-                <th>Search File</th>
-                <th>Title (2 pages)</th>
-                <th>Shop image</th>
+                <th>Image</th>
                 <th>Title (2 pages)</th>
                 <th>Text (2 pages)</th>
-                <th>Submit</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody class="adminContent">
@@ -81,18 +83,20 @@ $newsQueryHead = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng`, `
             if (mysqli_num_rows($newsQueryHead) > 0) {
                 while ($newsQueryHeadDiv = mysqli_fetch_assoc($newsQueryHead)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z4">
+                    <tr class="newDiv tableBody_1" data-base="z13_1" data-Id="<?php echo $newsQueryHeadDiv['id']; ?>">
 
                         <td>
                             <img src="../assets/images/shop/<?php echo $newsQueryHeadDiv['head_image']; ?>">
                             <input type="file" class="file">
                         </td>
                         <td>
-                            <input type="text" class="clockIns" value="<?php echo $newsQueryHeadDiv['head_title']; ?>">
-                            <input type="text" class="clockIns" value="<?php echo $newsQueryHeadDiv['head_title_eng']; ?>">
+                            <input type="text" class="title" value="<?php echo $newsQueryHeadDiv['head_title']; ?>">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
+                            <input type="text" class="title_2" value="<?php echo $newsQueryHeadDiv['head_title_eng']; ?>">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
                         </td>
                     </tr>
             <?php
@@ -103,24 +107,26 @@ $newsQueryHead = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng`, `
             if (mysqli_num_rows($newsQuery) > 0) {
                 while ($newsDiv = mysqli_fetch_assoc($newsQuery)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z4" data-Id="<?php echo $newsDiv['id']; ?>">
+                    <tr class="newDiv tableBody_1" data-base="z13_2" data-Id="<?php echo $newsDiv['id']; ?>">
 
                         <td>
                             <img src="../assets/images/shop/<?php echo $newsDiv['image']; ?>">
                             <input type="file" class="file">
                         </td>
                         <td>
-                            <input type="text" class="textArm" value="<?php echo $newsDiv['title']; ?>">
-                            <input type="text" class="textEng" value="<?php echo $newsDiv['title_eng']; ?>">
+                            <input type="text" class="title" value="<?php echo $newsDiv['title']; ?>">
+                            <input type="text" class="title_2" value="<?php echo $newsDiv['title_eng']; ?>">
                         </td>
                         <td>
-                            <textarea cols="30" rows="4" class="textarea"><?php echo $newsDiv['description']; ?></textarea>
-                            <textarea cols="30" rows="4" class="textarea_2"><?php echo $newsDiv['description_eng']; ?></textarea>
+                            <textarea cols="30" rows="6" class="textarea"><?php echo $newsDiv['description']; ?></textarea>
+                            <textarea cols="30" rows="6" class="textarea_2"><?php echo $newsDiv['description_eng']; ?></textarea>
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                            <button type="button" class="btn btn-danger" id="DeleteButt">DELETE</button>
+                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
                         </td>
                     </tr>
             <?php
@@ -130,7 +136,6 @@ $newsQueryHead = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng`, `
         </tbody>
     </table>
     <!-- ============================================================================================ -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../assets/js/scriptAdmin.js"></script>
 </body>

@@ -140,7 +140,6 @@ $newsTextQuery = mysqli_query($connDB, "SELECT * FROM product_desc ORDER BY `id`
         </tbody>
     </table>
     <!-- ============================================================================================ -->
-
     <script src="../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../assets/js/scriptAdmin.js"></script>
 </body>

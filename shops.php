@@ -1,6 +1,6 @@
 <?php
 require "connect.php";
-$packaging = mysqli_query($connDB, "SELECT * FROM `packaging`");
+$packaging = mysqli_query($connDB, "SELECT * FROM `packaging` ORDER BY id DESC");
 $packagingHead = mysqli_query($connDB, "SELECT `head_image` FROM `packaging` WHERE head_image IS NOT NULL");
 $packagingTitle = mysqli_query($connDB, "SELECT `head_title` FROM `packaging`  WHERE head_title IS NOT NULL");
 $contact = mysqli_query($connDB, "SELECT * FROM `contact`");
@@ -95,7 +95,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                     </div>
                     <div class="col-md-8 pb-30">
                         <div class="sov-text">
-                            <h1><?php echo $packagingInfo['text'] ?></h1>
+                            <h1><?php echo $packagingInfo['title'] ?></h1>
                             <p class="toogle-hidden"><?php echo  nl2br($packagingInfo['description']) ?></p>
                             <button class="toggle-button1 show-button" class="show-button"><img
                                     src="assets/images/toogle.png"></button>
