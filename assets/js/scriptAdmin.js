@@ -469,7 +469,8 @@ $(".updtaButt").click(function () {
 		base_Up == "z15" ||
 		base_Up == "z13_1" ||
 		base_Up == "z9_1" ||
-		base_Up == "z9_2"
+		base_Up == "z9_2" ||
+		base_Up == "z5_1"
 	) {
 		var title_Up = thisParChil.children(".title").val().trim();
 		var title_Up_2 = thisParChil.children(".title_2").val().trim();
@@ -484,8 +485,7 @@ $(".updtaButt").click(function () {
 		url: "ajax.php",
 		data: ArrayDat,
 		success: function (res) {
-			// window.location.reload();
-			console.log(res);
+			window.location.reload();
 			if (res != "") {
 				if (base_Up == "z1") {
 					$(

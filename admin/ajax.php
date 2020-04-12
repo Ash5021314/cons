@@ -83,6 +83,10 @@ if (isset($_POST['database_ins'])) {
         $base_NameAdres = ["visit_desc", "../assets/images/visit/"];
         $sql_date = "description, description_eng, image";
         $sql_insBaseDate = "'$textIns'" . "," . "'$textIns_2'" . "," . "'$NewFileName'";
+    } else if ($database_num == "z5") {
+        $base_NameAdres = ["map_idea", "../assets/images/map/"];
+        $sql_date = "image";
+        $sql_insBaseDate = "'$NewFileName'";
     } else if ($database_num == "z7") {
         $base_NameAdres = ["follow", "../assets/images/socialIcon/"];
         $sql_date = "Icon_link, icon";
@@ -142,6 +146,8 @@ if (isset($_POST['DeleteId'])) {
         $delBaseName = "product_desc";
     } else if ($_POST['BaseN'] == "z4_1") {
         $delBaseName = "visit_desc";
+    } else if ($_POST['BaseN'] == "z5_2") {
+        $delBaseName = "map_idea";
     } else if ($_POST['BaseN'] == "z7") {
         $delBaseName = "follow";
     } else if ($_POST['BaseN'] == "z8") {
@@ -285,6 +291,9 @@ if (isset($_POST['base_Up'])) {
     } else if ($database_num == "z4_1") {
         $base_NameAdress = ["visit_desc", "../assets/images/visit/"];
         $sql_date = "description='$textIns', description_eng='$textIns_2', image='$NewFileName'";
+    } else if ($database_num == "z5_2") {
+        $base_NameAdress = ["map_idea", "../assets/images/map/"];
+        $sql_date = "image='$NewFileName'";
     } else if ($database_num == "z6") {
         $base_NameAdress = ["idea"];
         $sql_date = "title = '$titleIns',title_eng = '$titleIns_2', text='$textIns', text_eng='$textIns_2'";
@@ -351,6 +360,17 @@ if (isset($_POST['base_Up'])) {
         }
         die();
     }
+    if ($database_num == "z5_1") {
+        $titleIns = htmlentities($_POST['title_Up'], ENT_QUOTES, "UTF-8");
+        $titleIns_2 = htmlentities($_POST['title_Up_2'], ENT_QUOTES, "UTF-8");
+        $Updata = mysqli_query($connDB, "UPDATE `map_idea` SET title='$titleIns', title_eng='$titleIns_2' WHERE id = '1'");
+        echo 3;
+        if ($Updata) {
+            echo 4;
+            echo  $NewFileName;
+        } else {
+        }
+    }
     if ($database_num == "z9_3") {
         $titleIns1 = htmlentities($_POST['title_Up'], ENT_QUOTES, "UTF-8");
         $titleIns_21 = htmlentities($_POST['title_Up_2'], ENT_QUOTES, "UTF-8");
@@ -388,9 +408,6 @@ if (isset($_POST['base_Up'])) {
 
 /***************************************************************************************** *
  ********************************************************************************************/
-
-
-
 
 
 

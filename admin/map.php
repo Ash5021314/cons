@@ -55,7 +55,7 @@ $count = mysqli_num_rows($hedQuery);
             </tr>
         </thead>
         <tbody>
-            <tr class="tableBody_1" data-b="z1">
+            <tr class="tableBody_1" data-b="z5">
                 <td><input type="file" class="file"></td>
                 <td><button type="button" class="btn btn-success" id="buttInsert">INSERT</button></td>
             </tr>
@@ -76,16 +76,14 @@ $count = mysqli_num_rows($hedQuery);
             if (mysqli_num_rows($hedQueryHead) > 0) {
                 while ($hedQueryHeadDiv = mysqli_fetch_assoc($hedQueryHead)) {
             ?>
-            <tr class="newDiv tableBody_1" data-base="z1" data-Id="<?php echo $headDiv['id']; ?>">
+            <tr class="newDiv tableBody_1" data-base="z5_1" data-Id="<?php echo $hedQueryHeadDiv['id']; ?>">
 
                 <td>
-                    <input type="text" class="title" value="<?php echo $hedQueryHeadDiv['title']; ?>"
-                        placeholder="page 1">
-                    <input type="text" class="title_2" value="<?php echo $hedQueryHeadDiv['title_eng']; ?>"
-                        placeholder="page 2">
+                    <input type="text" class="title" value="<?php echo $hedQueryHeadDiv['title']; ?>">
+                    <input type="text" class="title_2" value="<?php echo $hedQueryHeadDiv['title_eng']; ?>">
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
                 </td>
             </tr>
             <?php
@@ -110,15 +108,15 @@ $count = mysqli_num_rows($hedQuery);
             if (mysqli_num_rows($hedQuery) > 0) {
                 while ($headDiv = mysqli_fetch_assoc($hedQuery)) {
             ?>
-            <tr class="newDiv tableBody_1" data-base="z1" data-Id="<?php echo $headDiv['id']; ?>">
+            <tr class="newDiv tableBody_1" data-base="z5_2" data-Id="<?php echo $headDiv['id']; ?>">
                 <td>
                     <img src="../assets/images/map/<?php echo $headDiv['image']; ?>">
                     <input type="file" class="file">
                 </td>
 
                 <td>
-                    <button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button>
-                    <button type="button" class="btn btn-danger" id="DeleteButt">DELETE</button>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                    <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
                 </td>
             </tr>
             <?php

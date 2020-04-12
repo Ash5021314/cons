@@ -169,6 +169,9 @@ button:focus {
 	flex-direction: column;
 	justify-content: center;
 }
+.flex {
+	display: flex;
+}
 /* General Home
    ========================================================================== */
 
@@ -1148,6 +1151,7 @@ html {
 }
 
 .popup figure img {
+	height: 400px;
 	position: relative;
 	z-index: 2;
 	border-radius: 15px;
@@ -3746,7 +3750,9 @@ html {
 #slider-image-3:target ~ .image-holder {
 	left: -800px;
 }
-
+#slider-image-4:target ~ .image-holder {
+	left: -1200px;
+}
 .button-holder {
 	position: relative;
 	top: -20px;
@@ -3850,4 +3856,36 @@ html {
 .header-content .container1 {
 	height: 100% !important;
 	right: 0;
+}
+#to_top {
+	cursor: pointer;
+	height: 55px;
+	width: 60px;
+	position: fixed;
+	left: 86%;
+	top: 77%;
+	opacity: 0;
+	z-index: 9999999;
+}
+#to_top p {
+	text-align: center;
+	font-weight: 900;
+	color: #a58f78;
+	font-size: 16px;
+	margin-top: 10px;
+}
+.to_top_ru {
+	font-size: 11px !important;
+}
+.circle {
+	border: 5px solid #a58f78;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	margin: 0;
+}
+.circle i {
+	font-size: 35px;
+	margin-left: 8px;
+	color: #a58f78;
 }

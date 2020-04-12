@@ -31,6 +31,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/util.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -60,6 +61,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                         </li>
                     </ul>
                 </div>
+                <a style="margin-left:20px" href="eng/constact-us.php"><img src="assets/images/englishFlag.png" /></a>
             </nav>
         </div>
     </header>
@@ -191,8 +193,14 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <footer>
         <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
     </footer>
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/main.js"></script>
+    <div id="to_top">
+        <div class="flex justifyCenter">
+            <div class="circle flex justifyCenter alignCenter">
+                <b><i class="fa fa-angle-up"></i></b>
+            </div>
+        </div>
+        <p>To Top</p>
+    </div>
     <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -203,6 +211,9 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
 
     gtag('config', 'UA-23581568-13');
     </script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/index.js"></script>
+
 </body>
 
 </html>

@@ -1,20 +1,20 @@
 //============================Galery Main Page Start======================
 
 popup = {
-	init: function() {
-		$("figure").click(function() {
+	init: function () {
+		$("figure").click(function () {
 			popup.open($(this));
 		});
 
 		$(document)
-			.on("click", ".popup img", function() {
+			.on("click", ".popup img", function () {
 				return false;
 			})
-			.on("click", ".popup", function() {
+			.on("click", ".popup", function () {
 				popup.close();
 			});
 	},
-	open: function($figure) {
+	open: function ($figure) {
 		$(".gallery").addClass("pop");
 		$popup = $('<div class="popup" />').appendTo($("body"));
 		$fig = $figure.clone().appendTo($(".popup"));
@@ -25,21 +25,21 @@ popup = {
 		$shadow = $('<div class="shadow" />').appendTo($fig);
 		src = $("img", $fig).attr("src");
 		$shadow.css({
-			backgroundImage: "url(" + src + ")"
+			backgroundImage: "url(" + src + ")",
 		});
 		$bg.css({
-			backgroundImage: "url(" + src + ")"
+			backgroundImage: "url(" + src + ")",
 		});
-		setTimeout(function() {
+		setTimeout(function () {
 			$(".popup").addClass("pop");
 		}, 10);
 	},
-	close: function() {
+	close: function () {
 		$(".gallery, .popup").removeClass("pop");
-		setTimeout(function() {
+		setTimeout(function () {
 			$(".popup").remove();
 		}, 100);
-	}
+	},
 };
 
 popup.init();
@@ -47,7 +47,7 @@ popup.init();
 
 //====================================slider Big Start==============================
 
-$(function() {
+$(function () {
 	// slider type
 	$t = "slide"; // opitions are fade and slide
 	//variables
@@ -61,23 +61,21 @@ $(function() {
 	$ss = $n * $w; // slideshow width
 	$y = $(".change-name").text();
 	// if($n == )
-	console.log($y);
 	var bb;
 	for (var i = 0; i < $n; i++) {
 		bb = [i];
-		console.log(bb);
 	}
 
 	function timer() {
 		$(".timer").animate(
 			{
-				width: $w
+				width: $w,
 			},
 			$d
 		);
 		$(".timer").animate(
 			{
-				width: 0
+				width: 0,
 			},
 			0
 		);
@@ -90,21 +88,17 @@ $(function() {
 		var setCSS = {
 			position: "absolute",
 			top: "0",
-			left: "0"
+			left: "0",
 		};
 
 		$(".slide, .slide1").css(setCSS);
 
 		//show first item
-		$(".slide, .slide1")
-			.eq($i)
-			.show();
+		$(".slide, .slide1").eq($i).show();
 
-		setInterval(function() {
+		setInterval(function () {
 			timer();
-			$(".slide, .slide1")
-				.eq($i)
-				.fadeOut($f);
+			$(".slide, .slide1").eq($i).fadeOut($f);
 			if ($i == $n - 1) {
 				$i = 0;
 			} else {
@@ -112,9 +106,9 @@ $(function() {
 			}
 			$(".slide, .slide1")
 				.eq($i)
-				.fadeIn($f, function() {
+				.fadeIn($f, function () {
 					$(".timer").css({
-						width: "0"
+						width: "0",
 					});
 				});
 		}, $d);
@@ -125,40 +119,36 @@ $(function() {
 		var setSlideCSS = {
 			float: "left",
 			display: "inline-block",
-			width: $c
+			width: $c,
 		};
 		var setSlideShowCSS = {
-			width: $ss // set width of slideshow container
+			width: $ss, // set width of slideshow container
 		};
 		$(".slide").css(setSlideCSS);
 		$(".slide1").css(setSlideCSS);
 
 		$(".slideshow").css(setSlideShowCSS);
 		$(".slideshow1").css(setSlideShowCSS);
-		setInterval(function() {
+		setInterval(function () {
 			timer();
 			$(".slideshow").animate(
 				{
-					left: -$w
+					left: -$w,
 				},
 				$s,
-				function() {
+				function () {
 					// to create infinite loop
-					$(".slideshow")
-						.css("left", 0)
-						.append($(".slide:first"));
+					$(".slideshow").css("left", 0).append($(".slide:first"));
 				}
 			);
 			$(".slideshow1").animate(
 				{
-					left: -$w
+					left: -$w,
 				},
 				$s,
-				function() {
+				function () {
 					// to create infinite loop
-					$(".slideshow1")
-						.css("left", 0)
-						.append($(".slide1:first"));
+					$(".slideshow1").css("left", 0).append($(".slide1:first"));
 				}
 			);
 		}, $d);
@@ -176,7 +166,7 @@ $(function() {
 
 //====================================Small carousel Slider Start 1 ==============================
 
-$("#myCarousel").on("slide.bs.carousel", function(e) {
+$("#myCarousel").on("slide.bs.carousel", function (e) {
 	var $e = $(e.relatedTarget);
 	var idx = $e.index();
 	var itemsPerSlide = 4;
@@ -187,20 +177,16 @@ $("#myCarousel").on("slide.bs.carousel", function(e) {
 		for (var i = 0; i < it; i++) {
 			// append slides to end
 			if (e.direction == "left") {
-				$(".carousel-item")
-					.eq(i)
-					.appendTo(".carousel-inner");
+				$(".carousel-item").eq(i).appendTo(".carousel-inner");
 			} else {
-				$(".carousel-item")
-					.eq(0)
-					.appendTo(".carousel-inner");
+				$(".carousel-item").eq(0).appendTo(".carousel-inner");
 			}
 		}
 	}
 });
 
 $("#myCarousel").carousel({
-	interval: 2000
+	interval: 2000,
 });
 
 // $(document).ready(function() {
@@ -222,7 +208,7 @@ $("#myCarousel").carousel({
 
 //====================================Small carousel Slider Start 2 ==============================
 
-$("#myCarousel_1").on("slide.bs.carousel", function(e) {
+$("#myCarousel_1").on("slide.bs.carousel", function (e) {
 	console.log("asd");
 	var $e = $(e.relatedTarget);
 	var idx = $e.index();
@@ -234,20 +220,16 @@ $("#myCarousel_1").on("slide.bs.carousel", function(e) {
 		for (var i = 0; i < it; i++) {
 			// append slides to end
 			if (e.direction == "left") {
-				$(".carousel-item_1")
-					.eq(i)
-					.appendTo(".carousel-inner_1");
+				$(".carousel-item_1").eq(i).appendTo(".carousel-inner_1");
 			} else {
-				$(".carousel-item_1")
-					.eq(0)
-					.appendTo(".carousel-inner_1");
+				$(".carousel-item_1").eq(0).appendTo(".carousel-inner_1");
 			}
 		}
 	}
 });
 
 $("#myCarousel_1").carousel({
-	interval: 2000
+	interval: 2000,
 });
 
 // $(document).ready(function() {
@@ -271,22 +253,34 @@ $("#myCarousel_1").carousel({
 
 $(".toogle-text1").hide();
 
-$(document).ready(function() {
-	$(".toggle-button1").click(function() {
-		$(this)
-			.prev()
-			.toggleClass("toogle-show");
+$(document).ready(function () {
+	$(".toggle-button1").click(function () {
+		$(this).prev().toggleClass("toogle-show");
 	});
 });
 $("#toogle-text2").hide();
 
 //====================================Hide/Show text End ==============================
 
-$(document).ready(function() {
+$(document).ready(function () {
 	$(".regular").slick({
 		dots: false,
 		infinite: true,
 		slidesToShow: 4,
-		slidesToScroll: 1
+		slidesToScroll: 1,
 	});
+	$(".imgId").click(function () {
+		var as = $(this).attr("data-id");
+		$("html, body").animate(
+			{ scrollTop: $("#col-" + as + "").offset().top },
+			1000
+		);
+	});
+});
+$(document).scroll(function () {
+	$("#to_top").css("opacity", $(document).scrollTop() / 500);
+});
+
+$("#to_top").click(function () {
+	$("html, body").animate({ scrollTop: 0 }, 1000);
 });

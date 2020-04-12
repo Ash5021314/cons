@@ -13,8 +13,7 @@ $Mixed = json_decode($Text);
 <head>
     <title>Armenian Coins</title>
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="Armenian Coins">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#039def">
@@ -30,10 +29,10 @@ $Mixed = json_decode($Text);
     <meta name="twitter:site" content="@armeniancoins">
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
-        id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
@@ -60,6 +59,7 @@ $Mixed = json_decode($Text);
                         </li>
                     </ul>
                 </div>
+                <a style="margin-left:20px" href="eng/garn.php"><img src="assets/images/englishFlag.png" /></a>
             </nav>
         </div>
     </header>
@@ -70,10 +70,12 @@ $Mixed = json_decode($Text);
         <section>
             <div class="main-container">
                 <div class="col-md-12 row pt-15">
-                    <div class="col-md-5 pb-30">
-                        <div class="collection-picture">
+                    <div class="col-md-5 pb-30 flex">
+                        <div class="collection-picture ">
                             <img src="assets/images/collection/<? echo $Mixed->seccond_image; ?>">
-                            <!-- <img src="assets/images/coll-coin-1.png"> -->
+                        </div>
+                        <div class="collection-picture ">
+                            <img src="assets/images/collection/<? echo $Mixed->third_image; ?>">
                         </div>
                     </div>
                     <div class="col-md-7 pb-30">
@@ -93,31 +95,30 @@ $Mixed = json_decode($Text);
             <div class="idea-section row">
                 <div class="left-block">
                     <?php
-          if (mysqli_num_rows($contact) > 0) {
-            while ($contactUs =  mysqli_fetch_assoc($contact)) {
-          ?>
-                    <p class="contact">Contact Us</p>
-                    <p>Email: <?php echo $contactUs['email'] ?></p>
-                    <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
-                    <p><?php echo $contactUs['phone_2'] ?></p>
+                    if (mysqli_num_rows($contact) > 0) {
+                        while ($contactUs =  mysqli_fetch_assoc($contact)) {
+                    ?>
+                            <p class="contact">Contact Us</p>
+                            <p>Email: <?php echo $contactUs['email'] ?></p>
+                            <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                            <p><?php echo $contactUs['phone_2'] ?></p>
                     <?php
-            }
-          }
-          ?>
+                        }
+                    }
+                    ?>
                 </div>
                 <div class="right-block">
                     <p class="follow">Follow Us</p>
                     <?php
-          if (mysqli_num_rows($follow) > 0) {
-            while ($followUs =  mysqli_fetch_assoc($follow)) {
-          ?>
-                    <a href="<?php echo $followUs['icon_link'] ?>"><img
-                            src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
+                    if (mysqli_num_rows($follow) > 0) {
+                        while ($followUs =  mysqli_fetch_assoc($follow)) {
+                    ?>
+                            <a href="<?php echo $followUs['icon_link'] ?>"><img src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
 
                     <?php
-            }
-          }
-          ?>
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </section>
@@ -125,8 +126,15 @@ $Mixed = json_decode($Text);
     <footer>
         <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
     </footer>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
-        id="bootstrap-css">
+    <div id="to_top">
+        <div class="flex justifyCenter">
+            <div class="circle flex justifyCenter alignCenter">
+                <b><i class="fa fa-angle-up"></i></b>
+            </div>
+        </div>
+        <p>To Top</p>
+    </div>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="assets/js/index.js"></script>
 </body>

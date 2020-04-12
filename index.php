@@ -37,6 +37,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -65,8 +66,10 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         <li class="nav-item">
                             <a class="nav-link" href="contact-us.php">contact us</a>
                         </li>
+
                     </ul>
                 </div>
+                <a style="margin-left:20px" href="eng/index.php"><img src="assets/images/englishFlag.png" /></a>
             </nav>
         </div>
     </header>
@@ -174,12 +177,13 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
             </div>
         </section>
         <section>
-            <div class="find-product"> <?php
-                                        while ($mapImage =  mysqli_fetch_assoc($mapTitle)) {
-                                        ?>
+            <div class="find-product">
+                <?php
+                while ($mapImage =  mysqli_fetch_assoc($mapTitle)) {
+                ?>
                 <p class="section-title"><?php echo $mapImage['title'] ?></p>
                 <?php
-                                        }
+                }
                 ?>
                 <div class="map">
                     <img src="assets/images/map1.png" style="width: 850px; position:relative; " class="map" />
@@ -269,8 +273,14 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
     <footer>
         <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
     </footer>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
-        id="bootstrap-css">
+    <div id="to_top">
+        <div class="flex justifyCenter">
+            <div class="circle flex justifyCenter alignCenter">
+                <b><i class="fa fa-angle-up"></i></b>
+            </div>
+        </div>
+        <p>To Top</p>
+    </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="assets/js/index.js"></script>
 </body>
