@@ -284,3 +284,11 @@ $(document).scroll(function () {
 $("#to_top").click(function () {
 	$("html, body").animate({ scrollTop: 0 }, 1000);
 });
+$(".header-exople, .find-button").click(function () {
+	$("html, body").animate(
+		{
+			scrollTop: $(".scroll-section").offset().top,
+		},
+		1000
+	);
+});

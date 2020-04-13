@@ -10,8 +10,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
 <head>
     <title>Armenian Coins</title>
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="Armenian Coins">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#039def">
@@ -29,8 +28,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <meta name="twitter:description" content="Armenian Coins">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../assets/css/util.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -60,8 +58,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                         </li>
                     </ul>
                 </div>
-                <a style="margin-left:20px" href="../constact-us.php"><img
-                        src="../assets/images/armenianFlag.png" /></a>
+                <a style="margin-left:20px" href="../constact-us.php"><img src="../assets/images/armenianFlag.png" /></a>
             </nav>
         </div>
     </header>
@@ -79,8 +76,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                                     <input class="input100" type="text" name="name" placeholder="Enter Your Name">
                                 </div>
 
-                                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100"
-                                    data-validate="Enter Your Email (e@a.x)">
+                                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate="Enter Your Email (e@a.x)">
                                     <span class="label-input100">Email *</span>
                                     <input class="input100" type="text" name="email" placeholder="Enter Your Email ">
                                 </div>
@@ -95,24 +91,21 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                                         <span class="label-input100">What type of products do you sell?</span>
 
                                         <div class="contact100-form-radio m-t-15">
-                                            <input class="input-radio100" id="radio1" type="radio" name="type-product"
-                                                value="physical" checked="checked">
+                                            <input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical" checked="checked">
                                             <label class="label-radio100" for="radio1">
                                                 Phycical Products
                                             </label>
                                         </div>
 
                                         <div class="contact100-form-radio">
-                                            <input class="input-radio100" id="radio2" type="radio" name="type-product"
-                                                value="digital">
+                                            <input class="input-radio100" id="radio2" type="radio" name="type-product" value="digital">
                                             <label class="label-radio100" for="radio2">
                                                 Digital Products
                                             </label>
                                         </div>
 
                                         <div class="contact100-form-radio">
-                                            <input class="input-radio100" id="radio3" type="radio" name="type-product"
-                                                value="service">
+                                            <input class="input-radio100" id="radio3" type="radio" name="type-product" value="service">
                                             <label class="label-radio100" for="radio3">
                                                 Services Consulting
                                             </label>
@@ -134,11 +127,9 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                                     </div>
                                 </div>
 
-                                <div class="wrap-input100 validate-input bg0 rs1-alert-validate"
-                                    data-validate="Please Type Your Message">
+                                <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate="Please Type Your Message">
                                     <span class="label-input100">Message</span>
-                                    <textarea class="input100" name="message"
-                                        placeholder="Your message here..."></textarea>
+                                    <textarea class="input100" name="message" placeholder="Your message here..."></textarea>
                                 </div>
 
                                 <div class="container-contact100-form-btn">
@@ -158,10 +149,10 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                                     if (mysqli_num_rows($contact) > 0) {
                                         while ($contactUs =  mysqli_fetch_assoc($contact)) {
                                     ?>
-                                    <p class="contact">Contact Us</p>
-                                    <p>Email: <?php echo $contactUs['email'] ?></p>
-                                    <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
-                                    <p><?php echo $contactUs['phone_2'] ?></p>
+                                            <p class="contact">Contact Us</p>
+                                            <p>Email: <?php echo $contactUs['email'] ?></p>
+                                            <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                                            <p><?php echo $contactUs['phone_2'] ?></p>
                                     <?php
                                         }
                                     }
@@ -173,9 +164,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                                     if (mysqli_num_rows($follow) > 0) {
                                         while ($followUs =  mysqli_fetch_assoc($follow)) {
                                     ?>
-                                    <a href="<?php echo $followUs['icon_link'] ?>"><img
-                                            src="../assets/images/socialIcon/<?php echo $followUs['icon'] ?>"
-                                            style="width: 35px"></a>
+                                            <a href="<?php echo $followUs['icon_link'] ?>"><img src="../assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
 
                                     <?php
                                         }
@@ -193,18 +182,19 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <footer>
         <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
     </footer>
-    <script src="../assets/js/index.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/index.js"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-23581568-13');
+        gtag('config', 'UA-23581568-13');
     </script>
+
 </body>
 
 </html>

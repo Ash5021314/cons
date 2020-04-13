@@ -239,6 +239,7 @@ body * {
 	bottom: 240px;
 	left: 80px;
 	border: 1px solid #a58f78;
+	cursor: pointer;
 }
 
 .header-content a:hover {
@@ -393,6 +394,7 @@ body * {
 	position: relative;
 	bottom: 450px;
 	left: 925px;
+	cursor: pointer;
 }
 
 .find-product .find-button > p {

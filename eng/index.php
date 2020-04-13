@@ -36,6 +36,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
     <meta name="twitter:site" content="@armeniancoins">
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -108,11 +109,9 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
             </div>
 
         </div>
-        <a href="#">
-            <div class="header-exople">
-                <p>Explore More</p>
-            </div>
-        </a>
+        <div class="header-exople">
+            <p>Explore More</p>
+        </div>
     </div>
     <div class="main">
         <section>
@@ -142,7 +141,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
             </div>
         </section>
         <section>
-            <div class="place-section">
+            <div class="place-section scroll-section">
                 <?php
                 if (mysqli_num_rows($visit) > 0) {
                     while ($visitTitle =  mysqli_fetch_assoc($visit)) {
@@ -267,8 +266,13 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
     <footer>
         <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
     </footer>
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
-        id="bootstrap-css"> -->
+    <div id="to_top">
+        <div class="flex justifyCenter">
+            <div class="circle flex justifyCenter alignCenter">
+                <b><i class="fa fa-angle-up"></i></b>
+            </div>
+        </div>
+    </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../assets/js/index.js"></script>
 </body>

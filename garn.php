@@ -2,7 +2,21 @@
 require "connect.php";
 $contact = mysqli_query($connDB, "SELECT * FROM `contact`");
 $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
-$Text = urldecode($_REQUEST['cluster']);
+// $Text = urldecode($_REQUEST['cluster']);
+// $Mixed = json_decode($Text);
+// $Text2 = urldecode($_REQUEST['cluster2']);
+// $Mixed2 = json_decode($Text2);
+
+// if (isset($_REQUEST['cluster'])) {
+//     echo 'cluster';
+// } else if (isset($_REQUEST['cluster2'])) {
+//     echo 'cluster2';
+// }
+if (isset($_REQUEST['cluster'])) {
+    $Text =  urldecode($_REQUEST['cluster']);
+} else if (isset($_REQUEST['cluster2'])) {
+    $Text =  urldecode($_REQUEST['cluster2']);
+}
 $Mixed = json_decode($Text);
 ?>
 
@@ -46,20 +60,24 @@ $Mixed = json_decode($Text);
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="souvenir.php">souvenir</a>
+                            <a class="nav-link" href="souvenir.php">հուշանվեր</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="terminal.php">terminals</a>
+                            <a class="nav-link" href="terminal.php">տերմինալ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="history.php">history</a>
+                            <a class="nav-link" href="history.php">պատմություն</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact-us.php">contact us</a>
+                            <a class="nav-link" href="contact-us.php">հետադարձ կապ</a>
                         </li>
                     </ul>
                 </div>
-                <a style="margin-left:20px" href="eng/garn.php"><img src="assets/images/englishFlag.png" /></a>
+                <?
+                $Mixed1  = json_encode($Mixed);
+                $RequestText1 = urlencode($Text);
+                ?>
+                <a style="margin-left:20px" href="eng/garn.php?cluster1=<?php echo $RequestText1; ?>"><img src="assets/images/englishFlag.png" /></a>
             </nav>
         </div>
     </header>
@@ -98,9 +116,9 @@ $Mixed = json_decode($Text);
                     if (mysqli_num_rows($contact) > 0) {
                         while ($contactUs =  mysqli_fetch_assoc($contact)) {
                     ?>
-                            <p class="contact">Contact Us</p>
-                            <p>Email: <?php echo $contactUs['email'] ?></p>
-                            <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                            <p class="contact">հետադարձ կապ</p>
+                            <p>Էլ․ Փոստ: <?php echo $contactUs['email'] ?></p>
+                            <p>Հեռախոսահամար: <?php echo $contactUs['phone_1'] ?></p>
                             <p><?php echo $contactUs['phone_2'] ?></p>
                     <?php
                         }
@@ -108,7 +126,7 @@ $Mixed = json_decode($Text);
                     ?>
                 </div>
                 <div class="right-block">
-                    <p class="follow">Follow Us</p>
+                    <p class="follow">Հետևեք մեզ</p>
                     <?php
                     if (mysqli_num_rows($follow) > 0) {
                         while ($followUs =  mysqli_fetch_assoc($follow)) {
@@ -124,7 +142,7 @@ $Mixed = json_decode($Text);
         </section>
     </div>
     <footer>
-        <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
+        <p class="footer-block">© 2019 Armenian coins, Բոլոր իրավունքները պաշտպանված են.</p>
     </footer>
     <div id="to_top">
         <div class="flex justifyCenter">
@@ -132,7 +150,6 @@ $Mixed = json_decode($Text);
                 <b><i class="fa fa-angle-up"></i></b>
             </div>
         </div>
-        <p>To Top</p>
     </div>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

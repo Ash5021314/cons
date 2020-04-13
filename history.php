@@ -50,16 +50,17 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="souvenir.php">souvenir</a>
+                            <a class="nav-link" href="souvenir.php">հուշանվեր</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="terminal.php">terminals</a>
+                            <a class="nav-link" href="terminal.php">տերմինալ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: #a58f78 !important;">history</a>
+                            <a class="nav-link" href="history.php" style="color: #a58f78 !important;">պատմություն</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact-us.php">contact us</a>
+                            <a class="nav-link" href="contact-us.php">հետադարձ
+                                կապ</a>
                         </li>
                     </ul>
                 </div>
@@ -87,7 +88,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
         ?>
         <section>
             <div class="our-partners">
-                <p class="section-title">OUR PARTNERS</p>
+                <p class="section-title">Մեր գործընկերները</p>
                 <div class="col-md-12">
                     <div class="owlContainer">
                         <div class="owl-carousel">
@@ -113,9 +114,9 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                     if (mysqli_num_rows($contact) > 0) {
                         while ($contactUs =  mysqli_fetch_assoc($contact)) {
                     ?>
-                    <p class="contact">Contact Us</p>
-                    <p>Email: <?php echo $contactUs['email'] ?></p>
-                    <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                    <p class="contact">հետադարձ կապ</p>
+                    <p>Էլ․ Փոստ: <?php echo $contactUs['email'] ?></p>
+                    <p>Հեռախոսահամար: <?php echo $contactUs['phone_1'] ?></p>
                     <p><?php echo $contactUs['phone_2'] ?></p>
                     <?php
                         }
@@ -123,7 +124,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                     ?>
                 </div>
                 <div class="right-block">
-                    <p class="follow">Follow Us</p>
+                    <p class="follow">Հետևեք մեզ</p>
                     <?php
                     if (mysqli_num_rows($follow) > 0) {
                         while ($followUs =  mysqli_fetch_assoc($follow)) {
@@ -140,7 +141,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
         </section>
     </div>
     <footer>
-        <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
+        <p class="footer-block">© 2019 Armenian coins, Բոլոր իրավունքները պաշտպանված են.</p>
     </footer>
     <div id="to_top">
         <div class="flex justifyCenter">
@@ -148,7 +149,6 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                 <b><i class="fa fa-angle-up"></i></b>
             </div>
         </div>
-        <p>To Top</p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">

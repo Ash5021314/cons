@@ -18,8 +18,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
 <head>
     <title>Armenian Coins</title>
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="Armenian Coins">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.json">
@@ -39,8 +38,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
@@ -55,18 +53,18 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="souvenir.php">souvenir</a>
+                            <a class="nav-link" href="souvenir.php">հուշանվեր</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="terminal.php">terminals</a>
+                            <a class="nav-link" href="terminal.php">տերմինալ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="history.php">history</a>
+                            <a class="nav-link" href="history.php">պատմություն</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact-us.php">contact us</a>
+                            <a class="nav-link" href="contact-us.php">հետադարձ
+                                կապ</a>
                         </li>
-
                     </ul>
                 </div>
                 <a style="margin-left:20px" href="eng/index.php"><img src="assets/images/englishFlag.png" /></a>
@@ -81,9 +79,9 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                     if (mysqli_num_rows($slide) > 0) {
                         while ($slider =  mysqli_fetch_assoc($slide)) {
                     ?>
-                    <div class="slide">
-                        <img src="assets/images/product/<?php echo $slider['slide_image'] ?>" style="width: 850px" />
-                    </div>
+                            <div class="slide">
+                                <img src="assets/images/product/<?php echo $slider['slide_image'] ?>" style="width: 850px" />
+                            </div>
                     <?php
                         }
                     }
@@ -100,9 +98,9 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         <?
                         while ($row = mysqli_fetch_assoc($sliders)) {
                         ?>
-                        <div class="slide1">
-                            <p class=""><?php echo $row['text'] ?></p>
-                        </div>
+                            <div class="slide1">
+                                <p class=""><?php echo $row['text'] ?></p>
+                            </div>
                         <?
 
                         }
@@ -113,11 +111,9 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
             </div>
 
         </div>
-        <a href="#">
-            <div class="header-exople">
-                <p>Explore More</p>
-            </div>
-        </a>
+        <div class="header-exople">
+            <p>Իմանալ ավելին</p>
+        </div>
     </div>
     <div class="main">
         <section>
@@ -128,8 +124,8 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         if (mysqli_num_rows($travel) > 0) {
                             while ($travelDesc =  mysqli_fetch_assoc($travel)) {
                         ?>
-                        <h1><?php echo $travelDesc['title'] ?></h1>
-                        <p><?php echo nl2br($travelDesc['text']) ?></p>
+                                <h1><?php echo $travelDesc['title'] ?></h1>
+                                <p><?php echo nl2br($travelDesc['text']) ?></p>
                     </div>
                     <div class="col-md-4">
                         <div class="first-pic">
@@ -139,7 +135,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                             <img src="assets/images/travel/<?php echo $travelDesc['seccond_image'] ?>" />
                         </div>
                     </div>
-                    <?php
+            <?php
                             }
                         }
             ?>
@@ -152,7 +148,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                 if (mysqli_num_rows($visit) > 0) {
                     while ($visitTitle =  mysqli_fetch_assoc($visit)) {
                 ?>
-                <p class="section-title"><?php echo $visitTitle['title'] ?></p>
+                        <p class="section-title scroll-section"><?php echo $visitTitle['title'] ?></p>
                 <?php
                     }
                 }
@@ -163,11 +159,11 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         if (mysqli_num_rows($visitDesc) > 0) {
                             while ($visitDescription =  mysqli_fetch_assoc($visitDesc)) {
                         ?>
-                        <figure>
-                            <img src="assets/images/visit/<?php echo $visitDescription['image'] ?>" alt="" />
-                            <h3 class="text-center my-3"><?php echo $visitDescription['description'] ?>
-                            </h3>
-                        </figure>
+                                <figure>
+                                    <img src="assets/images/visit/<?php echo $visitDescription['image'] ?>" alt="" />
+                                    <h3 class="text-center my-3"><?php echo $visitDescription['description'] ?>
+                                    </h3>
+                                </figure>
                         <?php
                             }
                         }
@@ -181,19 +177,16 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                 <?php
                 while ($mapImage =  mysqli_fetch_assoc($mapTitle)) {
                 ?>
-                <p class="section-title"><?php echo $mapImage['title'] ?></p>
+                    <p class="section-title"><?php echo $mapImage['title'] ?></p>
                 <?php
                 }
                 ?>
                 <div class="map">
                     <img src="assets/images/map1.png" style="width: 850px; position:relative; " class="map" />
-                    <a href="#slider-image-1"><img src="assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -228px; left:150px;" /></a>
-                    <a href="#slider-image-2"><img src="assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -65px; left:540px;" /></a>
+                    <a href="#slider-image-1"><img src="assets/images/pasiv.png" style="width: 28px; position:relative; top: -228px; left:150px;" /></a>
+                    <a href="#slider-image-2"><img src="assets/images/pasiv.png" style="width: 28px; position:relative; top: -65px; left:540px;" /></a>
                     <a href="#slider-image-3">
-                        <img src="assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -380px; left:400px;" />
+                        <img src="assets/images/pasiv.png" style="width: 28px; position:relative; top: -380px; left:400px;" />
                     </a>
                 </div>
                 <div class="slider-holder">
@@ -205,18 +198,16 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         if (mysqli_num_rows($map) > 0) {
                             while ($mapImage =  mysqli_fetch_assoc($map)) {
                         ?>
-                        <img src="assets/images/map/<?php echo $mapImage['image'] ?>" class="slider-image" />
+                                <img src="assets/images/map/<?php echo $mapImage['image'] ?>" class="slider-image" />
                         <?php
                             }
                         }
                         ?>
                     </div>
                 </div>
-                <a href="#">
-                    <div class="find-button">
-                        <p>Explore More</p>
-                    </div>
-                </a>
+                <div class="find-button">
+                    <p>Իմանալ ավելին</p>
+                </div>
             </div>
         </section>
         <section>
@@ -227,10 +218,10 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                     if (mysqli_num_rows($idea) > 0) {
                         while ($ideas =  mysqli_fetch_assoc($idea)) {
                     ?>
-                    <p class="section-title"><?php echo $ideas['title'] ?></p>
-                    <div class="col-md-9">
-                        <p class="idea-text"><?php echo nl2br($ideas['text']) ?></p>
-                    </div>
+                            <p class="section-title"><?php echo $ideas['title'] ?></p>
+                            <div class="col-md-9">
+                                <p class="idea-text"><?php echo nl2br($ideas['text']) ?></p>
+                            </div>
                     <?php
                         }
                     }
@@ -241,24 +232,22 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                             if (mysqli_num_rows($contact) > 0) {
                                 while ($contactUs =  mysqli_fetch_assoc($contact)) {
                             ?>
-                            <p class="contact">Contact Us</p>
-                            <p>Email: <?php echo $contactUs['email'] ?></p>
-                            <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
-                            <p><?php echo $contactUs['phone_2'] ?></p>
+                                    <p class="contact">հետադարձ կապ</p>
+                                    <p>Էլ․ Փոստ: <?php echo $contactUs['email'] ?></p>
+                                    <p>Հեռախոսահամար: <?php echo $contactUs['phone_1'] ?></p>
+                                    <p><?php echo $contactUs['phone_2'] ?></p>
                             <?php
                                 }
                             }
                             ?>
                         </div>
                         <div class="right-block">
-                            <p class="follow">Follow Us</p>
+                            <p class="follow">Հետևեք մեզ</p>
                             <?php
                             if (mysqli_num_rows($follow) > 0) {
                                 while ($followUs =  mysqli_fetch_assoc($follow)) {
                             ?>
-                            <a href="<?php echo $followUs['icon_link'] ?>"><img
-                                    src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>"
-                                    style="width: 35px"></a>
+                                    <a href="<?php echo $followUs['icon_link'] ?>"><img src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
 
                             <?php
                                 }
@@ -271,7 +260,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
         </section>
     </div>
     <footer>
-        <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
+        <p class="footer-block">© 2019 Armenian coins, Բոլոր իրավունքները պաշտպանված են.</p>
     </footer>
     <div id="to_top">
         <div class="flex justifyCenter">
@@ -279,7 +268,6 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                 <b><i class="fa fa-angle-up"></i></b>
             </div>
         </div>
-        <p>To Top</p>
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="assets/js/index.js"></script>

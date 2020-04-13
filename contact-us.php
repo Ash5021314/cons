@@ -48,16 +48,17 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="souvenir.php">souvenir</a>
+                            <a class="nav-link" href="souvenir.php">հուշանվեր</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="terminal.php">terminals</a>
+                            <a class="nav-link" href="terminal.php">տերմինալ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="history.php">history</a>
+                            <a class="nav-link" href="history.php">պատմություն</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: #a58f78 !important;">contact us</style></a>
+                            <a class="nav-link" href="contact-us.php" style="color: #a58f78 !important;">հետադարձ
+                                կապ</a>
                         </li>
                     </ul>
                 </div>
@@ -69,84 +70,45 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
         <div class="main">
             <section>
                 <div class="idea-section">
-                    <p class="section-title">Contact Us</p>
+                    <p class="section-title">հետադարձ կապ</p>
                     <div class="col-md-12 row">
                         <div class="col-md-9">
-                            <form class="contact100-form validate-form">
+                            <form class="contact100-form validate-form" action="mess.php" method="post" name="f1">
 
                                 <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-                                    <span class="label-input100">FULL NAME *</span>
-                                    <input class="input100" type="text" name="name" placeholder="Enter Your Name">
+                                    <span class="label-input100">Անուն Ազգանուն*</span>
+                                    <input class="input100" type="text" name="name"
+                                        placeholder="Մուտքագրեք Անուն Ազգանունը">
                                 </div>
 
                                 <div class="wrap-input100 validate-input bg1 rs1-wrap-input100"
                                     data-validate="Enter Your Email (e@a.x)">
-                                    <span class="label-input100">Email *</span>
-                                    <input class="input100" type="text" name="email" placeholder="Enter Your Email ">
+                                    <span class="label-input100">Էլ․ Փոստ *</span>
+                                    <input class="input100" type="text" name="email"
+                                        placeholder="Մուտքագրեք Էլ․ Փոստի անունը">
                                 </div>
 
                                 <div class="wrap-input100 bg1 rs1-wrap-input100">
-                                    <span class="label-input100">Phone</span>
-                                    <input class="input100" type="text" name="phone" placeholder="Enter Number Phone">
+                                    <span class="label-input100">ՀԵռախոսահամրը</span>
+                                    <input class="input100" type="text" name="phone"
+                                        placeholder="Մուտքագրեք Հեռախոսահամրը">
                                 </div>
 
-                                <div class="w-full dis-none js-show-service">
-                                    <div class="wrap-contact100-form-radio">
-                                        <span class="label-input100">What type of products do you sell?</span>
-
-                                        <div class="contact100-form-radio m-t-15">
-                                            <input class="input-radio100" id="radio1" type="radio" name="type-product"
-                                                value="physical" checked="checked">
-                                            <label class="label-radio100" for="radio1">
-                                                Phycical Products
-                                            </label>
-                                        </div>
-
-                                        <div class="contact100-form-radio">
-                                            <input class="input-radio100" id="radio2" type="radio" name="type-product"
-                                                value="digital">
-                                            <label class="label-radio100" for="radio2">
-                                                Digital Products
-                                            </label>
-                                        </div>
-
-                                        <div class="contact100-form-radio">
-                                            <input class="input-radio100" id="radio3" type="radio" name="type-product"
-                                                value="service">
-                                            <label class="label-radio100" for="radio3">
-                                                Services Consulting
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="wrap-contact100-form-range">
-                                        <span class="label-input100">Budget *</span>
-
-                                        <div class="contact100-form-range-value">
-                                            $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
-                                            <input type="text" name="from-value">
-                                            <input type="text" name="to-value">
-                                        </div>
-
-                                        <div class="contact100-form-range-bar">
-                                            <div id="filter-bar"></div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate"
                                     data-validate="Please Type Your Message">
-                                    <span class="label-input100">Message</span>
+                                    <span class="label-input100">Հաղորդագրություն</span>
                                     <textarea class="input100" name="message"
-                                        placeholder="Your message here..."></textarea>
+                                        placeholder="Ձեր հաղորդագրությունը այստեղ..."></textarea>
                                 </div>
 
                                 <div class="container-contact100-form-btn">
-                                    <button class="contact100-form-btn">
-                                        <span>
-                                            Submit
+                                    <input type="submit" class="contact100-form-btn" name="sab" value="ուղարկել">
+                                    <button>
+                                        <!-- <span>
+                                            
                                             <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                                        </span>
+                                        </span> -->
                                     </button>
                                 </div>
                             </form>
@@ -158,9 +120,9 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                                     if (mysqli_num_rows($contact) > 0) {
                                         while ($contactUs =  mysqli_fetch_assoc($contact)) {
                                     ?>
-                                    <p class="contact">Contact Us</p>
-                                    <p>Email: <?php echo $contactUs['email'] ?></p>
-                                    <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                                    <p class="contact">հետադարձ կապ</p>
+                                    <p>Էլ․ Փոստ: <?php echo $contactUs['email'] ?></p>
+                                    <p>Հեռախոսահամար: <?php echo $contactUs['phone_1'] ?></p>
                                     <p><?php echo $contactUs['phone_2'] ?></p>
                                     <?php
                                         }
@@ -168,7 +130,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                                     ?>
                                 </div>
                                 <div class="right-block">
-                                    <p class="follow">Follow Us</p>
+                                    <p class="follow">Հետևեք մեզ</p>
                                     <?php
                                     if (mysqli_num_rows($follow) > 0) {
                                         while ($followUs =  mysqli_fetch_assoc($follow)) {
@@ -191,7 +153,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
         </div>
     </div>
     <footer>
-        <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
+        <p class="footer-block">© 2019 Armenian coins, Բոլոր իրավունքները պաշտպանված են.</p>
     </footer>
     <div id="to_top">
         <div class="flex justifyCenter">
@@ -199,7 +161,6 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                 <b><i class="fa fa-angle-up"></i></b>
             </div>
         </div>
-        <p>To Top</p>
     </div>
     <script>
     window.dataLayer = window.dataLayer || [];
