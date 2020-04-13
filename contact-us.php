@@ -27,6 +27,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <meta name="twitter:site" content="@armeniancoins">
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -62,7 +63,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                         </li>
                     </ul>
                 </div>
-                <a style="margin-left:20px" href="eng/constact-us.php"><img src="assets/images/englishFlag.png" /></a>
+                <a style="margin-left:20px" href="eng/contact-us.php"><img src="assets/images/englishFlag.png" /></a>
             </nav>
         </div>
     </header>
@@ -73,7 +74,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                     <p class="section-title">հետադարձ կապ</p>
                     <div class="col-md-12 row">
                         <div class="col-md-9">
-                            <form class="contact100-form validate-form" action="mess.php" method="post" name="f1">
+                            <form class="contact100-form validate-form" action="mess.php" method="post" target="_blank">
 
                                 <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
                                     <span class="label-input100">Անուն Ազգանուն*</span>
@@ -104,12 +105,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
 
                                 <div class="container-contact100-form-btn">
                                     <input type="submit" class="contact100-form-btn" name="sab" value="ուղարկել">
-                                    <button>
-                                        <!-- <span>
-                                            
-                                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                                        </span> -->
-                                    </button>
+
                                 </div>
                             </form>
                         </div>

@@ -30,6 +30,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <meta name="twitter:site" content="@armeniancoins">
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/owl.carousel.css">
     <link rel="stylesheet" href="assets/css/owl.theme.default.css">

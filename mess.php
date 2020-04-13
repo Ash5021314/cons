@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <?php
+header('Content-Type: utf-8');
 // error_reporting(E_ERROR);   //Отключение предупреждений и нотайсов (warning и notice) на сайте
 // создание переменных из полей формы		
 if (isset($_POST['name'])) {
@@ -50,15 +51,14 @@ if (isset($text)) {
     $text = htmlspecialchars($text);
 }
 // адрес почты куда придет письмо
-$address = "ashkapoghosyan@gmail.com";
+$address = "info@armeniancoins.am";
 // текст письма 
-$note_text = "Name : $name1 \r\n Email : $email1 \r\n Phone : $\r\n Email : $email1 \r\n Message : $text";
+$note_text = "Name : $name1 \r\n Email : $email1 \r\n Phone : $phone \r\n  Message : $text";
 
 if (isset($name1)  &&  isset($sab)) {
-    echo $name1;
-    mail($address, $note_text, "Content-type:text/plain; windows-1251");
+    mail($address, "From $name1", $note_text, "Content-type:text/plain; utf-8");
     // сообщение после отправки формы
-    echo "<p style='color:#009900;'>Уважаемый(ая) <b>$name1</b> Ваше письмо отправленно успешно. <br> Спасибо. <br>Вам скоро ответят на почту <b> $email1</b>.</p>";
+    echo "<p style='color:#009900;'>Հարգելի <b>$name1</b> Ձեր նամակն ուղարկված է.</p>";
 }
 
 ?>

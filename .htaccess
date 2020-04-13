@@ -1,0 +1,23 @@
+#	RewriteEngine On
+#	Options +FollowSymlinks
+#	RewriteBase /
+#
+#            RewriteCond %{REQUEST_FILENAME} !-f
+#            RewriteCond %{REQUEST_FILENAME} !-d
+#	DirectoryIndex index.php
+#
+#	RewriteRule ^(.*)$ index.php [L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L]
+
+
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW SSL_REDIRECT:armeniancoins.am
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^armeniancoins.am$
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE SSL_REDIRECT:armeniancoins.am

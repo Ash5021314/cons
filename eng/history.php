@@ -13,7 +13,8 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
 <head>
     <title>Armenian Coins</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="Armenian Coins">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#039def">
@@ -29,13 +30,15 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <meta name="twitter:site" content="@armeniancoins">
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/owl.carousel.css">
     <link rel="stylesheet" href="../assets/css/owl.theme.default.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
@@ -70,16 +73,16 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     if (mysqli_num_rows($historyInfo) > 0) {
         while ($history =  mysqli_fetch_assoc($historyInfo)) {
     ?>
-            <div class="header-content">
-                <img src="../assets/images/history/<?php echo $history['historyImage'] ?>">
+    <div class="header-content">
+        <img src="../assets/images/history/<?php echo $history['historyImage'] ?>">
+    </div>
+    <div class="main">
+        <section>
+            <div class="main-container">
+                <p class="section-title"><?php echo $history['title_eng'] ?></p>
+                <p class="history-text"><?php echo nl2br($history['history_eng']) ?></p>
             </div>
-            <div class="main">
-                <section>
-                    <div class="main-container">
-                        <p class="section-title"><?php echo $history['title_eng'] ?></p>
-                        <p class="history-text"><?php echo nl2br($history['history_eng']) ?></p>
-                    </div>
-                </section>
+        </section>
         <?php
         }
     }
@@ -94,8 +97,9 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                             if (mysqli_num_rows($partners) > 0) {
                                 while ($partnerss =  mysqli_fetch_assoc($partners)) {
                             ?>
-                                    <div class="item"><img src="../assets/images/partners/<?php echo $partnerss['slide_image'] ?>">
-                                    </div>
+                            <div class="item"><img
+                                    src="../assets/images/partners/<?php echo $partnerss['slide_image'] ?>">
+                            </div>
                             <?php
                                 }
                             }
@@ -112,10 +116,10 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                     if (mysqli_num_rows($contact) > 0) {
                         while ($contactUs =  mysqli_fetch_assoc($contact)) {
                     ?>
-                            <p class="contact">Contact Us</p>
-                            <p>Email: <?php echo $contactUs['email'] ?></p>
-                            <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
-                            <p><?php echo $contactUs['phone_2'] ?></p>
+                    <p class="contact">Contact Us</p>
+                    <p>Email: <?php echo $contactUs['email'] ?></p>
+                    <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                    <p><?php echo $contactUs['phone_2'] ?></p>
                     <?php
                         }
                     }
@@ -127,7 +131,8 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                     if (mysqli_num_rows($follow) > 0) {
                         while ($followUs =  mysqli_fetch_assoc($follow)) {
                     ?>
-                            <a href="<?php echo $followUs['icon_link'] ?>"><img src="../assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
+                    <a href="<?php echo $followUs['icon_link'] ?>"><img
+                            src="../assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
 
                     <?php
                         }
@@ -136,46 +141,48 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                 </div>
             </div>
         </section>
+    </div>
+    <footer>
+        <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
+    </footer>
+    <div id="to_top">
+        <div class="flex justifyCenter">
+            <div class="circle flex justifyCenter alignCenter">
+                <b><i class="fa fa-angle-up"></i></b>
             </div>
-            <footer>
-                <p class="footer-block">© 2019 Armenian coins, All Rights Reserved.</p>
-            </footer>
-            <div id="to_top">
-                <div class="flex justifyCenter">
-                    <div class="circle flex justifyCenter alignCenter">
-                        <b><i class="fa fa-angle-up"></i></b>
-                    </div>
-                </div>
-            </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-            </script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-            </script>
-            <script src="../assets/js/owl.carousel.js"></script>
-            <script src="../assets/js/owl.navigation.js"></script>
-            <script src="../assets/js/index.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $(".owl-carousel").owlCarousel({
-                        loop: true,
-                        autoplay: true,
-                        margin: 10,
-                        nav: true,
-                        responsive: {
-                            0: {
-                                items: 1
-                            },
-                            600: {
-                                items: 3
-                            },
-                            1000: {
-                                items: 4
-                            }
-                        }
-                    });
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="../assets/js/owl.carousel.js"></script>
+    <script src="../assets/js/owl.navigation.js"></script>
+    <script src="../assets/js/index.js"></script>
+    <script>
+    $(document).ready(function() {
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            autoplay: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
 
-                });
-            </script>
+    });
+    </script>
 </body>
 
 </html>

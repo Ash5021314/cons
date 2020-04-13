@@ -18,7 +18,8 @@ $Mixed = json_decode($Text);
 <head>
     <title>Armenian Coins</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="Armenian Coins">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#039def">
@@ -34,10 +35,12 @@ $Mixed = json_decode($Text);
     <meta name="twitter:site" content="@armeniancoins">
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
@@ -68,7 +71,8 @@ $Mixed = json_decode($Text);
                 $Mixed1  = json_encode($Mixed);
                 $RequestText1 = urlencode($Text);
                 ?>
-                <a style="margin-left:20px" href="../garn.php?cluster2=<?php echo $RequestText1; ?>"><img src="../assets/images/armenianFlag.png" /></a>
+                <a style="margin-left:20px" href="../garn.php?cluster2=<?php echo $RequestText1; ?>"><img
+                        src="../assets/images/armenianFlag.png" /></a>
             </nav>
         </div>
     </header>
@@ -108,10 +112,10 @@ $Mixed = json_decode($Text);
                     if (mysqli_num_rows($contact) > 0) {
                         while ($contactUs =  mysqli_fetch_assoc($contact)) {
                     ?>
-                            <p class="contact">Contact Us</p>
-                            <p>Email: <?php echo $contactUs['email'] ?></p>
-                            <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
-                            <p><?php echo $contactUs['phone_2'] ?></p>
+                    <p class="contact">Contact Us</p>
+                    <p>Email: <?php echo $contactUs['email'] ?></p>
+                    <p>Phone: <?php echo $contactUs['phone_1'] ?></p>
+                    <p><?php echo $contactUs['phone_2'] ?></p>
                     <?php
                         }
                     }
@@ -123,7 +127,8 @@ $Mixed = json_decode($Text);
                     if (mysqli_num_rows($follow) > 0) {
                         while ($followUs =  mysqli_fetch_assoc($follow)) {
                     ?>
-                            <a href="<?php echo $followUs['icon_link'] ?>"><img src="../assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
+                    <a href="<?php echo $followUs['icon_link'] ?>"><img
+                            src="../assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
 
                     <?php
                         }
