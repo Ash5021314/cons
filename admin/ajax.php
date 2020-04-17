@@ -23,9 +23,11 @@ if (isset($_POST['database_ins'])) {
     $takeFileFormat = explode('.', $_FILES['file_ins']['name']);
     $takeFileFormat1 = explode('.', $_FILES['file_ins1']['name']);
     $takeFileFormat2 = explode('.', $_FILES['file_ins2']['name']);
+    $takeFileFormat3 = explode('.', $_FILES['file_ins3']['name']);
     $insFileFormat = end($takeFileFormat);
     $insFileFormat1 = end($takeFileFormat1);
     $insFileFormat2 = end($takeFileFormat2);
+    $insFileFormat3 = end($takeFileFormat3);
 
 
 
@@ -47,6 +49,13 @@ if (isset($_POST['database_ins'])) {
 
         if (in_array(strtolower($insFileFormat2), $allFileFormat)) {
             $NewFileName2 = (date('Ymdhis') * 4) . "." . $insFileFormat2;
+        }
+    }
+    if (isset($_FILES['file_ins3'])) {
+
+
+        if (in_array(strtolower($insFileFormat3), $allFileFormat)) {
+            $NewFileName3 = (date('Ymdhis') * 5) . "." . $insFileFormat3;
         }
     }
 
@@ -101,8 +110,8 @@ if (isset($_POST['database_ins'])) {
         $sql_insBaseDate = "'$NewFileName'";
     } else if ($database_num == "z9_3") {
         $base_NameAdres = ["coll_desc", "../assets/images/collection/"];
-        $sql_date = "title, title_eng, text, text_eng, first_image, seccond_image, third_image";
-        $sql_insBaseDate = "'$titleIns','$titleIns_2','$textIns','$textIns_2','$NewFileName','$NewFileName1','$NewFileName2'";
+        $sql_date = "title, title_eng, text, text_eng, first_image, seccond_image, third_image, first_image_prod";
+        $sql_insBaseDate = "'$titleIns','$titleIns_2','$textIns','$textIns_2','$NewFileName','$NewFileName1','$NewFileName2','$NewFileName3'";
     } else if ($database_num == "z12") {
         $base_NameAdres = ["partners", "../assets/images/partners/"];
         $sql_date = "slide_image";
@@ -120,6 +129,7 @@ if (isset($_POST['database_ins'])) {
     $insertFile = move_uploaded_file($_FILES['file_ins']['tmp_name'], $base_NameAdres[1] . $NewFileName);
     $insertFile1 = move_uploaded_file($_FILES['file_ins1']['tmp_name'], $base_NameAdres[1] . $NewFileName1);
     $insertFile2 = move_uploaded_file($_FILES['file_ins2']['tmp_name'], $base_NameAdres[1] . $NewFileName2);
+    $insertFile3 = move_uploaded_file($_FILES['file_ins3']['tmp_name'], $base_NameAdres[1] . $NewFileName3);
 
     $imgSet = mysqli_query($connDB, "INSERT INTO $base_NameAdres[0] ($sql_date) VALUES ($sql_insBaseDate) ");
     $idSelect = mysqli_query($connDB, "SELECT * FROM $base_NameAdres[0]");
@@ -243,6 +253,44 @@ if (isset($_POST['base_Up'])) {
     } else {
         $takeFileFormat2 = explode('/', $_POST['oldImgUrl2']);
         $NewFileName2 = end($takeFileFormat2);
+        $NewOrOldFile = 2;
+    }
+
+
+    if (isset($_FILES['file_Up3'])) {
+        $takeFileFormat3 = explode('.', $_FILES['file_Up3']['name']);
+        $insFileFormat3 = end($takeFileFormat3);
+
+        if (in_array(strtolower($insFileFormat3), $allFileFormat)) {
+            $deleteOldFile3 = unlink($_POST['oldImgUrl3']);
+
+            if ($deleteOldFile3) {
+                $NewFileName3 = (date('Ymdhis') * 6) . "." . $insFileFormat3;
+                $NewOrOldFile = 1;
+            } else {
+            }
+        }
+    } else {
+        $takeFileFormat3 = explode('/', $_POST['oldImgUrl3']);
+        $NewFileName3 = end($takeFileFormat3);
+        $NewOrOldFile = 2;
+    }
+    if (isset($_FILES['file_Up4'])) {
+        $takeFileFormat4 = explode('.', $_FILES['file_Up4']['name']);
+        $insFileFormat4 = end($takeFileFormat4);
+
+        if (in_array(strtolower($insFileFormat4), $allFileFormat)) {
+            $deleteOldFile4 = unlink($_POST['oldImgUrl4']);
+
+            if ($deleteOldFile4) {
+                $NewFileName4 = (date('Ymdhis') * 6) . "." . $insFileFormat4;
+                $NewOrOldFile = 1;
+            } else {
+            }
+        }
+    } else {
+        $takeFileFormat4 = explode('/', $_POST['oldImgUrl4']);
+        $NewFileName4 = end($takeFileFormat4);
         $NewOrOldFile = 2;
     }
     // if ($NewOrOldFile == 1 || $NewOrOldFile == 2) {
@@ -374,13 +422,17 @@ if (isset($_POST['base_Up'])) {
     if ($database_num == "z9_3") {
         $titleIns1 = htmlentities($_POST['title_Up'], ENT_QUOTES, "UTF-8");
         $titleIns_21 = htmlentities($_POST['title_Up_2'], ENT_QUOTES, "UTF-8");
+        $titleIns_3 = htmlentities($_POST['title_Up_3'], ENT_QUOTES, "UTF-8");
+        $titleIns_4 = htmlentities($_POST['title_Up_4'], ENT_QUOTES, "UTF-8");
         $textIns1 = htmlentities($_POST['text_Up'], ENT_QUOTES, "UTF-8");
         $textIns_21 = htmlentities($_POST['text_Up_2'], ENT_QUOTES, "UTF-8");
         $base_NameAdresss = ["coll_desc", "../assets/images/collection/"];
         $uploadFile = move_uploaded_file($_FILES['file_Up']['tmp_name'], $base_NameAdresss[1] . $NewFileName);
         $uploadFile1 = move_uploaded_file($_FILES['file_Up1']['tmp_name'], $base_NameAdresss[1] . $NewFileName1);
         $uploadFile2 = move_uploaded_file($_FILES['file_Up2']['tmp_name'], $base_NameAdresss[1] . $NewFileName2);
-        $Updata1 = mysqli_query($connDB, "UPDATE `coll_desc` SET `title` = '$titleIns1', `title_eng` = '$titleIns_21', `text` = '$textIns1', `text_eng` = '$textIns_21', `first_image` = '$NewFileName', `seccond_image` = '$NewFileName1', `third_image` = '$NewFileName2' WHERE id = '$id_Up'");
+        $uploadFile3 = move_uploaded_file($_FILES['file_Up3']['tmp_name'], $base_NameAdresss[1] . $NewFileName3);
+        $uploadFile3 = move_uploaded_file($_FILES['file_Up4']['tmp_name'], $base_NameAdresss[1] . $NewFileName4);
+        $Updata1 = mysqli_query($connDB, "UPDATE `coll_desc` SET `title` = '$titleIns1', `title_eng` = '$titleIns_21', `text` = '$textIns1', `text_eng` = '$textIns_21', `slide_text` = '$titleIns_3', `slide_text_eng` = '$titleIns_4', `first_image` = '$NewFileName', `seccond_image` = '$NewFileName1', `third_image` = '$NewFileName2', `first_image_prod` = '$NewFileName3', `first_slide` = '$NewFileName4' WHERE id = '$id_Up'");
         if ($Updata1) {
             echo  $NewFileName;
         } else {

@@ -86,8 +86,10 @@ $newsQueryHead = mysqli_query($connDB, "SELECT  `id`, `head_title`, `head_title_
                     <tr class="newDiv tableBody_1" data-base="z13_1" data-Id="<?php echo $newsQueryHeadDiv['id']; ?>">
 
                         <td>
-                            <img src="../assets/images/shop/<?php echo $newsQueryHeadDiv['head_image']; ?>">
-                            <input type="file" class="file">
+                            <div>
+                                <img src="../assets/images/shop/<?php echo $newsQueryHeadDiv['head_image']; ?>">
+                                <input type="file" class="file">
+                            </div>
                         </td>
                         <td>
                             <input type="text" class="title" value="<?php echo $newsQueryHeadDiv['head_title']; ?>">

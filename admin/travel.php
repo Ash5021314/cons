@@ -59,12 +59,16 @@ $allColl = mysqli_query($connDB, "SELECT * FROM travel ORDER BY id DESC");
             ?>
             <tr class="newDiv tableBody_1" data-base="z2" data-Id="<?php echo $allCollDiv['id']; ?>">
                 <td>
-                    <img src="../assets/images/travel/<?php echo $allCollDiv['first_image']; ?>">
-                    <input type="file" class="file" />
+                    <div>
+                        <img src="../assets/images/travel/<?php echo $allCollDiv['first_image']; ?>">
+                        <input type="file" class="file" />
+                    </div>
                 </td>
                 <td>
-                    <img src="../assets/images/travel/<?php echo $allCollDiv['seccond_image']; ?>" />
-                    <input type="file" class="file1" />
+                    <div>
+                        <img src="../assets/images/travel/<?php echo $allCollDiv['seccond_image']; ?>" />
+                        <input type="file" class="file1" />
+                    </div>
                 </td>
                 <td>
                     <input type="text" class="title" value="<?php echo $allCollDiv['title'] ?>" />

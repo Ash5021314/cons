@@ -31,6 +31,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <meta name="twitter:title" content="Armenian Coins">
     <meta name="twitter:description" content="Armenian Coins">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
         id="bootstrap-css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,6 +40,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
         id="bootstrap-css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 </head>
 
 <body class="shops">
@@ -94,7 +96,20 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                 <div class="col-md-12 row pt-15">
                     <div class="col-md-4 pb-30">
                         <div class="collection-picture">
-                            <img src="assets/images/shop/<?php echo $packagingInfo['image'] ?>">
+                            <div class="pic"
+                                style="background-image: url(assets/images/shop/<?php echo $packagingInfo['image'] ?>);">
+                                <div class="ic">
+                                    <div class="ic1">
+                                        <a data-fancybox="gallery"
+                                            href="assets/images/shop/<?php echo $packagingInfo['image'] ?>"
+                                            data-options='{"thumbs" : false}'><img
+                                                src="assets/images/shop/zoom_icon.png" alt="" class="zoom"></a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <div class="hidden_div"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-8 pb-30">

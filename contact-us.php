@@ -75,13 +75,17 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                     <div class="col-md-12 row">
                         <div class="col-md-9">
                             <form class="contact100-form validate-form" action="mess.php" method="post" target="_blank">
-
-                                <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-                                    <span class="label-input100">Անուն Ազգանուն*</span>
-                                    <input class="input100" type="text" name="name"
-                                        placeholder="Մուտքագրեք Անուն Ազգանունը">
+                                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100"
+                                    data-validate="Please Type Your Name">
+                                    <span class="label-input100"> Անուն*</span>
+                                    <input class="input100" type="text" name="name" placeholder="Մուտքագրեք Անունը">
                                 </div>
-
+                                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100"
+                                    data-validate="Please Type Your Surname">
+                                    <span class="label-input100">Ազգանուն*</span>
+                                    <input class="input100" type="text" name="surname"
+                                        placeholder="Մուտքագրեք  Ազգանունը">
+                                </div>
                                 <div class="wrap-input100 validate-input bg1 rs1-wrap-input100"
                                     data-validate="Enter Your Email (e@a.x)">
                                     <span class="label-input100">Էլ․ Փոստ *</span>

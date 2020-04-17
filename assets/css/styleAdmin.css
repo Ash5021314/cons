@@ -138,6 +138,7 @@ input[type="file"] {
 }
 .tableBody_1 {
 	background-color: rgb(125, 125, 247);
+	border-bottom: 5em solid white;
 }
 .tableBody_1 input,
 .tableBody_1 textarea {
@@ -172,13 +173,17 @@ input[type="file"] {
 	padding: 10px;
 	margin-top: 10px;
 }
-td > img {
+td img {
 	height: 180px;
 	max-width: 400px;
 	margin-bottom: 10px;
 }
 td > button {
 	margin: 20px 0 0 0;
+}
+.adminP {
+	font-size: 20px;
+	color: whitesmoke;
 }
 @media screen and (max-width: 630px) {
 	.adminContent {

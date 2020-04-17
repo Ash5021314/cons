@@ -45,11 +45,11 @@ var divCount = 0;
 $(document).on("click", "#buttInsert", function () {
 	var data_b = $(this).parent().parent().attr("data-b");
 	var thisParChil = $(this).parent().parent().children("td");
-	// var thisParChil1 = $(this).parent().parent().children("td").prew("td");
 
 	var file = $(thisParChil).children(".file").prop("files");
 	var file1 = $(thisParChil).children(".file1").prop("files");
 	var file2 = $(thisParChil).children(".file2").prop("files");
+	var file3 = $(thisParChil).children(".file3").prop("files");
 
 	var ArrayDat = new FormData();
 	ArrayDat.append("database_ins", data_b);
@@ -65,6 +65,10 @@ $(document).on("click", "#buttInsert", function () {
 	if (typeof file2 !== "undefined" && file2.length > 0) {
 		var fileIns2 = thisParChil.children(".file2").prop("files")[0];
 		ArrayDat.append("file_ins2", fileIns2);
+	}
+	if (typeof file3 !== "undefined" && file3.length > 0) {
+		var fileIns3 = thisParChil.children(".file3").prop("files")[0];
+		ArrayDat.append("file_ins3", fileIns3);
 	}
 	if (data_b == "z4") {
 		var textIns = thisParChil.children(".textarea").val();
@@ -358,7 +362,11 @@ $(document).on("click", "#buttInsertText", function () {
 $(document).on("click", ".DeleteButt", function () {
 	var thisDiv = $(this).parent().parent();
 
-	var ingURL = thisDiv.children("td").children("img").attr("src");
+	var ingURL = thisDiv
+		.children("td")
+		.children("div")
+		.children("img")
+		.attr("src");
 	var BaseN = thisDiv.attr("data-base");
 	var DeleteId = thisDiv.attr("data-Id");
 
@@ -381,26 +389,57 @@ $(document).on("click", ".DeleteButt", function () {
 $(".updtaButt").click(function () {
 	var thisContent = $(this).parent().parent();
 	var thisParChil = $(this).parent().parent().children("td");
-	var thisParChil1 = $(this).parent().parent().children("td").next("td");
+	var thisParChil1 = $(this)
+		.parent()
+		.parent()
+		.children("td")
+		.children("div")
+		.next("div")
+		.next("div");
+
 	var thisParChil2 = $(this)
 		.parent()
 		.parent()
 		.children("td")
-		.next("td")
-		.next("td");
+		.children("div")
+		.next("div")
+		.next("div")
+		.next("div");
+	var thisParChil3 = $(this)
+		.parent()
+		.parent()
+		.children("td")
+		.children("div")
+		.next("div");
+	var thisParChil4 = $(this)
+		.parent()
+		.parent()
+		.children("td")
+		.children("div")
+		.next("div")
+		.next("div")
+		.next("div")
+		.next("div");
 
 	var base_Up = thisContent.attr("data-base");
 	var id_Up = thisContent.attr("data-Id");
-	var oldImgUrl = thisParChil.children("img").attr("src");
+	var oldImgUrl = thisParChil.children("div").children("img").attr("src");
 	var oldImgUrl1 = thisParChil1.children("img").attr("src");
 	var oldImgUrl2 = thisParChil2.children("img").attr("src");
+	var oldImgUrl3 = thisParChil3.children("img").attr("src");
+	var oldImgUrl4 = thisParChil4.children("img").attr("src");
 
-	var file = $(thisParChil).children(".file").prop("files");
+	var file = $(thisParChil).children("div").children(".file").prop("files");
 	var file1 = $(thisParChil1).children(".file1").prop("files");
 	var file2 = $(thisParChil2).children(".file2").prop("files");
+	var file3 = $(thisParChil3).children(".file3").prop("files");
+	var file4 = $(thisParChil4).children(".file4").prop("files");
 
 	if (typeof file !== "undefined") {
-		var file_Up = thisParChil.children(".file").prop("files")[0];
+		var file_Up = thisParChil
+			.children("div")
+			.children(".file")
+			.prop("files")[0];
 	}
 
 	if (typeof file1 !== "undefined" && file1.length > 0) {
@@ -410,15 +449,25 @@ $(".updtaButt").click(function () {
 	if (typeof file2 !== "undefined" && file2.length > 0) {
 		var file_Up2 = thisParChil2.children(".file2").prop("files")[0];
 	}
+	if (typeof file3 !== "undefined" && file3.length > 0) {
+		var file_Up3 = thisParChil3.children(".file3").prop("files")[0];
+	}
+	if (typeof file4 !== "undefined" && file4.length > 0) {
+		var file_Up4 = thisParChil4.children(".file4").prop("files")[0];
+	}
 	var ArrayDat = new FormData();
 	ArrayDat.append("base_Up", base_Up);
 	ArrayDat.append("id_Up", id_Up);
 	ArrayDat.append("oldImgUrl", oldImgUrl);
 	ArrayDat.append("oldImgUrl1", oldImgUrl1);
 	ArrayDat.append("oldImgUrl2", oldImgUrl2);
+	ArrayDat.append("oldImgUrl3", oldImgUrl3);
+	ArrayDat.append("oldImgUrl4", oldImgUrl4);
 	ArrayDat.append("file_Up", file_Up);
 	ArrayDat.append("file_Up1", file_Up1);
 	ArrayDat.append("file_Up2", file_Up2);
+	ArrayDat.append("file_Up3", file_Up3);
+	ArrayDat.append("file_Up4", file_Up4);
 
 	if (
 		base_Up == "z6" ||
@@ -455,7 +504,7 @@ $(".updtaButt").click(function () {
 		ArrayDat.append("title_Up_3", title_Up_3);
 	}
 
-	if (base_Up == "z11" || base_Up == "z9_3") {
+	if (base_Up == "z11") {
 		var title_Up = thisParChil.children(".title").val().trim();
 		var title_Up_2 = thisParChil.children(".title_2").val().trim();
 		var textIns = thisParChil.children(".textarea").val();
@@ -464,6 +513,20 @@ $(".updtaButt").click(function () {
 		ArrayDat.append("text_Up_2", textIns_2);
 		ArrayDat.append("title_Up", title_Up);
 		ArrayDat.append("title_Up_2", title_Up_2);
+	}
+	if (base_Up == "z9_3") {
+		var title_Up = thisParChil.children(".title").val().trim();
+		var title_Up_2 = thisParChil.children(".title_2").val().trim();
+		var title_Up_3 = thisParChil.children(".title_3").val().trim();
+		var title_Up_4 = thisParChil.children(".title_4").val().trim();
+		var textIns = thisParChil.children(".textarea").val();
+		var textIns_2 = thisParChil.children(".textarea_2").val();
+		ArrayDat.append("text_Up", textIns);
+		ArrayDat.append("text_Up_2", textIns_2);
+		ArrayDat.append("title_Up", title_Up);
+		ArrayDat.append("title_Up_2", title_Up_2);
+		ArrayDat.append("title_Up_3", title_Up_3);
+		ArrayDat.append("title_Up_4", title_Up_4);
 	}
 	if (
 		base_Up == "z15" ||

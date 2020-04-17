@@ -55,8 +55,8 @@ $(function () {
 		($s = 1000), // slide transition speed (for sliding carousel)
 		($d = 5000); // duration per slide
 
-	$n = $(".slide, .slide1").length; //number of slides
-	$w = $(".slide, .slide1").width(); // slide width
+	$n = $(".slide, .slide1, .slide2").length; //number of slides
+	$w = $(".slide, .slide1, .slide2").width(); // slide width
 	$c = $(".container").width(); // container width
 	$ss = $n * $w; // slideshow width
 	$y = $(".change-name").text();
@@ -91,20 +91,20 @@ $(function () {
 			left: "0",
 		};
 
-		$(".slide, .slide1").css(setCSS);
+		$(".slide, .slide1, .slide2").css(setCSS);
 
 		//show first item
-		$(".slide, .slide1").eq($i).show();
+		$(".slide, .slide1, .slide2").eq($i).show();
 
 		setInterval(function () {
 			timer();
-			$(".slide, .slide1").eq($i).fadeOut($f);
+			$(".slide, .slide1, .slide2").eq($i).fadeOut($f);
 			if ($i == $n - 1) {
 				$i = 0;
 			} else {
 				$i++;
 			}
-			$(".slide, .slide1")
+			$(".slide, .slide1, .slide2")
 				.eq($i)
 				.fadeIn($f, function () {
 					$(".timer").css({
@@ -126,9 +126,11 @@ $(function () {
 		};
 		$(".slide").css(setSlideCSS);
 		$(".slide1").css(setSlideCSS);
+		$(".slide2").css(setSlideCSS);
 
 		$(".slideshow").css(setSlideShowCSS);
 		$(".slideshow1").css(setSlideShowCSS);
+		$(".slideshow2").css(setSlideShowCSS);
 		setInterval(function () {
 			timer();
 			$(".slideshow").animate(
@@ -149,6 +151,16 @@ $(function () {
 				function () {
 					// to create infinite loop
 					$(".slideshow1").css("left", 0).append($(".slide1:first"));
+				}
+			);
+			$(".slideshow2").animate(
+				{
+					left: -$w,
+				},
+				$s,
+				function () {
+					// to create infinite loop
+					$(".slideshow2").css("left", 0).append($(".slide2:first"));
 				}
 			);
 		}, $d);
@@ -189,21 +201,6 @@ $("#myCarousel").carousel({
 	interval: 2000,
 });
 
-// $(document).ready(function() {
-//   /* show lightbox when clicking a thumbnail */
-//   $('a.thumb').click(function(event) {
-//     event.preventDefault();
-//     var content = $('.modal-body');
-//     content.empty();
-//     var title = $(this).attr("title");
-//     $('.modal-title').html(title);
-//     content.html($(this).html());
-//     $(".modal-profile").modal({
-//       show: true
-//     });
-//   });
-
-// });
 //====================================Small carousel Slider End==============================
 
 //====================================Small carousel Slider Start 2 ==============================
@@ -232,21 +229,6 @@ $("#myCarousel_1").carousel({
 	interval: 2000,
 });
 
-// $(document).ready(function() {
-//   /* show lightbox when clicking a thumbnail */
-//   $('a.thumb_1').click(function(event) {
-//     event.preventDefault();
-//     var content = $('.modal-body');
-//     content.empty();
-//     var title = $(this).attr("title");
-//     $('.modal-title').html(title);
-//     content.html($(this).html());
-//     $(".modal-profile").modal({
-//       show: true
-//     });
-//   });
-
-// });
 //====================================Small carousel Slider End 2 ==============================
 
 //====================================Hide/Show text Start ==============================
@@ -256,6 +238,7 @@ $(".toogle-text1").hide();
 $(document).ready(function () {
 	$(".toggle-button1").click(function () {
 		$(this).prev().toggleClass("toogle-show");
+		$(this).toggleClass("rotate");
 	});
 });
 $("#toogle-text2").hide();
@@ -284,11 +267,19 @@ $(document).scroll(function () {
 $("#to_top").click(function () {
 	$("html, body").animate({ scrollTop: 0 }, 1000);
 });
-$(".header-exople, .find-button").click(function () {
-	$("html, body").animate(
-		{
-			scrollTop: $(".scroll-section").offset().top,
-		},
-		1000
-	);
-});
+// $(".header-exople, .find-button").click(function () {
+// 	$("html, body").animate(
+// 		{
+// 			scrollTop: $(".scroll-section").offset().top,
+// 		},
+// 		1000
+// 	);
+// });
+$(".pic").hover(
+	function () {
+		$(this).children().css({ display: "block", cursor: "pointer" });
+	},
+	function () {
+		$(this).children().css({ display: "none" });
+	}
+);

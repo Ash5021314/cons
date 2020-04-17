@@ -19,7 +19,8 @@ $galleryQuery = mysqli_query($connDB, "SELECT * FROM terminal ORDER BY id DESC")
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styleAdmin.css">
     <title>Login</title>
 </head>
@@ -89,25 +90,28 @@ $galleryQuery = mysqli_query($connDB, "SELECT * FROM terminal ORDER BY id DESC")
             if (mysqli_num_rows($galleryQuery) > 0) {
                 while ($galleryDiv = mysqli_fetch_assoc($galleryQuery)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z8" data-Id="<?php echo $galleryDiv['id']; ?>">
-                        <td>
-                            <img src="../assets/images/terminal/<?php echo $galleryDiv['image']; ?>">
-                            <input type="file" class="file">
-                        </td>
-                        <td><input type="text" class="title" value="<?php echo $galleryDiv['title']; ?>"> </td>
-                        <td><input type="text" class="title_2" value="<?php echo $galleryDiv['title_eng']; ?>"> </td>
-                        <td>
-                            <textarea class="textarea" cols="25" rows="6"><?php echo $galleryDiv['description']; ?></textarea>
-                        </td>
-                        <td>
-                            <textarea class="textarea_2" cols="25" rows="6"><?php echo $galleryDiv['description_eng']; ?></textarea>
-                        </td>
+            <tr class="newDiv tableBody_1" data-base="z8" data-Id="<?php echo $galleryDiv['id']; ?>">
+                <td>
+                    <div>
+                        <img src="../assets/images/terminal/<?php echo $galleryDiv['image']; ?>">
+                        <input type="file" class="file">
+                    </div>
+                </td>
+                <td><input type="text" class="title" value="<?php echo $galleryDiv['title']; ?>"> </td>
+                <td><input type="text" class="title_2" value="<?php echo $galleryDiv['title_eng']; ?>"> </td>
+                <td>
+                    <textarea class="textarea" cols="25" rows="6"><?php echo $galleryDiv['description']; ?></textarea>
+                </td>
+                <td>
+                    <textarea class="textarea_2" cols="25"
+                        rows="6"><?php echo $galleryDiv['description_eng']; ?></textarea>
+                </td>
 
-                        <td>
-                            <button type="button" class="btn btn-info updtaButt">UPDATA</button>
-                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
-                        </td>
-                    </tr>
+                <td>
+                    <button type="button" class="btn btn-info updtaButt">UPDATA</button>
+                    <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
+                </td>
+            </tr>
             <?php
                 }
             }

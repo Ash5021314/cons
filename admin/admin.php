@@ -31,7 +31,6 @@ if (!isset($_SESSION['userName'])) {
         </ul>
         <ul class="adminPage">
             <li>ADMIN PAGES</li>
-            <li><a href="product.php">Product</a></li>
             <li><a href="travel.php">Travel</a></li>
             <li><a href="visit.php">Visit Places</a></li>
             <li><a href="map.php">Map</a></li>

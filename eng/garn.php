@@ -77,7 +77,7 @@ $Mixed = json_decode($Text);
         </div>
     </header>
     <div class="header-content">
-        <img src="../assets/images/collection/<? echo $Mixed->first_image; ?>">
+        <img src="../assets/images/collection/<? echo $Mixed->first_image_prod; ?>">
 
     </div>
     <div class="main">

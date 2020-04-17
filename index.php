@@ -1,7 +1,8 @@
 <?php
 require "connect.php";
-$slide = mysqli_query($connDB, "SELECT * FROM `product_slide`");
-$sliders = mysqli_query($connDB, "SELECT * FROM `product_desc`");
+$slide = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
+$sliders = mysqli_query($connDB, "SELECT `slide_text` FROM `coll_desc`");
+$slideID = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
 $travel = mysqli_query($connDB, "SELECT * FROM `travel`");
 $visitDesc = mysqli_query($connDB, "SELECT * FROM `visit_desc` ORDER BY `id` DESC");
 $visit = mysqli_query($connDB, "SELECT `title` FROM `visit_desc` WHERE title IS NOT NULL ");
@@ -82,7 +83,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         while ($slider =  mysqli_fetch_assoc($slide)) {
                     ?>
                     <div class="slide">
-                        <img src="assets/images/product/<?php echo $slider['slide_image'] ?>" style="width: 850px" />
+                        <img src="assets/images/collection/<?php echo $slider['first_slide'] ?>" style="width: 850px" />
                     </div>
                     <?php
                         }
@@ -101,7 +102,7 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         while ($row = mysqli_fetch_assoc($sliders)) {
                         ?>
                         <div class="slide1">
-                            <p class=""><?php echo $row['text'] ?></p>
+                            <p class=""><?php echo $row['slide_text'] ?></p>
                         </div>
                         <?
 
@@ -113,149 +114,83 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
             </div>
 
         </div>
-        <div class="header-exople">
-            <p>Իմանալ ավելին</p>
-        </div>
-    </div>
-    <div class="main">
-        <section>
-            <div class="main-container">
-                <div class="col-md-12 row">
-                    <div class="col-md-8 text">
-                        <?php
-                        if (mysqli_num_rows($travel) > 0) {
-                            while ($travelDesc =  mysqli_fetch_assoc($travel)) {
-                        ?>
-                        <h1><?php echo $travelDesc['title'] ?></h1>
-                        <p><?php echo nl2br($travelDesc['text']) ?></p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="first-pic">
-                            <img src="assets/images/travel/<?php echo $travelDesc['first_image'] ?>" />
-                        </div>
-                        <div class="sec-pic">
-                            <img src="assets/images/travel/<?php echo $travelDesc['seccond_image'] ?>" />
-                        </div>
-                    </div>
-                    <?php
-                            }
-                        }
-            ?>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="place-section">
-                <?php
-                if (mysqli_num_rows($visit) > 0) {
-                    while ($visitTitle =  mysqli_fetch_assoc($visit)) {
-                ?>
-                <p class="section-title scroll-section"><?php echo $visitTitle['title'] ?></p>
-                <?php
-                    }
-                }
-                ?>
-                <div class="row">
-                    <div class="gallery">
-                        <?php
-                        if (mysqli_num_rows($visitDesc) > 0) {
-                            while ($visitDescription =  mysqli_fetch_assoc($visitDesc)) {
-                        ?>
-                        <figure>
-                            <img src="assets/images/visit/<?php echo $visitDescription['image'] ?>" alt="" />
-                            <h3 class="text-center my-3"><?php echo $visitDescription['description'] ?>
-                            </h3>
-                        </figure>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="find-product">
-                <?php
-                while ($mapImage =  mysqli_fetch_assoc($mapTitle)) {
-                ?>
-                <p class="section-title"><?php echo $mapImage['title'] ?></p>
-                <?php
-                }
-                ?>
-                <div class="map">
-                    <img src="assets/images/map1.png" style="width: 850px; position:relative; " class="map" />
-                    <a href="#slider-image-1"><img src="assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -228px; left:150px;" /></a>
-                    <a href="#slider-image-2"><img src="assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -65px; left:540px;" /></a>
-                    <a href="#slider-image-3">
-                        <img src="assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -380px; left:400px;" />
-                    </a>
-                </div>
-                <div class="slider-holder">
-                    <span id="slider-image-1"></span>
-                    <span id="slider-image-2"></span>
-                    <span id="slider-image-3"></span>
-                    <div class="image-holder">
-                        <?php
-                        if (mysqli_num_rows($map) > 0) {
-                            while ($mapImage =  mysqli_fetch_assoc($map)) {
-                        ?>
-                        <img src="assets/images/map/<?php echo $mapImage['image'] ?>" class="slider-image" />
-                        <?php
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="find-button">
-                    <p>Իմանալ ավելին</p>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="idea-section">
-                <div class="col-md-12 row">
 
-                    <?php
-                    if (mysqli_num_rows($idea) > 0) {
-                        while ($ideas =  mysqli_fetch_assoc($idea)) {
-                    ?>
-                    <p class="section-title"><?php echo $ideas['title'] ?></p>
-                    <div class="col-md-9">
-                        <p class="idea-text"><?php echo nl2br($ideas['text']) ?></p>
-                    </div>
-                    <?php
+
+
+        <div class="new-product header-exople">
+            <div class="slider slider2">
+                <div class="container container2">
+                    <div class="slideshow2">
+
+
+                        <?
+                        while ($row1 = mysqli_fetch_assoc($slideID)) {
+                            $Text = json_encode($row1);
+                            $RequestText = urlencode($Text);
+                        ?>
+                        <div class="slide2">
+                            <a href="garn.php?cluster=<?php echo $RequestText; ?>">
+                                <p>Իմանալ ավելին</p>
+                            </a>
+                        </div>
+                        <?
+
                         }
-                    }
-                    ?>
-                    <div class="col-md-3">
-                        <div class="left-block">
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <section>
+                <div class="main-container">
+                    <div class="col-md-12 row">
+                        <div class="col-md-8 text">
                             <?php
-                            if (mysqli_num_rows($contact) > 0) {
-                                while ($contactUs =  mysqli_fetch_assoc($contact)) {
+                            if (mysqli_num_rows($travel) > 0) {
+                                while ($travelDesc =  mysqli_fetch_assoc($travel)) {
                             ?>
-                            <p class="contact">հետադարձ կապ</p>
-                            <p>Էլ․ Փոստ: <?php echo $contactUs['email'] ?></p>
-                            <p>Հեռախոսահամար: <?php echo $contactUs['phone_1'] ?></p>
-                            <p><?php echo $contactUs['phone_2'] ?></p>
-                            <?php
+                            <h1><?php echo $travelDesc['title'] ?></h1>
+                            <p><?php echo nl2br($travelDesc['text']) ?></p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="first-pic">
+                                <img src="assets/images/travel/<?php echo $travelDesc['first_image'] ?>" />
+                            </div>
+                            <div class="sec-pic">
+                                <img src="assets/images/travel/<?php echo $travelDesc['seccond_image'] ?>" />
+                            </div>
+                        </div>
+                        <?php
                                 }
                             }
-                            ?>
-                        </div>
-                        <div class="right-block">
-                            <p class="follow">Հետևեք մեզ</p>
+                ?>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="place-section">
+                    <?php
+                    if (mysqli_num_rows($visit) > 0) {
+                        while ($visitTitle =  mysqli_fetch_assoc($visit)) {
+                    ?>
+                    <p class="section-title scroll-section"><?php echo $visitTitle['title'] ?></p>
+                    <?php
+                        }
+                    }
+                    ?>
+                    <div class="row">
+                        <div class="gallery">
                             <?php
-                            if (mysqli_num_rows($follow) > 0) {
-                                while ($followUs =  mysqli_fetch_assoc($follow)) {
+                            if (mysqli_num_rows($visitDesc) > 0) {
+                                while ($visitDescription =  mysqli_fetch_assoc($visitDesc)) {
                             ?>
-                            <a href="<?php echo $followUs['icon_link'] ?>"><img
-                                    src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>"
-                                    style="width: 35px"></a>
-
+                            <figure>
+                                <img src="assets/images/visit/<?php echo $visitDescription['image'] ?>" alt="" />
+                                <h3 class="text-center my-3"><?php echo $visitDescription['description'] ?>
+                                </h3>
+                            </figure>
                             <?php
                                 }
                             }
@@ -263,21 +198,111 @@ $map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-    <footer>
-        <p class="footer-block">© 2019 Armenian coins, Բոլոր իրավունքները պաշտպանված են.</p>
-    </footer>
-    <div id="to_top">
-        <div class="flex justifyCenter">
-            <div class="circle flex justifyCenter alignCenter">
-                <b><i class="fa fa-angle-up"></i></b>
+            </section>
+            <section>
+                <div class="find-product">
+                    <?php
+                    while ($mapImage =  mysqli_fetch_assoc($mapTitle)) {
+                    ?>
+                    <p class="section-title"><?php echo $mapImage['title'] ?></p>
+                    <?php
+                    }
+                    ?>
+                    <div class="map">
+                        <img src="assets/images/map1.png" style="width: 850px; position:relative; " class="map" />
+                        <a href="#slider-image-1"><img src="assets/images/pasiv.png"
+                                style="width: 28px; position:relative; top: -228px; left:150px;" /></a>
+                        <a href="#slider-image-2"><img src="assets/images/pasiv.png"
+                                style="width: 28px; position:relative; top: -65px; left:540px;" /></a>
+                        <a href="#slider-image-3">
+                            <img src="assets/images/pasiv.png"
+                                style="width: 28px; position:relative; top: -380px; left:400px;" />
+                        </a>
+                    </div>
+                    <div class="slider-holder">
+                        <span id="slider-image-1"></span>
+                        <span id="slider-image-2"></span>
+                        <span id="slider-image-3"></span>
+                        <div class="image-holder">
+                            <?php
+                            if (mysqli_num_rows($map) > 0) {
+                                while ($mapImage =  mysqli_fetch_assoc($map)) {
+                            ?>
+                            <img src="assets/images/map/<?php echo $mapImage['image'] ?>" class="slider-image" />
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="find-button">
+                        <p>Իմանալ ավելին</p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="idea-section">
+                    <div class="col-md-12 row">
+
+                        <?php
+                        if (mysqli_num_rows($idea) > 0) {
+                            while ($ideas =  mysqli_fetch_assoc($idea)) {
+                        ?>
+                        <p class="section-title"><?php echo $ideas['title'] ?></p>
+                        <div class="col-md-9">
+                            <p class="idea-text"><?php echo nl2br($ideas['text']) ?></p>
+                        </div>
+                        <?php
+                            }
+                        }
+                        ?>
+                        <div class="col-md-3">
+                            <div class="left-block">
+                                <?php
+                                if (mysqli_num_rows($contact) > 0) {
+                                    while ($contactUs =  mysqli_fetch_assoc($contact)) {
+                                ?>
+                                <p class="contact">հետադարձ կապ</p>
+                                <p>Էլ․ Փոստ: <?php echo $contactUs['email'] ?></p>
+                                <p>Հեռախոսահամար: <?php echo $contactUs['phone_1'] ?></p>
+                                <p><?php echo $contactUs['phone_2'] ?></p>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="right-block">
+                                <p class="follow">Հետևեք մեզ</p>
+                                <?php
+                                if (mysqli_num_rows($follow) > 0) {
+                                    while ($followUs =  mysqli_fetch_assoc($follow)) {
+                                ?>
+                                <a href="<?php echo $followUs['icon_link'] ?>"><img
+                                        src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>"
+                                        style="width: 35px"></a>
+
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <p class="footer-block">© 2019 Armenian coins, Բոլոր իրավունքները պաշտպանված են.</p>
+        </footer>
+        <div id="to_top">
+            <div class="flex justifyCenter">
+                <div class="circle flex justifyCenter alignCenter">
+                    <b><i class="fa fa-angle-up"></i></b>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/index.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="assets/js/index.js"></script>
 </body>
 
 </html>

@@ -9,6 +9,12 @@ if (isset($_POST['name'])) {
         unset($name1);
     }
 }
+if (isset($_POST['surname'])) {
+    $surname1            = $_POST['surname'];
+    if ($surname1 == '') {
+        unset($surname1);
+    }
+}
 if (isset($_POST['email'])) {
     $email1        = $_POST['email'];
     if ($email1 == '') {
@@ -38,6 +44,10 @@ if (isset($name1)) {
     $name1 = stripslashes($name1);
     $name1 = htmlspecialchars($name1);
 }
+if (isset($surname1)) {
+    $surname1 = stripslashes($surname1);
+    $surname1 = htmlspecialchars($surname1);
+}
 if (isset($email1)) {
     $email1 = stripslashes($email1);
     $email1 = htmlspecialchars($email1);
@@ -53,7 +63,7 @@ if (isset($text)) {
 // адрес почты куда придет письмо
 $address = "info@armeniancoins.am";
 // текст письма 
-$note_text = "Name : $name1 \r\n Email : $email1 \r\n Phone : $phone \r\n  Message : $text";
+$note_text = "Name : $name1 \r\n Surname : $surname1 \r\n Email : $email1 \r\n Phone : $phone \r\n  Message : $text";
 
 if (isset($name1)  &&  isset($sab)) {
     mail($address, "From $name1", $note_text, "Content-type:text/plain; utf-8");
