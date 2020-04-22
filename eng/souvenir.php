@@ -1,8 +1,9 @@
 <?php
 require "connect.php";
-$gift = mysqli_query($connDB, "SELECT * FROM `gift`");
+$gift = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
+$slideID = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
 $suovenir = mysqli_query($connDB, "SELECT * FROM `new_souvenire`");
-$coll = mysqli_query($connDB, "SELECT `head_title`, `head_title_eng` FROM `coll_desc` WHERE head_title IS NOT NULL AND head_title_eng IS NOT NULL");
+$coll = mysqli_query($connDB, "SELECT * FROM all_collection");
 $coll_desc = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `id` DESC");
 $coll_description = mysqli_query($connDB, "SELECT * FROM `coll_desc` ORDER BY `id` DESC");
 $coll_second_image =  mysqli_query($connDB, "SELECT id, seccond_image FROM `coll_desc` ORDER BY `id` DESC");
@@ -110,7 +111,9 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                     if (mysqli_num_rows($gift) > 0) {
                         while ($bestGift =  mysqli_fetch_assoc($gift)) {
                     ?>
-                    <div class="slide"><img src="../assets/images/gift/<?php echo $bestGift['picture'] ?>" /></div>
+                    <div class="slide"><img
+                            src="../assets/images/collection/<?php echo $bestGift['seccond_slide'] ?>" />
+                    </div>
 
                     <?php
                         }
@@ -122,11 +125,27 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
         <div class="new-product">
             <p>BEST GIFT FROM ARMENIA</p>
         </div>
-        <a href="#">
-            <div class="header-exople">
-                <p>Explore More</p>
+        <div class="new-product header-exople">
+            <div class="slider slider2">
+                <div class="container container2">
+                    <div class="slideshow2">
+                        <?
+                        while ($row1 = mysqli_fetch_assoc($slideID)) {
+                            $Text = json_encode($row1);
+                            $RequestText = urlencode($Text);
+                        ?>
+                        <div class="slide2">
+                            <a href="garn.php?cluster=<?php echo $RequestText; ?>">
+                                <p>Explore More</p>
+                            </a>
+                        </div>
+                        <?
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
-        </a>
+        </div>
     </div>
     <div class="main">
         <section>
@@ -166,7 +185,7 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
             if (mysqli_num_rows($coll) > 0) {
                 while ($collection =  mysqli_fetch_assoc($coll)) {
             ?>
-            <p class="section-title"><?php echo $collection['head_title_eng'] ?></p>
+            <p class="section-title"><?php echo $collection['title_eng'] ?></p>
             <?php
                 }
             }

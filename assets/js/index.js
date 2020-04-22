@@ -283,3 +283,18 @@ $(".pic").hover(
 		$(this).children().css({ display: "none" });
 	}
 );
+
+$(".pas").click(function () {
+	$(".pas").each(function () {
+		$(this).removeClass("active");
+		$(this).attr("src", "../assets/images/pasiv.png");
+	});
+	$(this).addClass("active");
+	if ($(this).hasClass("active")) {
+		$(this).attr("src", "../assets/images/activ.png");
+	}
+});
+$(".mapHref").click(function () {
+	$(".image-holder").css({ left: `-${$(this).index() * 400}px` });
+	$(".hidd").css({ left: `-${$(this).index() * 200}px` });
+});

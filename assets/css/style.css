@@ -395,9 +395,10 @@ body * {
 	bottom: 450px;
 	left: 925px;
 	cursor: pointer;
+	overflow: hidden;
 }
 
-.find-product .find-button > p {
+.find-product .find-button .hidd p {
 	color: white;
 	font-size: 24px;
 	text-align: center;
@@ -3742,26 +3743,13 @@ html {
 	padding: 0px;
 	position: relative;
 }
-
-#slider-image-1:target ~ .image-holder {
-	left: 0px;
-}
-
-#slider-image-2:target ~ .image-holder {
-	left: -400px;
-}
-
-#slider-image-3:target ~ .image-holder {
-	left: -800px;
-}
-#slider-image-4:target ~ .image-holder {
-	left: -1200px;
-}
 .button-holder {
 	position: relative;
 	top: -20px;
 }
-
+.mapHref {
+	cursor: pointer;
+}
 .slider-change {
 	display: inline-block;
 	height: 10px;
@@ -3951,6 +3939,13 @@ html {
 	z-index: 1;
 	display: none;
 }
+.flip-box {
+	background-color: transparent;
+	width: 203px;
+	height: 203px;
+	perspective: 1000px;
+}
+
 .flip-box-inner {
 	position: relative;
 	width: 100%;
@@ -3973,6 +3968,28 @@ html {
 	backface-visibility: hidden;
 }
 
+.flip-box-front {
+	color: black;
+}
+
+.flip-box-back {
+	color: white;
+	transform: rotateY(180deg);
+}
+
 .flip-box-back {
 	transform: rotateY(180deg);
+}
+.hidd {
+	width: 2000px;
+	display: flex;
+	position: relative;
+}
+.readM {
+	width: 200px;
+}
+.flexForColl {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }

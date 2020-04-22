@@ -7,13 +7,6 @@ if (!isset($_SESSION['userName'])) {
 }
 
 $hedQuery = mysqli_query($connDB, "SELECT * FROM map_idea ORDER BY id DESC");
-$hedQueryHead = mysqli_query($connDB, "SELECT `title`, `title_eng` FROM map_idea WHERE `title` IS NOT NULL AND `title_eng` IS NOT NULL");
-$count = mysqli_num_rows($hedQuery);
-
-
-
-
-//ini_set('display_errors','Off');
 ?>
 
 
@@ -42,25 +35,6 @@ $count = mysqli_num_rows($hedQuery);
     </ul>
     <!-- =============================================================================== -->
 
-
-
-    <!-- ============================== Insert Section ================================== -->
-
-    <p class="instalHead">Insert Image for packaging slide</p>
-    <table class="table table-bordered table_1">
-        <thead>
-            <tr class="tableHead_1">
-                <th>Search File (Necessarily)</th>
-                <th>Submit</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="tableBody_1" data-b="z5">
-                <td><input type="file" class="file"></td>
-                <td><button type="button" class="btn btn-success" id="buttInsert">INSERT</button></td>
-            </tr>
-        </tbody>
-    </table>
     <!-- =================================================================================================== -->
 
     <p class="instalHead instalHead_2">Packaging division</p>
@@ -73,8 +47,8 @@ $count = mysqli_num_rows($hedQuery);
         </thead>
         <tbody class="adminContent">
             <?php
-            if (mysqli_num_rows($hedQueryHead) > 0) {
-                while ($hedQueryHeadDiv = mysqli_fetch_assoc($hedQueryHead)) {
+            if (mysqli_num_rows($hedQuery) > 0) {
+                while ($hedQueryHeadDiv = mysqli_fetch_assoc($hedQuery)) {
             ?>
             <tr class="newDiv tableBody_1" data-base="z5_1" data-Id="<?php echo $hedQueryHeadDiv['id']; ?>">
 
@@ -92,40 +66,6 @@ $count = mysqli_num_rows($hedQuery);
             ?>
         </tbody>
     </table>
-
-    <!-- ===================================== Crete Section ================================================ -->
-
-    <p class="instalHead instalHead_2">All Division</p>
-    <table class="table table_1">
-        <thead>
-            <tr class="tableHead_1">
-                <th>Search File (not necessary)</th>
-                <th>Button</th>
-            </tr>
-        </thead>
-        <tbody class="adminContent">
-            <?php
-            if (mysqli_num_rows($hedQuery) > 0) {
-                while ($headDiv = mysqli_fetch_assoc($hedQuery)) {
-            ?>
-            <tr class="newDiv tableBody_1" data-base="z5_2" data-Id="<?php echo $headDiv['id']; ?>">
-                <td>
-                    <img src="../assets/images/map/<?php echo $headDiv['image']; ?>">
-                    <input type="file" class="file">
-                </td>
-
-                <td>
-                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
-                    <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
-                </td>
-            </tr>
-            <?php
-                }
-            }
-            ?>
-        </tbody>
-    </table>
-    <!-- =================================================================================================== -->
     <script src="../assets/js/jquery-3.2.1.min.js"></script>
     <script src="../assets/js/scriptAdmin.js"></script>
 </body>

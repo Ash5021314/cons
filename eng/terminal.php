@@ -1,10 +1,12 @@
 <?php
 require "connect.php";
 $terminal = mysqli_query($connDB, "SELECT * FROM `terminal`");
-$map = mysqli_query($connDB, "SELECT * FROM `map_idea`");
+$map = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
+$mapLoc = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
+$mapLink = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
 $contact = mysqli_query($connDB, "SELECT * FROM `contact`");
 $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
-$mapTitle = mysqli_query($connDB, "SELECT `title_eng` FROM `map_idea` WHERE title_eng IS NOT NULL ");
+$mapTitle = mysqli_query($connDB, "SELECT `title_eng` FROM `map_idea` ");
 ?>
 
 <!doctype html>
@@ -101,34 +103,56 @@ $mapTitle = mysqli_query($connDB, "SELECT `title_eng` FROM `map_idea` WHERE titl
                 ?>
                 <div class="map">
                     <img src="../assets/images/map1.png" style="width: 850px; position:relative; " class="map" />
-                    <a href="#slider-image-1"><img src="../assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -228px; left:150px;" /></a>
-                    <a href="#slider-image-2"><img src="../assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -65px; left:540px;" /></a>
-                    <a href="#slider-image-3"><img src="../assets/images/pasiv.png"
-                            style="width: 28px; position:relative; top: -380px; left:400px;" /></a>
-                </div>
-                <div class="slider-holder">
-                    <span id="slider-image-1"></span>
-                    <span id="slider-image-2"></span>
-                    <span id="slider-image-3"></span>
-                    <div class="image-holder">
+                    <div class="hr">
                         <?php
-                        if (mysqli_num_rows($map) > 0) {
-                            while ($mapImage =  mysqli_fetch_assoc($map)) {
+                        if (mysqli_num_rows($mapLoc) > 0) {
+                            while ($mapImage =  mysqli_fetch_assoc($mapLoc)) {
                         ?>
-                        <img src="../assets/images/map/<?php echo $mapImage['image'] ?>" class="slider-image" />
+                        <span class="mapHref">
+                            <img data_id="<?php echo $mapImage['id'] ?>"
+                                src="../assets/images/collection/<?php echo $mapImage['loc-img'] ?>" class="pas"
+                                style="width: 28px; position:relative; top: <?php echo $mapImage['loc-pos-top'] ?>px; left:<?php echo $mapImage['loc-pos-left'] ?>px;" />
+                        </span>
                         <?php
                             }
                         }
                         ?>
                     </div>
                 </div>
-                <a href="#">
-                    <div class="find-button">
-                        <p>Explore More</p>
+                <div class="slider-holder">
+                    <div class="image-holder">
+                        <?php
+                        if (mysqli_num_rows($map) > 0) {
+                            while ($mapImage =  mysqli_fetch_assoc($map)) {
+                        ?>
+                        <img src="../assets/images/collection/<?php echo $mapImage['map'] ?>" class="slider-image" />
+                        <?php
+                            }
+                        }
+                        $Text = json_encode($map);
+                        $RequestText = urlencode($Text);
+                        ?>
                     </div>
-                </a>
+                </div>
+                <div class="find-button">
+                    <div class="hidd">
+                        <?php
+                        if (mysqli_num_rows($mapLink) > 0) {
+                            while ($mapImage =  mysqli_fetch_assoc($mapLink)) {
+                                $Text = json_encode($mapImage);
+                                $RequestText = urlencode($Text);
+
+                        ?>
+                        <a href="garn.php?cluster=<?= $RequestText ?>">
+                            <p class="readM">Explore More</p>
+                        </a>
+                        <?php
+                            }
+                        }
+
+                        ?>
+                    </div>
+                </div>
             </div>
         </section>
         <section>
