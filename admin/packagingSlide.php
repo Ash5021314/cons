@@ -111,8 +111,10 @@ $count = mysqli_num_rows($hedQuery);
             ?>
             <tr class="newDiv tableBody_1" data-base="z14" data-Id="<?php echo $headDiv['id']; ?>">
                 <td>
-                    <img src="../assets/images/package/<?php echo $headDiv['image']; ?>">
-                    <input type="file" class="file">
+                    <div>
+                        <img src="../assets/images/package/<?php echo $headDiv['image']; ?>">
+                        <input type="file" class="file">
+                    </div>
                 </td>
 
                 <td>

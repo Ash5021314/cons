@@ -20,7 +20,8 @@ $newsQueryHead = mysqli_query($connDB, "SELECT  `id`, `head_title`, `head_title_
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styleAdmin.css">
     <title>Login</title>
 </head>
@@ -83,24 +84,24 @@ $newsQueryHead = mysqli_query($connDB, "SELECT  `id`, `head_title`, `head_title_
             if (mysqli_num_rows($newsQueryHead) > 0) {
                 while ($newsQueryHeadDiv = mysqli_fetch_assoc($newsQueryHead)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z13_1" data-Id="<?php echo $newsQueryHeadDiv['id']; ?>">
+            <tr class="newDiv tableBody_1" data-base="z13_1" data-Id="<?php echo $newsQueryHeadDiv['id']; ?>">
 
-                        <td>
-                            <div>
-                                <img src="../assets/images/shop/<?php echo $newsQueryHeadDiv['head_image']; ?>">
-                                <input type="file" class="file">
-                            </div>
-                        </td>
-                        <td>
-                            <input type="text" class="title" value="<?php echo $newsQueryHeadDiv['head_title']; ?>">
-                        </td>
-                        <td>
-                            <input type="text" class="title_2" value="<?php echo $newsQueryHeadDiv['head_title_eng']; ?>">
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
-                        </td>
-                    </tr>
+                <td>
+                    <div>
+                        <img src="../assets/images/shop/<?php echo $newsQueryHeadDiv['head_image']; ?>">
+                        <input type="file" class="file">
+                    </div>
+                </td>
+                <td>
+                    <input type="text" class="title" value="<?php echo $newsQueryHeadDiv['head_title']; ?>">
+                </td>
+                <td>
+                    <input type="text" class="title_2" value="<?php echo $newsQueryHeadDiv['head_title_eng']; ?>">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                </td>
+            </tr>
             <?php
                 }
             }
@@ -109,28 +110,31 @@ $newsQueryHead = mysqli_query($connDB, "SELECT  `id`, `head_title`, `head_title_
             if (mysqli_num_rows($newsQuery) > 0) {
                 while ($newsDiv = mysqli_fetch_assoc($newsQuery)) {
             ?>
-                    <tr class="newDiv tableBody_1" data-base="z13_2" data-Id="<?php echo $newsDiv['id']; ?>">
+            <tr class="newDiv tableBody_1" data-base="z13_2" data-Id="<?php echo $newsDiv['id']; ?>">
 
-                        <td>
-                            <img src="../assets/images/shop/<?php echo $newsDiv['image']; ?>">
-                            <input type="file" class="file">
-                        </td>
-                        <td>
-                            <input type="text" class="title" value="<?php echo $newsDiv['title']; ?>">
-                            <input type="text" class="title_2" value="<?php echo $newsDiv['title_eng']; ?>">
-                        </td>
-                        <td>
-                            <textarea cols="30" rows="6" class="textarea"><?php echo $newsDiv['description']; ?></textarea>
-                            <textarea cols="30" rows="6" class="textarea_2"><?php echo $newsDiv['description_eng']; ?></textarea>
-                        </td>
+                <td>
+                    <div>
+                        <img src="../assets/images/shop/<?php echo $newsDiv['image']; ?>">
+                        <input type="file" class="file">
+                    </div>
+                </td>
+                <td>
+                    <input type="text" class="title" value="<?php echo $newsDiv['title']; ?>">
+                    <input type="text" class="title_2" value="<?php echo $newsDiv['title_eng']; ?>">
+                </td>
+                <td>
+                    <textarea cols="30" rows="6" class="textarea"><?php echo $newsDiv['description']; ?></textarea>
+                    <textarea cols="30" rows="6"
+                        class="textarea_2"><?php echo $newsDiv['description_eng']; ?></textarea>
+                </td>
 
-                        <td>
-                            <button type="button" class="btn btn-info updtaButt">UPDATE</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
-                        </td>
-                    </tr>
+                <td>
+                    <button type="button" class="btn btn-info updtaButt">UPDATE</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger DeleteButt">DELETE</button>
+                </td>
+            </tr>
             <?php
                 }
             }

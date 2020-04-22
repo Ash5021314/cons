@@ -45,11 +45,10 @@ $allColl = mysqli_query($connDB, "SELECT * FROM travel ORDER BY id DESC");
     <table class="table table_1">
         <thead>
             <tr class="tableHead_1">
-                <th>Images Place</th>
                 <th>Images Coin</th>
                 <th>Tilte </th>
                 <th>Description </th>
-                <th>Submit</th>
+                <th>UPDATE</th>
             </tr>
         </thead>
         <tbody class="adminContent">
@@ -63,11 +62,9 @@ $allColl = mysqli_query($connDB, "SELECT * FROM travel ORDER BY id DESC");
                         <img src="../assets/images/travel/<?php echo $allCollDiv['first_image']; ?>">
                         <input type="file" class="file" />
                     </div>
-                </td>
-                <td>
                     <div>
                         <img src="../assets/images/travel/<?php echo $allCollDiv['seccond_image']; ?>" />
-                        <input type="file" class="file1" />
+                        <input type="file" class="file8" />
                     </div>
                 </td>
                 <td>

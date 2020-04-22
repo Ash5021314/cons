@@ -30,22 +30,11 @@ $(".buttUpdata").click(function () {
 	});
 });
 /*=======================================================================*/
-
-/****************************************************************************** 
-
-            ADMIN Header, About me, Gallery, News
-        (header.php, about_me.php, gallery.php, news.php) 
-
-*******************************************************************************/
-
-var boolCount = true;
-var divCount = 0;
 //--------------- Function Insert ---------------------------------------
 
 $(document).on("click", "#buttInsert", function () {
 	var data_b = $(this).parent().parent().attr("data-b");
 	var thisParChil = $(this).parent().parent().children("td");
-
 	var file = $(thisParChil).children(".file").prop("files");
 	var file1 = $(thisParChil).children(".file1").prop("files");
 	var file2 = $(thisParChil).children(".file2").prop("files");
@@ -142,165 +131,7 @@ $(document).on("click", "#buttInsert", function () {
 		data: ArrayDat,
 		dataType: "json",
 		success: function (res) {
-			if (res) {
-				window.location.reload();
-				if (data_b == "z1") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z1" data-Id="' +
-							res["id"] +
-							'"> \
-                        <td><img src="../assets/images/product/' +
-							res["slide_image"] +
-							'"><input type="file" class="file"></td> \
-                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z3") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z3" data-Id="' +
-							res["id"] +
-							'"> \
-                        <td><img src="../img/gallery/' +
-							res["image"] +
-							'"> <input type="file" class="file" ></td> \
-                        <td><input type="text" class="title" value="' +
-							titleIns +
-							'" placeholder="page 1"></td> \
-                        <td><input type="text" class="title_2" value="' +
-							titleIns_2 +
-							'" placeholder="page 2"></td> \
-                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATA</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z4") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z4" data-Id="' +
-							res["id"] +
-							'"> \
-                    <td><img src="../assets/images/visit/' +
-							res["image"] +
-							'"><input type="file" class="file"></td>\
-                    <td><input type="text" value = "' +
-							textIns +
-							'"><input type="text" value="' +
-							textIns_2 +
-							'"></td>\
-                    <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z7") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z7" data-Id="' +
-							res["id"] +
-							'"> \
-                    <td><img src="../assets/images/socialIcon/' +
-							res["icon"] +
-							'"><input type="file" class="file"></td>\
-                    <td><input type="text" value = "' +
-							title_Up +
-							'"></td>\
-                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z8") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z8" data-Id="' +
-							res["id"] +
-							'"> \
-                    <td><img src="../assets/images/terminal/' +
-							res["image"] +
-							'"><input type="file" class="file"></td>\
-                    <td><input type="text" value = "' +
-							titleIns +
-							'"></td>\
-                    <td><input type="text" value = "' +
-							titleIns_2 +
-							'"></td>\
-							<td><textarea class="textarea" cols="30" rows="10"">' +
-							textIns +
-							'</textarea></td>\
-							<td><textarea class="textarea_1" cols="30" rows="10">' +
-							textIns_2 +
-							'</textarea></td> \
-                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z9_3") {
-					$(".adminContent9").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z9_3" data-Id="' +
-							res["id"] +
-							'"> \
-                    <td><img src="../assets/images/collection/' +
-							res["first_image"] +
-							'"><input type="file" class="file"></td>\
-                    <td><img src="../assets/images/collection/' +
-							res["seccond_image"] +
-							'"><input type="file" class="file"></td>\
-                    <td><img src="../assets/images/collection/' +
-							res["third_image"] +
-							'"><input type="file" class="file"></td>\
-                    <td><input type="text" value = "' +
-							titleIns +
-							'"></td>\
-                    <td><input type="text" value = "' +
-							titleIns_2 +
-							'"></td>\
-					<td><textarea class="textarea" cols="30" rows="10"">' +
-							textIns +
-							'</textarea></td>\
-					<td><textarea class="textarea_1" cols="30" rows="10">' +
-							textIns_2 +
-							'</textarea></td> \
-                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z12") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z12" data-Id="' +
-							res["id"] +
-							'"> \
-                        <td><img src="../assets/images/partners/' +
-							res["slide_image"] +
-							'"><input type="file" class="file"></td> \
-                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z13") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z13" data-Id="' +
-							res["id"] +
-							'"> \
-                    <td><img src="../assets/images/shop/' +
-							res["image"] +
-							'"><input type="file" class="file"></td>\
-                    <td><input type="text" value = "' +
-							titleIns +
-							'"></td>\
-                    <td><input type="text" value = "' +
-							titleIns_2 +
-							'"></td>\
-							<td><textarea class="textarea" cols="30" rows="10"">' +
-							textIns +
-							'</textarea></td>\
-							<td><textarea class="textarea_1" cols="30" rows="10">' +
-							textIns_2 +
-							'</textarea></td> \
-                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z14") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z12" data-Id="' +
-							res["id"] +
-							'"> \
-                        <td><img src="../assets/images/package/' +
-							res["image"] +
-							'"><input type="file" class="file"></td> \
-                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				}
-			}
+			window.location.reload();
 		},
 	});
 	thisParChil
@@ -331,59 +162,6 @@ $(document).on("click", "#buttInsertText", function () {
 		dataType: "json",
 		success: function (res) {
 			window.location.reload();
-			if (res) {
-				if (data_b == "z1_1") {
-					$(".adminContentText").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z1_1" data-Id="' +
-							res["id"] +
-							'"> \
-                            <td>\
-                            <textarea name="" id="" cols="30" rows="10">' +
-							titleIns +
-							'</textarea>\
-                        <textarea name="" id="" cols="30" rows="10">' +
-							titleIns_2 +
-							'</textarea></td> \
-                        <td><button type="button" class="btn btn-info" id="UpdtaButt' +
-							res["id"] +
-							'">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z3") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z3" data-Id="' +
-							res["id"] +
-							'"> \
-                        <td><img src="../img/gallery/' +
-							res["image"] +
-							'"> <input type="file" class="file" ></td> \
-                        <td><input type="text" class="title" value="' +
-							titleIns +
-							'" placeholder="page 1"></td> \
-                        <td><input type="text" class="title_2" value="' +
-							titleIns_2 +
-							'" placeholder="page 2"></td> \
-                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATA</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				} else if (data_b == "z4") {
-					$(".adminContent").prepend(
-						'<tr class="newDiv tableBody_1" data-base="z4" data-Id="' +
-							res["id"] +
-							'"> \
-                    <td><input type="text" class="pint_square" value="' +
-							pintURLIns +
-							'" > </td> \
-                    <td><input type="text" class="textarea" placeholder="page 1" value = "' +
-							textIns +
-							'"><input type="text" class="textarea_2" placeholder="page 2" value="' +
-							textIns_2 +
-							'"></td>\
-                    <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATA</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					);
-				}
-			}
 		},
 	});
 	thisParChil
@@ -489,6 +267,12 @@ $(".updtaButt").click(function () {
 		.next("div")
 		.next("div")
 		.next("div");
+	var thisParChil8 = $(this)
+		.parent()
+		.parent()
+		.children("td")
+		.children("div")
+		.next("div");
 	var base_Up = thisContent.attr("data-base");
 	var id_Up = thisContent.attr("data-Id");
 	var oldImgUrl = thisParChil.children("div").children("img").attr("src");
@@ -499,6 +283,7 @@ $(".updtaButt").click(function () {
 	var oldImgUrl5 = thisParChil5.children("img").attr("src");
 	var oldImgUrl6 = thisParChil6.children("img").attr("src");
 	var oldImgUrl7 = thisParChil7.children("img").attr("src");
+	var oldImgUrl8 = thisParChil8.children("img").attr("src");
 
 	var file = $(thisParChil).children("div").children(".file").prop("files");
 	var file1 = $(thisParChil1).children(".file1").prop("files");
@@ -508,6 +293,7 @@ $(".updtaButt").click(function () {
 	var file5 = $(thisParChil5).children(".file5").prop("files");
 	var file6 = $(thisParChil6).children(".file6").prop("files");
 	var file7 = $(thisParChil7).children(".file7").prop("files");
+	var file8 = $(thisParChil8).children(".file8").prop("files");
 
 	if (typeof file !== "undefined") {
 		var file_Up = thisParChil
@@ -538,6 +324,9 @@ $(".updtaButt").click(function () {
 	if (typeof file7 !== "undefined" && file7.length > 0) {
 		var file_Up7 = thisParChil6.children(".file7").prop("files")[0];
 	}
+	if (typeof file8 !== "undefined" && file8.length > 0) {
+		var file_Up8 = thisParChil8.children(".file8").prop("files")[0];
+	}
 	var ArrayDat = new FormData();
 	ArrayDat.append("base_Up", base_Up);
 	ArrayDat.append("id_Up", id_Up);
@@ -549,6 +338,7 @@ $(".updtaButt").click(function () {
 	ArrayDat.append("oldImgUrl5", oldImgUrl5);
 	ArrayDat.append("oldImgUrl6", oldImgUrl6);
 	ArrayDat.append("oldImgUrl7", oldImgUrl7);
+	ArrayDat.append("oldImgUrl8", oldImgUrl8);
 	ArrayDat.append("file_Up", file_Up);
 	ArrayDat.append("file_Up1", file_Up1);
 	ArrayDat.append("file_Up2", file_Up2);
@@ -557,6 +347,7 @@ $(".updtaButt").click(function () {
 	ArrayDat.append("file_Up5", file_Up5);
 	ArrayDat.append("file_Up6", file_Up6);
 	ArrayDat.append("file_Up7", file_Up7);
+	ArrayDat.append("file_Up8", file_Up8);
 
 	if (
 		base_Up == "z6" ||
@@ -642,222 +433,6 @@ $(".updtaButt").click(function () {
 		data: ArrayDat,
 		success: function (res) {
 			window.location.reload();
-			if (res != "") {
-				if (base_Up == "z1") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z1" data-Id="' +
-							id_Up +
-							'"> \
-                        <td><img src="../assets/images/product/' +
-							res +
-							'"><input type="file" class="file"></td> \
-                        <td><button type="button" class="btn btn-info" class="UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" class="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z1_1") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z1_1" data-Id="' +
-							id_Up +
-							'"> \
-                        <td><textarea class="textarea" cols="30" rows="4"">' +
-							text_Up +
-							'</textarea></td> <td><textarea class="textarea_2" cols="30" rows="4">' +
-							text_Up_2 +
-							'</textarea></td> \
-                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" class="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z2") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z2" data-Id="' +
-							id_Up +
-							'"> \
-                        <td><img src="../assets/images/travel/' +
-							res +
-							'"> <input type="file" class="file" ></td> \
-                        <td><input type="text" class="title" value="' +
-							title_Up +
-							'"></td> \
-                        <td><input type="text" class="title_2" value="' +
-							title_Up_2 +
-							'"></td> \
-                        <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATA</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z3") {
-					console.log(res);
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z3" data-Id="' +
-							id_Up +
-							'"> \
-                        <td><textarea class="textarea" cols="30" rows="10"">' +
-							text_Up +
-							'</textarea><textarea class="textarea_1" cols="30" rows="10">' +
-							text_Up_2 +
-							'</textarea></td> \
-                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z4_1") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z4_1" data-Id="' +
-							id_Up +
-							'"> \
-                    <td><img src="../assets/images/visit/' +
-							res["image"] +
-							'"><input type="file" class="file"></td>\
-                    <td><input type="text" class="textarea" value ="' +
-							text_Up +
-							'"><input type="text" class="textarea_2"  value = "' +
-							text_Up_2 +
-							'"></td> \
-                    <td><button type="button" class="btn btn-info" id="UpdtaButt">UPDATA</button> <button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z6") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z6" data-Id="' +
-							id_Up +
-							'"> \
-							<td><input type="text" value ="' +
-							title_Up +
-							'"><input type="text" value = "' +
-							title_Up_2 +
-							'"></td>\
-                        <td><textarea class="textarea" cols="30" rows="10"">' +
-							text_Up +
-							'</textarea></td><td><textarea class="textarea_1" cols="30" rows="10">' +
-							text_Up_2 +
-							'</textarea></td> \
-                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z7") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z7" data-Id="' +
-							id_Up +
-							'"> \
-							<td><img src="../assets/images/socialIcon/' +
-							res["icon"] +
-							'"><input type="file" class="file"></td>\
-                    <td><input type="text" value ="' +
-							title_Up +
-							'"></td>\
-                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z7_1") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z7_1" data-Id="' +
-							id_Up +
-							'"> \
-                    <td><input type="text" value ="' +
-							title_Up +
-							'"></td>\
-                    <td><input type="text" value ="' +
-							title_Up_2 +
-							'"></td>\
-                    <td><input type="text" value ="' +
-							title_Up_3 +
-							'"></td>\
-                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z8") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z8" data-Id="' +
-							id_Up +
-							'"> \
-							<td><img src="../assets/images/terminal/' +
-							res["image"] +
-							'"><input type="file" class="file"></td>\
-							<td><input type="text" value ="' +
-							title_Up +
-							'"><input type="text" value = "' +
-							title_Up_2 +
-							'"></td>\
-                        <td><textarea class="textarea" cols="30" rows="10"">' +
-							textIns +
-							'</textarea></td><td><textarea class="textarea_1" cols="30" rows="10">' +
-							textIns_2 +
-							'</textarea></td> \
-                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z11") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z11" data-Id="' +
-							id_Up +
-							'"> \
-							<td><img src="../assets/images/history/' +
-							res["historyImage"] +
-							'"><input type="file" class="file"></td>\
-							<td><input type="text" value ="' +
-							title_Up +
-							'"><input type="text" value = "' +
-							title_Up_2 +
-							'"></td>\
-                        <td><textarea class="textarea" cols="30" rows="4"">' +
-							textIns +
-							'</textarea></td><td><textarea class="textarea_1" cols="30" rows="4">' +
-							textIns_2 +
-							'</textarea></td> \
-                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z13_1") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z13_1" data-Id="' +
-							res["id"] +
-							'"> \
-                    <td><img src="../assets/images/shop/' +
-							res["head_image"] +
-							'"><input type="file" class="file"></td>\
-                    <td><input type="text" value = "' +
-							title_Up +
-							'"></td>\
-                    <td><input type="text" value = "' +
-							title_Up_2 +
-							'"></td>\
-                    <td><button type="button" class="btn btn-info UpdtaButt" >UPDATE</button></td> \
-                    </tr>'
-					);
-				} else if (base_Up == "z13_2") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z11" data-Id="' +
-							id_Up +
-							'"> \
-							<td><img src="../assets/images/history/' +
-							res["image"] +
-							'"><input type="file" class="file"></td>\
-							<td><input type="text" value ="' +
-							title_Up +
-							'"><input type="text" value = "' +
-							title_Up_2 +
-							'"></td>\
-                        <td><textarea class="textarea" cols="30" rows="6"">' +
-							textIns +
-							'</textarea><textarea class="textarea_1" cols="30" rows="6">' +
-							textIns_2 +
-							'</textarea></td> \
-                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td><td><button type="button" class="btn btn-danger" id="DeleteButt" >DELETE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				} else if (base_Up == "z15") {
-					$(
-						'<tr class="newDiv tableBody_1" data-base="z14_1" data-Id="' +
-							id_Up +
-							'"> \
-							<td><input type="text" value ="' +
-							title_Up +
-							'"><input type="text" value = "' +
-							title_Up_2 +
-							'"></td>\
-                        <td><button type="button" class="btn btn-info UpdtaButt">UPDATE</button></td> \
-                    </tr>'
-					).replaceAll(thisContent);
-				}
-			}
 		},
 	});
 });

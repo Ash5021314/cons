@@ -372,6 +372,25 @@ if (isset($_POST['base_Up'])) {
         $NewFileName7 = end($takeFileFormat7);
         $NewOrOldFile = 2;
     }
+
+    if (isset($_FILES['file_Up8'])) {
+        $takeFileFormat8 = explode('.', $_FILES['file_Up8']['name']);
+        $insFileFormat8 = end($takeFileFormat8);
+
+        if (in_array(strtolower($insFileFormat8), $allFileFormat)) {
+            $deleteOldFile8 = unlink($_POST['oldImgUrl8']);
+
+            if ($deleteOldFile8) {
+                $NewFileName8 = (date('Ymdhis') * 11) . "." . $insFileFormat8;
+                $NewOrOldFile = 1;
+            } else {
+            }
+        }
+    } else {
+        $takeFileFormat8 = explode('/', $_POST['oldImgUrl8']);
+        $NewFileName8 = end($takeFileFormat8);
+        $NewOrOldFile = 2;
+    }
     // if ($NewOrOldFile == 1 || $NewOrOldFile == 2) {
 
     $id_Up = $_POST['id_Up'];
@@ -471,8 +490,8 @@ if (isset($_POST['base_Up'])) {
         $textIns_21 = htmlentities($_POST['text_Up_2'], ENT_QUOTES, "UTF-8");
         $base_NameAdresss = ["travel", "../assets/images/travel/"];
         $uploadFile = move_uploaded_file($_FILES['file_Up']['tmp_name'], $base_NameAdresss[1] . $NewFileName);
-        $uploadFile1 = move_uploaded_file($_FILES['file_Up1']['tmp_name'], $base_NameAdresss[1] . $NewFileName1);
-        $Updata1 = mysqli_query($connDB, "UPDATE `travel` SET `title` = '$titleIns1', `title_eng` = '$titleIns_21', `text` = '$textIns1', `text_eng` = '$textIns_21', `first_image` = '$NewFileName', `seccond_image` = '$NewFileName1' WHERE id = '1'");
+        $uploadFile1 = move_uploaded_file($_FILES['file_Up8']['tmp_name'], $base_NameAdresss[1] . $NewFileName8);
+        $Updata1 = mysqli_query($connDB, "UPDATE `travel` SET `title` = '$titleIns1', `title_eng` = '$titleIns_21', `text` = '$textIns1', `text_eng` = '$textIns_21', `first_image` = '$NewFileName', `seccond_image` = '$NewFileName8' WHERE id = '1'");
 
         if ($Updata1) {
             echo  $NewFileName;
