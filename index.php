@@ -46,7 +46,6 @@ $mapLink = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
 </head>
 
 <body class="home">
-
     <header>
         <div class="header-container">
             <nav class="navbar navbar-expand-lg">
@@ -79,6 +78,7 @@ $mapLink = mysqli_query($connDB, "SELECT * FROM `coll_desc`");
             <div class="container">
                 <div class="slideshow">
                     <?php
+
                     if (mysqli_num_rows($slide) > 0) {
                         while ($slider =  mysqli_fetch_assoc($slide)) {
                     ?>

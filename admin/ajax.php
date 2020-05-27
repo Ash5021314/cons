@@ -132,7 +132,7 @@ if (isset($_POST['database_ins'])) {
         $sql_insBaseDate = "'$titleIns'" . "," . "'$titleIns_2'" . "," . "'$textIns'" . "," . "'$textIns_2'" . "," . "'$NewFileName'";
     } else if ($database_num == "z9_3") {
         $base_NameAdres = ["coll_desc", "../assets/images/collection/"];
-        $sql_date = "title, title_eng, slide_text, slide_text_eng`loc-pos-top`, `loc-pos-left`, text, text_eng,, first_image, seccond_image,  third_image, first_image_prod, first_slide, seccond_slide, map, `loc-img`";
+        $sql_date = "title, title_eng, slide_text, slide_text_eng,`loc-pos-top`, `loc-pos-left`, text, text_eng, first_image, seccond_image,  third_image, first_image_prod, first_slide, seccond_slide, map, `loc-img`";
         $sql_insBaseDate = "'$titleIns','$titleIns_2','$titleIns_3','$titleIns_4','$titleIns_5','$titleIns_6','$textIns','$textIns_2','$NewFileName','$NewFileName1','$NewFileName2','$NewFileName3','$NewFileName4','$NewFileName5','$NewFileName6','$NewFileName7'";
     } else if ($database_num == "z12") {
         $base_NameAdres = ["partners", "../assets/images/partners/"];

@@ -15,7 +15,8 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
 <head>
     <title>Armenian Coins</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="Armenian Coins">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#039def">
@@ -35,7 +36,8 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
@@ -72,16 +74,16 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
                 while ($terminals =  mysqli_fetch_assoc($terminal)) {
 
             ?>
-                    <div class="row mb-50 rowRew" data-att="1">
-                        <div class="col-md-6 text-container">
-                            <h1><?php echo $terminals['title'] ?></h1>
-                            <p><?php echo $terminals['description'] ?></p>
-                        </div>
-                        <div class="col-md-6 " style="display: flex; justify-content:center">
-                            <img src="assets/images/terminal/<?php echo $terminals['image'] ?>" style="width: 150px;">
+            <div class="row mb-50 rowRew" data-att="1">
+                <div class="col-md-6 text-container">
+                    <h1><?php echo $terminals['title'] ?></h1>
+                    <p><?php echo $terminals['description'] ?></p>
+                </div>
+                <div class="col-md-6 " style="display: flex; justify-content:center">
+                    <img src="assets/images/terminal/<?php echo $terminals['image'] ?>" style="width: 150px;">
 
-                        </div>
-                    </div>
+                </div>
+            </div>
 
             <?php
 
@@ -96,7 +98,7 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
                 <?php
                 while ($mapImage =  mysqli_fetch_assoc($mapTitle)) {
                 ?>
-                    <p class="section-title"><?php echo $mapImage['title'] ?></p>
+                <p class="section-title"><?php echo $mapImage['title'] ?></p>
                 <?php
                 }
                 ?>
@@ -107,9 +109,10 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
                         if (mysqli_num_rows($mapLoc) > 0) {
                             while ($mapImage =  mysqli_fetch_assoc($mapLoc)) {
                         ?>
-                                <span class="mapHref">
-                                    <img data_id="<?php echo $mapImage['id'] ?>" src="assets/images/collection/<?php echo $mapImage['loc-img'] ?>" class="pas" style="width: 28px; position:relative; top: <?php echo $mapImage['loc-pos-top'] ?>px; left:<?php echo $mapImage['loc-pos-left'] ?>px;" />
-                                </span>
+                        <span class="mapHref">
+                            <img src="assets/images/collection/<?php echo $mapImage['loc-img'] ?>" class="pas"
+                                style="width: 28px; position:relative; top: <?php echo $mapImage['loc-pos-top'] ?>px; left:<?php echo $mapImage['loc-pos-left'] ?>px;" />
+                        </span>
                         <?php
                             }
                         }
@@ -122,7 +125,7 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
                         if (mysqli_num_rows($map) > 0) {
                             while ($mapImage =  mysqli_fetch_assoc($map)) {
                         ?>
-                                <img src="assets/images/collection/<?php echo $mapImage['map'] ?>" class="slider-image" />
+                        <img src="assets/images/collection/<?php echo $mapImage['map'] ?>" class="slider-image" />
                         <?php
                             }
                         }
@@ -140,9 +143,9 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
                                 $RequestText = urlencode($Text);
 
                         ?>
-                                <a href="garn.php?cluster=<?= $RequestText ?>">
-                                    <p class="readM">Իմանալ ավելին</p>
-                                </a>
+                        <a href="garn.php?cluster=<?= $RequestText ?>">
+                            <p class="readM">Իմանալ ավելին</p>
+                        </a>
                         <?php
                             }
                         }
@@ -160,10 +163,10 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
                     if (mysqli_num_rows($contact) > 0) {
                         while ($contactUs =  mysqli_fetch_assoc($contact)) {
                     ?>
-                            <p class="contact">հետադարձ կապ</p>
-                            <p>Էլ․ Փոստ: <?php echo $contactUs['email'] ?></p>
-                            <p>Հեռախոսահամար: <?php echo $contactUs['phone_1'] ?></p>
-                            <p><?php echo $contactUs['phone_2'] ?></p>
+                    <p class="contact">հետադարձ կապ</p>
+                    <p>Էլ․ Փոստ: <?php echo $contactUs['email'] ?></p>
+                    <p>Հեռախոսահամար: <?php echo $contactUs['phone_1'] ?></p>
+                    <p><?php echo $contactUs['phone_2'] ?></p>
                     <?php
                         }
                     }
@@ -175,7 +178,8 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
                     if (mysqli_num_rows($follow) > 0) {
                         while ($followUs =  mysqli_fetch_assoc($follow)) {
                     ?>
-                            <a href="<?php echo $followUs['icon_link'] ?>"><img src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
+                    <a href="<?php echo $followUs['icon_link'] ?>"><img
+                            src="assets/images/socialIcon/<?php echo $followUs['icon'] ?>" style="width: 35px"></a>
 
                     <?php
                         }
@@ -195,22 +199,23 @@ $mapTitle = mysqli_query($connDB, "SELECT `title` FROM `map_idea`");
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="assets/js/index.js"></script>
     <script>
-        let arr = $(".rowRew");
-        let count = 1
-        for (let i = 0; i < arr.length; i++) {
-            let x = $(arr[i]).attr("data-att", count++)
-            if (count % 2 !== 0) {
-                $(arr[i]).css({
-                    "flex-direction": "row-reverse"
-                })
-            }
+    let arr = $(".rowRew");
+    let count = 1
+    for (let i = 0; i < arr.length; i++) {
+        let x = $(arr[i]).attr("data-att", count++)
+        if (count % 2 !== 0) {
+            $(arr[i]).css({
+                "flex-direction": "row-reverse"
+            })
         }
+    }
     </script>
 </body>
 

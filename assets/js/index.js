@@ -245,21 +245,6 @@ $("#toogle-text2").hide();
 
 //====================================Hide/Show text End ==============================
 
-$(document).ready(function () {
-	$(".regular").slick({
-		dots: false,
-		infinite: true,
-		slidesToShow: 4,
-		slidesToScroll: 1,
-	});
-	$(".imgId").click(function () {
-		var as = $(this).attr("data-id");
-		$("html, body").animate(
-			{ scrollTop: $("#col-" + as + "").offset().top },
-			1000
-		);
-	});
-});
 $(document).scroll(function () {
 	$("#to_top").css("opacity", $(document).scrollTop() / 500);
 });
@@ -267,14 +252,7 @@ $(document).scroll(function () {
 $("#to_top").click(function () {
 	$("html, body").animate({ scrollTop: 0 }, 1000);
 });
-// $(".header-exople, .find-button").click(function () {
-// 	$("html, body").animate(
-// 		{
-// 			scrollTop: $(".scroll-section").offset().top,
-// 		},
-// 		1000
-// 	);
-// });
+
 $(".pic").hover(
 	function () {
 		$(this).children().css({ display: "block", cursor: "pointer" });

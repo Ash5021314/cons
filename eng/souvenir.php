@@ -330,7 +330,20 @@ $follow = mysqli_query($connDB, "SELECT * FROM `follow`");
                 }
             }
         });
-
+        $(".regular").slick({
+            dots: false,
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+        });
+        $(".imgId").click(function() {
+            var as = $(this).attr("data-id");
+            $("html, body").animate({
+                    scrollTop: $("#col-" + as + "").offset().top
+                },
+                1000
+            );
+        });
     });
     </script>
 </body>
